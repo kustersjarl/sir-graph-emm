@@ -2864,7 +2864,7 @@ wheels = [
 ]
 
 [[package]]
-name = "sir-graph"
+name = "sir-graph-emm"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
