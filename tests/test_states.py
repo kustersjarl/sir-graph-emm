@@ -3,8 +3,6 @@ import pytest
 
 from sir_graph.states import State, choose_seeds
 
-# states
-
 
 def test_state_values_are_count_columns() -> None:
     assert (State.S, State.I, State.R) == (0, 1, 2)
