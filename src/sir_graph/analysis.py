@@ -2,6 +2,7 @@ from collections.abc import Sequence
 from dataclasses import dataclass
 
 import numpy as np
+import pandas as pd
 from numpy.typing import ArrayLike, NDArray
 
 from sir_graph.dynamics import SimulationResult
@@ -11,12 +12,15 @@ from sir_graph.graph import Graph
 __all__ = [
     "DegreeBaseline",
     "ModelBObservations",
+    "CascadeObservations",
     "per_node_spreading_metrics",
     "fit_degree_baseline",
     "opportunity_contact_steps",
     "weighted_opportunity_contact_steps",
     "descendant_counts",
     "model_b_observations",
+    "cascade_observations",
+    "aggregate_cascade_by_person",
 ]
 
 
@@ -66,6 +70,49 @@ class ModelBObservations:
     weighted_opportunity: NDArray[np.float64]
 
     descendants: NDArray[np.int64]
+
+
+@dataclass(frozen=True)
+class CascadeObservations:
+    """
+    Run-person observations for downstream cascade analysis.
+
+    Each row corresponds to one naturally infected node in one
+    simulation run. Artificial seed infections are excluded.
+
+    descendants:
+        All downstream infections in the transmission tree, including
+        direct offspring.
+
+    indirect_descendants:
+        Downstream infections beyond the first generation:
+
+            descendants - offspring
+
+    timing_adjusted:
+        log(1 + descendants) minus the pooled mean among observations
+        infected at the same simulation time.
+
+    timing_adjusted_indirect:
+        log(1 + indirect_descendants) minus the pooled mean among
+        observations infected at the same simulation time.
+    """
+
+    run_index: NDArray[np.int64]
+    node_index: NDArray[np.int64]
+    infection_time: NDArray[np.int64]
+
+    descendants: NDArray[np.int64]
+    indirect_descendants: NDArray[np.int64]
+
+    log_descendants: NDArray[np.float64]
+    log_indirect_descendants: NDArray[np.float64]
+
+    expected_log_descendants: NDArray[np.float64]
+    expected_log_indirect_descendants: NDArray[np.float64]
+
+    timing_adjusted: NDArray[np.float64]
+    timing_adjusted_indirect: NDArray[np.float64]
 
 
 # ============================================================
@@ -820,3 +867,478 @@ def model_b_observations(
             descendant_parts
         ),
     )
+
+# ============================================================
+# Cascade observations and person-level aggregation
+# ============================================================
+
+
+def cascade_observations(
+    runs: Sequence[SimulationResult],
+) -> CascadeObservations:
+    """
+    Build timing-adjusted downstream-cascade observations.
+
+    One row is created for every naturally infected node in every run.
+    Seeds are excluded because their infection was imposed by the
+    experiment.
+
+    For observation (i, r):
+
+        D_ir = all descendants of i in the transmission tree
+        I_ir = D_ir - direct offspring of i
+
+    The transformed outcomes are:
+
+        Z_ir = log(1 + D_ir)
+        ZI_ir = log(1 + I_ir)
+
+    To account for the strong dependence of cascade size on epidemic
+    timing, the baseline is pooled over all supplied runs by exact
+    infection time t:
+
+        B(t) = mean(Z_ir | infection_time = t)
+        BI(t) = mean(ZI_ir | infection_time = t)
+
+    and the timing-adjusted outcomes are:
+
+        C_ir = Z_ir - B(t)
+        CI_ir = ZI_ir - BI(t)
+
+    This is a cascade-impact outcome, not a direct infectiousness
+    parameter.
+    """
+
+    if len(runs) == 0:
+        raise ValueError(
+            "runs must contain at least one simulation"
+        )
+
+    n_nodes = runs[0].n_nodes
+
+    if any(
+        run.n_nodes != n_nodes
+        for run in runs
+    ):
+        raise ValueError(
+            "all simulation results must have "
+            "the same number of nodes"
+        )
+
+    run_parts: list[
+        NDArray[np.int64]
+    ] = []
+
+    node_parts: list[
+        NDArray[np.int64]
+    ] = []
+
+    infection_time_parts: list[
+        NDArray[np.int64]
+    ] = []
+
+    descendant_parts: list[
+        NDArray[np.int64]
+    ] = []
+
+    indirect_parts: list[
+        NDArray[np.int64]
+    ] = []
+
+    for run_index, run in enumerate(runs):
+        natural_nodes = np.flatnonzero(
+            run.infection_time > 0
+        ).astype(
+            np.int64
+        )
+
+        if natural_nodes.size == 0:
+            continue
+
+        descendants = descendant_counts(
+            run
+        )
+
+        offspring = run.offspring
+
+        natural_descendants = descendants[
+            natural_nodes
+        ].astype(
+            np.int64,
+            copy=False,
+        )
+
+        natural_offspring = offspring[
+            natural_nodes
+        ].astype(
+            np.int64,
+            copy=False,
+        )
+
+        indirect_descendants = (
+            natural_descendants
+            - natural_offspring
+        )
+
+        if np.any(
+            indirect_descendants < 0
+        ):
+            raise ValueError(
+                "descendants cannot be smaller "
+                "than direct offspring"
+            )
+
+        run_parts.append(
+            np.full(
+                natural_nodes.size,
+                run_index,
+                dtype=np.int64,
+            )
+        )
+
+        node_parts.append(
+            natural_nodes
+        )
+
+        infection_time_parts.append(
+            run.infection_time[
+                natural_nodes
+            ].astype(
+                np.int64,
+                copy=False,
+            )
+        )
+
+        descendant_parts.append(
+            natural_descendants
+        )
+
+        indirect_parts.append(
+            indirect_descendants
+        )
+
+    if not node_parts:
+        empty_int = np.empty(
+            0,
+            dtype=np.int64,
+        )
+
+        empty_float = np.empty(
+            0,
+            dtype=np.float64,
+        )
+
+        return CascadeObservations(
+            run_index=empty_int.copy(),
+            node_index=empty_int.copy(),
+            infection_time=empty_int.copy(),
+            descendants=empty_int.copy(),
+            indirect_descendants=empty_int.copy(),
+            log_descendants=empty_float.copy(),
+            log_indirect_descendants=(
+                empty_float.copy()
+            ),
+            expected_log_descendants=(
+                empty_float.copy()
+            ),
+            expected_log_indirect_descendants=(
+                empty_float.copy()
+            ),
+            timing_adjusted=empty_float.copy(),
+            timing_adjusted_indirect=(
+                empty_float.copy()
+            ),
+        )
+
+    run_index = np.concatenate(
+        run_parts
+    )
+
+    node_index = np.concatenate(
+        node_parts
+    )
+
+    infection_time = np.concatenate(
+        infection_time_parts
+    )
+
+    descendants = np.concatenate(
+        descendant_parts
+    )
+
+    indirect_descendants = np.concatenate(
+        indirect_parts
+    )
+
+    log_descendants = np.log1p(
+        descendants.astype(
+            np.float64
+        )
+    )
+
+    log_indirect_descendants = np.log1p(
+        indirect_descendants.astype(
+            np.float64
+        )
+    )
+
+    # Pooled exact-infection-time baseline.
+    max_time = int(
+        infection_time.max()
+    )
+
+    time_counts = np.bincount(
+        infection_time,
+        minlength=max_time + 1,
+    ).astype(
+        np.int64
+    )
+
+    descendant_sums = np.bincount(
+        infection_time,
+        weights=log_descendants,
+        minlength=max_time + 1,
+    )
+
+    indirect_sums = np.bincount(
+        infection_time,
+        weights=log_indirect_descendants,
+        minlength=max_time + 1,
+    )
+
+    expected_by_time = np.divide(
+        descendant_sums,
+        time_counts,
+        out=np.full(
+            max_time + 1,
+            np.nan,
+            dtype=np.float64,
+        ),
+        where=time_counts > 0,
+    )
+
+    expected_indirect_by_time = np.divide(
+        indirect_sums,
+        time_counts,
+        out=np.full(
+            max_time + 1,
+            np.nan,
+            dtype=np.float64,
+        ),
+        where=time_counts > 0,
+    )
+
+    expected_log_descendants = (
+        expected_by_time[
+            infection_time
+        ]
+    )
+
+    expected_log_indirect_descendants = (
+        expected_indirect_by_time[
+            infection_time
+        ]
+    )
+
+    timing_adjusted = (
+        log_descendants
+        - expected_log_descendants
+    )
+
+    timing_adjusted_indirect = (
+        log_indirect_descendants
+        - expected_log_indirect_descendants
+    )
+
+    return CascadeObservations(
+        run_index=run_index,
+        node_index=node_index,
+        infection_time=infection_time,
+        descendants=descendants,
+        indirect_descendants=(
+            indirect_descendants
+        ),
+        log_descendants=log_descendants,
+        log_indirect_descendants=(
+            log_indirect_descendants
+        ),
+        expected_log_descendants=(
+            expected_log_descendants
+        ),
+        expected_log_indirect_descendants=(
+            expected_log_indirect_descendants
+        ),
+        timing_adjusted=timing_adjusted,
+        timing_adjusted_indirect=(
+            timing_adjusted_indirect
+        ),
+    )
+
+
+def aggregate_cascade_by_person(
+    people: pd.DataFrame,
+    observations: CascadeObservations,
+) -> pd.DataFrame:
+    """
+    Aggregate cascade observations to one row per person.
+
+    Returns a copy of ``people`` with:
+
+        cascade_natural_infections
+        cascade_mean_descendants
+        cascade_mean_log_descendants
+        cascade_mean_indirect_descendants
+        cascade_mean_log_indirect_descendants
+        cascade_mean_timing_adjusted
+        cascade_mean_timing_adjusted_indirect
+
+    Means are conditional on natural infection. A person never naturally
+    infected receives NaN for the mean outcomes.
+    """
+
+    result = people.copy()
+    n_people = len(result)
+
+    node_index = np.asarray(
+        observations.node_index,
+        dtype=np.int64,
+    )
+
+    if node_index.ndim != 1:
+        raise ValueError(
+            "observations.node_index must be 1-D"
+        )
+
+    if (
+        np.any(node_index < 0)
+        or np.any(
+            node_index >= n_people
+        )
+    ):
+        raise ValueError(
+            "observation node indices are "
+            "incompatible with the people dataframe"
+        )
+
+    arrays = {
+        "descendants": np.asarray(
+            observations.descendants,
+            dtype=np.float64,
+        ),
+        "log_descendants": np.asarray(
+            observations.log_descendants,
+            dtype=np.float64,
+        ),
+        "indirect_descendants": np.asarray(
+            observations.indirect_descendants,
+            dtype=np.float64,
+        ),
+        "log_indirect_descendants": np.asarray(
+            observations.log_indirect_descendants,
+            dtype=np.float64,
+        ),
+        "timing_adjusted": np.asarray(
+            observations.timing_adjusted,
+            dtype=np.float64,
+        ),
+        "timing_adjusted_indirect": np.asarray(
+            observations.timing_adjusted_indirect,
+            dtype=np.float64,
+        ),
+    }
+
+    for name, values in arrays.items():
+        if values.shape != node_index.shape:
+            raise ValueError(
+                f"{name} and node_index must "
+                "have the same shape"
+            )
+
+        if np.any(
+            ~np.isfinite(values)
+        ):
+            raise ValueError(
+                f"{name} must contain only "
+                "finite values"
+            )
+
+    natural_infections = np.bincount(
+        node_index,
+        minlength=n_people,
+    ).astype(
+        np.int64
+    )
+
+    def mean_by_person(
+        values: NDArray[np.float64],
+    ) -> NDArray[np.float64]:
+        totals = np.bincount(
+            node_index,
+            weights=values,
+            minlength=n_people,
+        )
+
+        return np.divide(
+            totals,
+            natural_infections,
+            out=np.full(
+                n_people,
+                np.nan,
+                dtype=np.float64,
+            ),
+            where=natural_infections > 0,
+        )
+
+    result[
+        "cascade_natural_infections"
+    ] = natural_infections
+
+    result[
+        "cascade_mean_descendants"
+    ] = mean_by_person(
+        arrays[
+            "descendants"
+        ]
+    )
+
+    result[
+        "cascade_mean_log_descendants"
+    ] = mean_by_person(
+        arrays[
+            "log_descendants"
+        ]
+    )
+
+    result[
+        "cascade_mean_indirect_descendants"
+    ] = mean_by_person(
+        arrays[
+            "indirect_descendants"
+        ]
+    )
+
+    result[
+        "cascade_mean_log_indirect_descendants"
+    ] = mean_by_person(
+        arrays[
+            "log_indirect_descendants"
+        ]
+    )
+
+    result[
+        "cascade_mean_timing_adjusted"
+    ] = mean_by_person(
+        arrays[
+            "timing_adjusted"
+        ]
+    )
+
+    result[
+        "cascade_mean_timing_adjusted_indirect"
+    ] = mean_by_person(
+        arrays[
+            "timing_adjusted_indirect"
+        ]
+    )
+
+    return result
