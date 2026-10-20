@@ -102,8 +102,43 @@ def transmission_probability(
     params: NodeParams,
     src: NDArray[np.int64],
     dst: NDArray[np.int64],
+    edge_multiplier: float | NDArray[np.float64] = 1.0,
 ) -> NDArray[np.float64]:
     """
-    per edge probabilities
+    Per-edge transmission probabilities.
+
+    p_ij = min(
+        1,
+        p
+        * infectiousness_i
+        * susceptibility_j
+        * edge_multiplier_ij
+    )
     """
-    return np.minimum(1.0, p * params.infectiousness[src] * params.susceptibility[dst])
+
+    edge_multiplier = np.asarray(
+        edge_multiplier,
+        dtype=np.float64,
+    )
+
+    if np.any(
+        ~np.isfinite(edge_multiplier)
+    ):
+        raise ValueError(
+            "edge_multiplier must be finite"
+        )
+
+    if np.any(
+        edge_multiplier < 0
+    ):
+        raise ValueError(
+            "edge_multiplier cannot be negative"
+        )
+
+    return np.minimum(
+        1.0,
+        p
+        * params.infectiousness[src]
+        * params.susceptibility[dst]
+        * edge_multiplier,
+    )

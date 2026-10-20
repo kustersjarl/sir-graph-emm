@@ -191,3 +191,57 @@ def test_run_ensemble() -> None:
     assert len({tuple(r.seeds.tolist()) for r in results}) > 1  # fresh seeds per run
     again = run_ensemble(graph, 20, 2, 0.3, rng=5)
     assert [r.final_size for r in results] == [r.final_size for r in again]
+
+
+def test_edge_multiplier_changes_transmission() -> None:
+    graph = make_graph(
+        2,
+        [(0, 1)],
+    )
+
+    params = NodeParams.homogeneous(
+        2,
+        recovery=1.0,
+    )
+
+    # CSR contains both:
+    # 0 -> 1
+    # 1 -> 0
+    edge_multipliers = np.array(
+        [2.0, 2.0],
+        dtype=np.float64,
+    )
+
+    rng = np.random.default_rng(
+        123
+    )
+
+    n_runs = 20_000
+
+    hits = sum(
+        simulate(
+            graph,
+            [0],
+            0.2,
+            params,
+            edge_multipliers=
+                edge_multipliers,
+            rng=rng,
+        ).ever_infected[1]
+        for _ in range(
+            n_runs
+        )
+    )
+
+    observed = (
+        hits
+        / n_runs
+    )
+
+    # Recovery is certain after one step,
+    # so transmission probability is
+    # simply 0.2 * 2 = 0.4.
+    assert observed == pytest.approx(
+        0.4,
+        abs=0.02,
+    )

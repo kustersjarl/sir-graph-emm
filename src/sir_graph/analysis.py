@@ -430,10 +430,12 @@ def weighted_opportunity_contact_steps(
     graph: Graph,
     run: SimulationResult,
     susceptibility: ArrayLike,
+    *,
+    edge_multipliers: ArrayLike | None = None,
 ) -> NDArray[np.float64]:
     """
-    Compute susceptibility-weighted transmission
-    opportunity for every node in one run.
+    Compute simulator-aligned weighted transmission opportunity
+    for every node in one run.
 
     For infectious node i:
 
@@ -441,17 +443,18 @@ def weighted_opportunity_contact_steps(
             sum_j (
                 contact_steps_ij
                 * susceptibility_j
+                * edge_multiplier_ij
             )
 
     where j ranges over neighbours of i.
 
-    Therefore a susceptible neighbour with greater
-    susceptibility contributes more opportunity than
-    a less susceptible neighbour.
+    ``edge_multipliers`` must follow the same directed CSR-entry
+    ordering as ``graph.indices``. If it is omitted, all edges are
+    assigned multiplier 1.0, preserving the previous behaviour.
 
-    This matches the simulator more closely because
-    transmission probability is proportional to the
-    susceptibility of the receiving node.
+    This matches the simulator more closely because transmission
+    probability is proportional to both the receiving node's
+    susceptibility and the contact-specific edge multiplier.
     """
 
     if graph.n_nodes != run.n_nodes:
@@ -495,6 +498,42 @@ def weighted_opportunity_contact_steps(
             "susceptibility cannot be negative"
         )
 
+    if edge_multipliers is None:
+        edge_multipliers_array = np.ones(
+            graph.indices.size,
+            dtype=np.float64,
+        )
+    else:
+        edge_multipliers_array = np.asarray(
+            edge_multipliers,
+            dtype=np.float64,
+        )
+
+        if edge_multipliers_array.shape != (
+            graph.indices.size,
+        ):
+            raise ValueError(
+                "edge_multipliers must contain "
+                "one value per directed graph entry"
+            )
+
+        if not np.all(
+            np.isfinite(
+                edge_multipliers_array
+            )
+        ):
+            raise ValueError(
+                "edge_multipliers must contain "
+                "only finite values"
+            )
+
+        if np.any(
+            edge_multipliers_array < 0
+        ):
+            raise ValueError(
+                "edge_multipliers cannot be negative"
+            )
+
     infection_time = (
         run.infection_time
     )
@@ -529,8 +568,22 @@ def weighted_opportunity_contact_steps(
                 f"({start}, {stop})"
             )
 
-        neighbours = graph.neighbours(
+        start_index = graph.indptr[
             int(node)
+        ]
+
+        stop_index = graph.indptr[
+            int(node) + 1
+        ]
+
+        neighbours = graph.indices[
+            start_index:stop_index
+        ]
+
+        neighbour_edge_multipliers = (
+            edge_multipliers_array[
+                start_index:stop_index
+            ]
         )
 
         if neighbours.size == 0:
@@ -568,6 +621,7 @@ def weighted_opportunity_contact_steps(
             np.sum(
                 contact_steps
                 * neighbour_susceptibility
+                * neighbour_edge_multipliers
             )
         )
 
@@ -641,6 +695,7 @@ def model_b_observations(
     runs: Sequence[SimulationResult],
     *,
     susceptibility: ArrayLike,
+    edge_multipliers: ArrayLike | None = None,
 ) -> ModelBObservations:
     """
     Build run-level Model B observations
@@ -662,13 +717,18 @@ def model_b_observations(
 
         weighted_opportunity
             Contact-steps weighted by each
-            susceptible neighbour's
-            susceptibility.
+            susceptible neighbour's susceptibility
+            and, when supplied, the corresponding
+            contact-specific edge multiplier.
 
         descendants
             Full downstream cascade size.
 
     Zero-opportunity observations are retained.
+
+    ``edge_multipliers`` must follow the same directed CSR-entry
+    ordering as ``graph.indices``. If omitted, all edges have
+    multiplier 1.0.
     """
 
     if len(runs) == 0:
@@ -721,6 +781,37 @@ def model_b_observations(
         raise ValueError(
             "susceptibility cannot be negative"
         )
+
+    if edge_multipliers is not None:
+        edge_multipliers = np.asarray(
+            edge_multipliers,
+            dtype=np.float64,
+        )
+
+        if edge_multipliers.shape != (
+            graph.indices.size,
+        ):
+            raise ValueError(
+                "edge_multipliers must contain "
+                "one value per directed graph entry"
+            )
+
+        if not np.all(
+            np.isfinite(
+                edge_multipliers
+            )
+        ):
+            raise ValueError(
+                "edge_multipliers must contain "
+                "only finite values"
+            )
+
+        if np.any(
+            edge_multipliers < 0
+        ):
+            raise ValueError(
+                "edge_multipliers cannot be negative"
+            )
 
     run_parts: list[
         NDArray[np.int64]
@@ -775,6 +866,8 @@ def model_b_observations(
                 graph,
                 run,
                 susceptibility,
+                edge_multipliers=
+                    edge_multipliers,
             )
         )
 
