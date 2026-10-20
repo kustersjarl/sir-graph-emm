@@ -64,3 +64,35 @@ def test_transmission_probability_product_and_clipping() -> None:
     prob = transmission_probability(0.4, params, src, dst)
     # 0.4*0.5*2 = 0.4 ; 0.4*1*1 = 0.4 ; 0.4*1*10 = 4 -> clipped to 1
     assert np.allclose(prob, [0.4, 0.4, 1.0])
+
+
+def test_transmission_probability_edge_multiplier() -> None:
+    params = NodeParams.homogeneous(2)
+
+    src = np.array(
+        [0, 0],
+        dtype=np.int64,
+    )
+
+    dst = np.array(
+        [1, 1],
+        dtype=np.int64,
+    )
+
+    multiplier = np.array(
+        [1.0, 2.0],
+        dtype=np.float64,
+    )
+
+    prob = transmission_probability(
+        0.2,
+        params,
+        src,
+        dst,
+        edge_multiplier=multiplier,
+    )
+
+    assert np.allclose(
+        prob,
+        [0.2, 0.4],
+    )

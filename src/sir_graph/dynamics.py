@@ -70,35 +70,194 @@ def step(
     params: NodeParams,
     p: float,
     rng: np.random.Generator,
+    edge_multipliers: ArrayLike | None = None,
 ) -> StepEvents:
-    """Compute the events of one step t -> t+1. Does not modify ``state``"""
-    infected = np.flatnonzero(state == State.I)
+    """
+    Compute the events of one step t -> t+1.
 
-    # All (src, dst) pairs with src infected and dst a susceptible neighbour
-    src_parts, dst_parts = [], []
+    Does not modify ``state``.
+
+    ``edge_multipliers`` must correspond to the
+    directed CSR entries in ``graph.indices``.
+    """
+
+    if edge_multipliers is None:
+
+        edge_multipliers_array = np.ones(
+            graph.indices.size,
+            dtype=np.float64,
+        )
+
+    else:
+
+        edge_multipliers_array = np.asarray(
+            edge_multipliers,
+            dtype=np.float64,
+        )
+
+        if edge_multipliers_array.shape != (
+            graph.indices.size,
+        ):
+            raise ValueError(
+                "edge_multipliers must contain "
+                "one value per directed graph entry"
+            )
+
+        if np.any(
+            ~np.isfinite(
+                edge_multipliers_array
+            )
+        ):
+            raise ValueError(
+                "edge_multipliers must be finite"
+            )
+
+        if np.any(
+            edge_multipliers_array < 0
+        ):
+            raise ValueError(
+                "edge_multipliers cannot be negative"
+            )
+
+    infected = np.flatnonzero(
+        state == State.I
+    )
+
+    src_parts = []
+    dst_parts = []
+    multiplier_parts = []
+
     for i in infected:
-        neighbours = graph.indices[graph.indptr[i] : graph.indptr[i + 1]]
-        susceptible = neighbours[state[neighbours] == State.S]
-        src_parts.append(np.full(susceptible.size, i, dtype=np.int64))
-        dst_parts.append(susceptible.astype(np.int64))
-    src = np.concatenate(src_parts) if src_parts else _EMPTY
-    dst = np.concatenate(dst_parts) if dst_parts else _EMPTY
 
-    # One Bernoulli trial per pair
-    success = rng.random(src.size) < transmission_probability(p, params, src, dst)
-    src, dst = src[success], dst[success]
+        start = graph.indptr[i]
+        stop = graph.indptr[i + 1]
 
-    # only keep first infected per target
-    order = rng.permutation(src.size)
-    src, dst = src[order], dst[order]
-    newly_infected, first = np.unique(dst, return_index=True)
+        neighbours = graph.indices[
+            start:stop
+        ]
 
-    recovers = rng.random(infected.size) < params.recovery[infected]
+        local_multipliers = (
+            edge_multipliers_array[
+                start:stop
+            ]
+        )
+
+        susceptible_mask = (
+            state[neighbours]
+            == State.S
+        )
+
+        susceptible = neighbours[
+            susceptible_mask
+        ]
+
+        susceptible_multipliers = (
+            local_multipliers[
+                susceptible_mask
+            ]
+        )
+
+        src_parts.append(
+            np.full(
+                susceptible.size,
+                i,
+                dtype=np.int64,
+            )
+        )
+
+        dst_parts.append(
+            susceptible.astype(
+                np.int64
+            )
+        )
+
+        multiplier_parts.append(
+            susceptible_multipliers.astype(
+                np.float64
+            )
+        )
+
+    src = (
+        np.concatenate(src_parts)
+        if src_parts
+        else _EMPTY
+    )
+
+    dst = (
+        np.concatenate(dst_parts)
+        if dst_parts
+        else _EMPTY
+    )
+
+    pair_multipliers = (
+        np.concatenate(
+            multiplier_parts
+        )
+        if multiplier_parts
+        else np.empty(
+            0,
+            dtype=np.float64,
+        )
+    )
+
+    probabilities = (
+        transmission_probability(
+            p,
+            params,
+            src,
+            dst,
+            edge_multiplier=
+                pair_multipliers,
+        )
+    )
+
+    success = (
+        rng.random(src.size)
+        < probabilities
+    )
+
+    src = src[success]
+    dst = dst[success]
+
+    # Only keep first successful
+    # infector per target.
+    order = rng.permutation(
+        src.size
+    )
+
+    src = src[order]
+    dst = dst[order]
+
+    newly_infected, first = (
+        np.unique(
+            dst,
+            return_index=True,
+        )
+    )
+
+    recovers = (
+        rng.random(
+            infected.size
+        )
+        < params.recovery[
+            infected
+        ]
+    )
 
     return StepEvents(
-        newly_infected=newly_infected.astype(np.int64),
+        newly_infected=(
+            newly_infected.astype(
+                np.int64
+            )
+        ),
         infectors=src[first],
-        newly_recovered=infected[recovers].astype(np.int64),
+        newly_recovered=(
+            infected[
+                recovers
+            ].astype(
+                np.int64
+            )
+        ),
     )
 
 
@@ -114,6 +273,7 @@ def simulate(
     p: float,
     params: NodeParams | None = None,
     *,
+    edge_multipliers: ArrayLike | None = None,
     rng: np.random.Generator | int | None = None,
     max_steps: int = 10_000,
 ) -> SimulationResult:
@@ -148,7 +308,7 @@ def simulate(
         if t >= max_steps:
             n_infected = counts[-1][State.I]
             raise RuntimeError(f"still {n_infected} infected after {t} steps")
-        events = step(graph, state, params, p, rng)
+        events = step(graph, state, params, p, rng, edge_multipliers=edge_multipliers)
         apply_events(state, events)
         t += 1
         infection_time[events.newly_infected] = t
@@ -172,6 +332,7 @@ def run_ensemble(
     p: float,
     params: NodeParams | None = None,
     *,
+    edge_multipliers: ArrayLike | None = None,
     rng: np.random.Generator | int | None = None,
     max_steps: int = 10_000,
 ) -> list[SimulationResult]:
@@ -187,6 +348,7 @@ def run_ensemble(
             choose_seeds(graph.n_nodes, n_seeds, rng=rng),
             p,
             params,
+            edge_multipliers=edge_multipliers,
             rng=rng,
             max_steps=max_steps,
         )
