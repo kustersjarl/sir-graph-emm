@@ -4,6 +4,7 @@ from dataclasses import dataclass
 import numpy as np
 import pandas as pd
 from numpy.typing import ArrayLike, NDArray
+from scipy.optimize import brentq
 
 from sir_graph.dynamics import SimulationResult
 from sir_graph.graph import Graph
@@ -21,6 +22,10 @@ __all__ = [
     "model_b_observations",
     "cascade_observations",
     "aggregate_cascade_by_person",
+    "ModelAObservations",
+    "model_a_exposure_components",
+    "model_a_observations",
+    "fit_model_a_hazard",
 ]
 
 
@@ -35,6 +40,51 @@ class DegreeBaseline:
     expected: NDArray[np.float64]
     residuals: NDArray[np.float64]
 
+
+@dataclass(frozen=True)
+class ModelAObservations:
+    """
+    Run-person observations used by Model A.
+
+    Each row corresponds to one non-seed person
+    in one simulation run.
+
+    Seeds are excluded because their infection
+    was imposed by the experiment.
+
+    infected:
+        True if the person became naturally
+        infected during the run.
+
+    raw_escape_exposure:
+        Number of infectious-neighbour
+        contact-steps survived before infection
+        or before the epidemic ended.
+
+    raw_infection_exposure:
+        Number of infectious neighbours present
+        on the step that caused infection.
+        Zero for never-infected people.
+
+    weighted_escape_exposure:
+        Escape exposure weighted by source
+        infectiousness and edge multiplier.
+
+    weighted_infection_exposure:
+        Infection-step exposure weighted by
+        source infectiousness and edge multiplier.
+    """
+
+    run_index: NDArray[np.int64]
+    node_index: NDArray[np.int64]
+
+    infected: NDArray[np.bool_]
+
+    raw_escape_exposure: NDArray[np.int64]
+    raw_infection_exposure: NDArray[np.int64]
+
+    weighted_escape_exposure: NDArray[np.float64]
+    weighted_infection_exposure: NDArray[np.float64]
 
 @dataclass(frozen=True)
 class ModelBObservations:
@@ -419,7 +469,802 @@ def opportunity_contact_steps(
 
     return opportunities
 
+# ============================================================
+# Model A:
+# infectious exposure reconstruction
+# ============================================================
 
+
+def model_a_exposure_components(
+    graph: Graph,
+    run: SimulationResult,
+    infectiousness: ArrayLike,
+    *,
+    edge_multipliers: ArrayLike | None = None,
+) -> tuple[
+    NDArray[np.int64],
+    NDArray[np.int64],
+    NDArray[np.float64],
+    NDArray[np.float64],
+]:
+    """
+    Reconstruct infectious exposure for every
+    node in one epidemic run.
+
+    Exposure is measured while the target node
+    is still susceptible.
+
+    For target v at time t, weighted exposure is
+
+        x_v(t) =
+            sum_u (
+                infectiousness_u
+                * edge_multiplier_uv
+            )
+
+    over infectious neighbours u.
+
+    Returns
+    -------
+    raw_escape_exposure:
+        Infectious-neighbour contact-steps survived
+        before infection/end of epidemic.
+
+    raw_infection_exposure:
+        Number of infectious neighbours on the
+        infection-causing step.
+
+    weighted_escape_exposure:
+        Same escape exposure weighted by source
+        infectiousness and edge multiplier.
+
+    weighted_infection_exposure:
+        Same infection-step exposure weighted by
+        source infectiousness and edge multiplier.
+
+    Artificial seed nodes are left at zero because
+    they are not valid Model A target observations.
+    """
+
+    if graph.n_nodes != run.n_nodes:
+        raise ValueError(
+            f"graph has {graph.n_nodes} nodes "
+            f"but run has {run.n_nodes}"
+        )
+
+    infectiousness = np.asarray(
+        infectiousness,
+        dtype=np.float64,
+    )
+
+    if infectiousness.ndim != 1:
+        raise ValueError(
+            "infectiousness must be a 1-D array"
+        )
+
+    if infectiousness.shape != (
+        graph.n_nodes,
+    ):
+        raise ValueError(
+            "infectiousness must contain "
+            "one value per graph node"
+        )
+
+    if not np.all(
+        np.isfinite(
+            infectiousness
+        )
+    ):
+        raise ValueError(
+            "infectiousness must contain "
+            "only finite values"
+        )
+
+    if np.any(
+        infectiousness < 0
+    ):
+        raise ValueError(
+            "infectiousness cannot be negative"
+        )
+
+    if edge_multipliers is None:
+
+        edge_multipliers_array = np.ones(
+            graph.indices.size,
+            dtype=np.float64,
+        )
+
+    else:
+
+        edge_multipliers_array = np.asarray(
+            edge_multipliers,
+            dtype=np.float64,
+        )
+
+        if edge_multipliers_array.shape != (
+            graph.indices.size,
+        ):
+            raise ValueError(
+                "edge_multipliers must contain "
+                "one value per directed graph entry"
+            )
+
+        if not np.all(
+            np.isfinite(
+                edge_multipliers_array
+            )
+        ):
+            raise ValueError(
+                "edge_multipliers must contain "
+                "only finite values"
+            )
+
+        if np.any(
+            edge_multipliers_array < 0
+        ):
+            raise ValueError(
+                "edge_multipliers cannot be negative"
+            )
+
+    infection_time = run.infection_time
+    recovery_time = run.recovery_time
+
+    raw_total_exposure = np.zeros(
+        graph.n_nodes,
+        dtype=np.int64,
+    )
+
+    weighted_total_exposure = np.zeros(
+        graph.n_nodes,
+        dtype=np.float64,
+    )
+
+    raw_infection_exposure = np.zeros(
+        graph.n_nodes,
+        dtype=np.int64,
+    )
+
+    weighted_infection_exposure = np.zeros(
+        graph.n_nodes,
+        dtype=np.float64,
+    )
+
+    infected_sources = np.flatnonzero(
+        infection_time >= 0
+    )
+
+    for source in infected_sources:
+
+        source_start = int(
+            infection_time[source]
+        )
+
+        source_stop = int(
+            recovery_time[source]
+        )
+
+        if source_stop <= source_start:
+            raise ValueError(
+                f"node {source} has invalid "
+                f"infection/recovery times "
+                f"({source_start}, {source_stop})"
+            )
+
+        csr_start = graph.indptr[
+            source
+        ]
+
+        csr_stop = graph.indptr[
+            source + 1
+        ]
+
+        targets = graph.indices[
+            csr_start:csr_stop
+        ]
+
+        source_edge_multipliers = (
+            edge_multipliers_array[
+                csr_start:csr_stop
+            ]
+        )
+
+        if targets.size == 0:
+            continue
+
+        target_infection_time = (
+            infection_time[
+                targets
+            ]
+        )
+
+        # Seeds are not valid receiving-side
+        # Model A observations.
+        valid_target = (
+            target_infection_time != 0
+        )
+
+        if not np.any(
+            valid_target
+        ):
+            continue
+
+        targets = targets[
+            valid_target
+        ]
+
+        target_infection_time = (
+            target_infection_time[
+                valid_target
+            ]
+        )
+
+        source_edge_multipliers = (
+            source_edge_multipliers[
+                valid_target
+            ]
+        )
+
+        # A naturally infected target is
+        # susceptible until its infection time.
+        #
+        # A never-infected target remains
+        # susceptible for every epidemic step.
+        target_stop = np.where(
+            target_infection_time > 0,
+            target_infection_time,
+            run.n_steps,
+        )
+
+        contact_steps = np.maximum(
+            0,
+            np.minimum(
+                source_stop,
+                target_stop,
+            )
+            - source_start,
+        ).astype(
+            np.int64
+        )
+
+        raw_total_exposure[
+            targets
+        ] += contact_steps
+
+        transmission_strength = (
+            infectiousness[source]
+            * source_edge_multipliers
+        )
+
+        weighted_total_exposure[
+            targets
+        ] += (
+            contact_steps
+            * transmission_strength
+        )
+
+        # If target infection time is T,
+        # infection occurred during the step
+        #
+        #     T - 1 -> T
+        #
+        # so inspect infectious neighbours at
+        # state time T - 1.
+        infection_step = (
+            target_infection_time
+            - 1
+        )
+
+        exposed_on_infection_step = (
+            (target_infection_time > 0)
+            & (
+                source_start
+                <= infection_step
+            )
+            & (
+                infection_step
+                < source_stop
+            )
+        )
+
+        infection_targets = targets[
+            exposed_on_infection_step
+        ]
+
+        raw_infection_exposure[
+            infection_targets
+        ] += 1
+
+        weighted_infection_exposure[
+            infection_targets
+        ] += transmission_strength[
+            exposed_on_infection_step
+        ]
+
+    raw_escape_exposure = (
+        raw_total_exposure
+        - raw_infection_exposure
+    )
+
+    weighted_escape_exposure = (
+        weighted_total_exposure
+        - weighted_infection_exposure
+    )
+
+    if np.any(
+        raw_escape_exposure < 0
+    ):
+        raise RuntimeError(
+            "raw escape exposure became negative"
+        )
+
+    if np.any(
+        weighted_escape_exposure < -1e-12
+    ):
+        raise RuntimeError(
+            "weighted escape exposure became negative"
+        )
+
+    weighted_escape_exposure = np.maximum(
+        weighted_escape_exposure,
+        0.0,
+    )
+
+    return (
+        raw_escape_exposure,
+        raw_infection_exposure,
+        weighted_escape_exposure,
+        weighted_infection_exposure,
+    )
+
+
+def model_a_observations(
+    graph: Graph,
+    runs: Sequence[SimulationResult],
+    *,
+    infectiousness: ArrayLike,
+    edge_multipliers: ArrayLike | None = None,
+) -> ModelAObservations:
+    """
+    Build run-person observations for Model A.
+
+    One observation is created for every
+    non-seed person in every simulation run.
+
+    Naturally infected people have
+    infected=True.
+
+    Never-infected people have
+    infected=False.
+
+    Artificial seeds are excluded.
+    """
+
+    if len(runs) == 0:
+        raise ValueError(
+            "runs must contain at least "
+            "one simulation"
+        )
+
+    if any(
+        run.n_nodes != graph.n_nodes
+        for run in runs
+    ):
+        raise ValueError(
+            "all simulation results must "
+            "match the graph size"
+        )
+
+    infectiousness_array = np.asarray(
+        infectiousness,
+        dtype=np.float64,
+    )
+
+    if infectiousness_array.shape != (
+        graph.n_nodes,
+    ):
+        raise ValueError(
+            "infectiousness must contain "
+            "one value per graph node"
+        )
+
+    run_parts: list[
+        NDArray[np.int64]
+    ] = []
+
+    node_parts: list[
+        NDArray[np.int64]
+    ] = []
+
+    infected_parts: list[
+        NDArray[np.bool_]
+    ] = []
+
+    raw_escape_parts: list[
+        NDArray[np.int64]
+    ] = []
+
+    raw_infection_parts: list[
+        NDArray[np.int64]
+    ] = []
+
+    weighted_escape_parts: list[
+        NDArray[np.float64]
+    ] = []
+
+    weighted_infection_parts: list[
+        NDArray[np.float64]
+    ] = []
+
+    for run_index, run in enumerate(
+        runs
+    ):
+
+        (
+            raw_escape,
+            raw_infection,
+            weighted_escape,
+            weighted_infection,
+        ) = model_a_exposure_components(
+            graph,
+            run,
+            infectiousness_array,
+            edge_multipliers=
+                edge_multipliers,
+        )
+
+        # infection_time == 0 denotes
+        # artificial seeds.
+        nodes = np.flatnonzero(
+            run.infection_time != 0
+        ).astype(
+            np.int64
+        )
+
+        naturally_infected = (
+            run.infection_time[
+                nodes
+            ]
+            > 0
+        )
+
+        # A natural infection must have
+        # positive infectious exposure on
+        # its infection-causing step.
+        if np.any(
+            naturally_infected
+            & (
+                weighted_infection[
+                    nodes
+                ]
+                <= 0
+            )
+        ):
+            raise ValueError(
+                "naturally infected node has "
+                "zero infection-step exposure"
+            )
+
+        run_parts.append(
+            np.full(
+                nodes.size,
+                run_index,
+                dtype=np.int64,
+            )
+        )
+
+        node_parts.append(
+            nodes
+        )
+
+        infected_parts.append(
+            naturally_infected.astype(
+                np.bool_
+            )
+        )
+
+        raw_escape_parts.append(
+            raw_escape[
+                nodes
+            ]
+        )
+
+        raw_infection_parts.append(
+            raw_infection[
+                nodes
+            ]
+        )
+
+        weighted_escape_parts.append(
+            weighted_escape[
+                nodes
+            ]
+        )
+
+        weighted_infection_parts.append(
+            weighted_infection[
+                nodes
+            ]
+        )
+
+    return ModelAObservations(
+        run_index=np.concatenate(
+            run_parts
+        ),
+        node_index=np.concatenate(
+            node_parts
+        ),
+        infected=np.concatenate(
+            infected_parts
+        ),
+        raw_escape_exposure=np.concatenate(
+            raw_escape_parts
+        ),
+        raw_infection_exposure=np.concatenate(
+            raw_infection_parts
+        ),
+        weighted_escape_exposure=np.concatenate(
+            weighted_escape_parts
+        ),
+        weighted_infection_exposure=np.concatenate(
+            weighted_infection_parts
+        ),
+    )
+
+# ============================================================
+# Model A:
+# susceptibility hazard estimation
+# ============================================================
+
+
+def fit_model_a_hazard(
+    infected: ArrayLike,
+    escape_exposure: ArrayLike,
+    infection_exposure: ArrayLike,
+) -> float | None:
+    """
+    Estimate the Model A susceptibility hazard lambda.
+
+    The likelihood is
+
+        l(lambda) =
+            -lambda * sum(X_escape)
+            + sum_infected(
+                log(
+                    1
+                    - exp(
+                        -lambda
+                        * x_infection
+                    )
+                )
+            )
+
+    where:
+
+        X_escape
+            is exposure survived without infection;
+
+        x_infection
+            is exposure on the step that caused
+            infection.
+
+    Returns
+    -------
+    lambda_hat:
+        Maximum-likelihood estimate.
+
+        Returns 0.0 when there are no infections.
+
+        Returns None when no finite maximum exists,
+        for example when infections occurred but
+        total escape exposure is zero.
+    """
+
+    infected_array = np.asarray(
+        infected,
+        dtype=np.bool_,
+    )
+
+    escape = np.asarray(
+        escape_exposure,
+        dtype=np.float64,
+    )
+
+    infection = np.asarray(
+        infection_exposure,
+        dtype=np.float64,
+    )
+
+    # --------------------------------------------------------
+    # Validate inputs
+    # --------------------------------------------------------
+
+    if (
+        infected_array.ndim != 1
+        or escape.ndim != 1
+        or infection.ndim != 1
+    ):
+        raise ValueError(
+            "infected and exposure arrays "
+            "must be 1-D"
+        )
+
+    if not (
+        infected_array.shape
+        == escape.shape
+        == infection.shape
+    ):
+        raise ValueError(
+            "infected and exposure arrays "
+            "must have the same shape"
+        )
+
+    if not np.all(
+        np.isfinite(
+            escape
+        )
+    ):
+        raise ValueError(
+            "escape_exposure must contain "
+            "only finite values"
+        )
+
+    if not np.all(
+        np.isfinite(
+            infection
+        )
+    ):
+        raise ValueError(
+            "infection_exposure must contain "
+            "only finite values"
+        )
+
+    if np.any(
+        escape < 0
+    ):
+        raise ValueError(
+            "escape_exposure cannot be negative"
+        )
+
+    if np.any(
+        infection < 0
+    ):
+        raise ValueError(
+            "infection_exposure cannot be negative"
+        )
+
+    # Never-infected observations must not
+    # have infection-step exposure.
+    if np.any(
+        infection[
+            ~infected_array
+        ]
+        != 0
+    ):
+        raise ValueError(
+            "never-infected observations must "
+            "have zero infection_exposure"
+        )
+
+    infection_exposure_observed = infection[
+        infected_array
+    ]
+
+    # Every natural infection must have been
+    # accompanied by positive infectious exposure.
+    if np.any(
+        infection_exposure_observed
+        <= 0
+    ):
+        raise ValueError(
+            "infected observations must have "
+            "positive infection_exposure"
+        )
+
+    n_infections = int(
+        infected_array.sum()
+    )
+
+    # --------------------------------------------------------
+    # Boundary case: no infections
+    # --------------------------------------------------------
+
+    if n_infections == 0:
+        return 0.0
+
+    total_escape_exposure = float(
+        escape.sum()
+    )
+
+    # If nobody ever escaped any exposure,
+    # likelihood increases toward lambda = infinity.
+    # There is no finite MLE.
+    if total_escape_exposure <= 0:
+        return None
+
+    # --------------------------------------------------------
+    # Score equation
+    #
+    # d l(lambda) / d lambda =
+    #
+    #   -sum(X_escape)
+    #
+    #   + sum_infected[
+    #       x_inf /
+    #       (exp(lambda * x_inf) - 1)
+    #     ]
+    #
+    # The likelihood is concave, so this has
+    # one positive root.
+    # --------------------------------------------------------
+
+    def score(
+        hazard: float,
+    ) -> float:
+
+        z = (
+            hazard
+            * infection_exposure_observed
+        )
+
+        with np.errstate(
+            over="ignore",
+            divide="ignore",
+            invalid="ignore",
+        ):
+            infection_term = np.divide(
+                infection_exposure_observed,
+                np.expm1(
+                    z
+                ),
+                out=np.zeros_like(
+                    infection_exposure_observed
+                ),
+                where=(
+                    np.expm1(
+                        z
+                    )
+                    != 0
+                ),
+            )
+
+        return float(
+            -total_escape_exposure
+            + infection_term.sum()
+        )
+
+    # --------------------------------------------------------
+    # Find a bracket containing the root
+    # --------------------------------------------------------
+
+    lower = 1e-12
+    upper = 1.0
+
+    while (
+        score(
+            upper
+        )
+        > 0
+    ):
+        upper *= 2.0
+
+        if upper > 1e12:
+            return None
+
+    # --------------------------------------------------------
+    # Solve the score equation
+    # --------------------------------------------------------
+
+    lambda_hat = brentq(
+        score,
+        lower,
+        upper,
+        xtol=1e-12,
+        rtol=1e-12,
+    )
+
+    return float(
+        lambda_hat
+    )
 # ============================================================
 # Model B:
 # susceptibility-weighted opportunity

@@ -5,8 +5,11 @@ import numpy as np
 import pandas as pd
 from numpy.typing import NDArray
 
-from sir_graph.analysis import ModelBObservations
-
+from sir_graph.analysis import (
+    ModelAObservations,
+    ModelBObservations,
+    fit_model_a_hazard,
+)
 
 @dataclass(frozen=True)
 class Candidate:
@@ -456,6 +459,669 @@ def search_subgroups(
     )
 
 
+# ============================================================
+# MODEL A
+# Exposure-adjusted susceptibility
+# ============================================================
+
+
+def score_model_a_subgroup(
+    mask: NDArray[np.bool_],
+    observations: ModelAObservations,
+    *,
+    min_size: int = 20,
+    direction: str = "high",
+    exposure_type: str = "weighted",
+) -> dict | None:
+    """
+    Score a person-level subgroup using Model A.
+
+    Model A asks whether members of the subgroup
+    become infected more easily than the rest,
+    after accounting for infectious exposure.
+
+    exposure_type="raw":
+        Exposure is the number of infectious
+        neighbours.
+
+    exposure_type="weighted":
+        Exposure is weighted by source
+        infectiousness and edge multiplier.
+
+    For subgroup G:
+
+        lambda_G =
+            fitted susceptibility hazard
+
+        lambda_rest =
+            fitted susceptibility hazard
+            outside G
+
+        rate_ratio =
+            lambda_G / lambda_rest
+
+        model effect =
+            log(rate_ratio)
+
+    Quality:
+
+        sqrt(|G| / N) * effect
+
+    Subgroup support is based on unique people.
+    """
+
+    mask = np.asarray(
+        mask,
+        dtype=np.bool_,
+    )
+
+    if mask.ndim != 1:
+        raise ValueError(
+            "mask must be a 1-D "
+            "person-level mask"
+        )
+
+    n_people = len(mask)
+    n_group = int(
+        mask.sum()
+    )
+
+    if n_group < min_size:
+        return None
+
+    if (
+        n_people - n_group
+        < min_size
+    ):
+        return None
+
+    node_index = np.asarray(
+        observations.node_index,
+        dtype=np.int64,
+    )
+
+    infected = np.asarray(
+        observations.infected,
+        dtype=np.bool_,
+    )
+
+    if node_index.ndim != 1:
+        raise ValueError(
+            "observations.node_index "
+            "must be 1-D"
+        )
+
+    if len(
+        node_index
+    ) == 0:
+        return None
+
+    if (
+        np.any(
+            node_index < 0
+        )
+        or np.any(
+            node_index >= n_people
+        )
+    ):
+        raise ValueError(
+            "observation node indices "
+            "are incompatible with the "
+            "person-level subgroup mask"
+        )
+
+    # --------------------------------------------------------
+    # Choose exposure definition
+    # --------------------------------------------------------
+
+    if exposure_type == "raw":
+
+        escape_exposure = np.asarray(
+            observations
+            .raw_escape_exposure,
+            dtype=np.float64,
+        )
+
+        infection_exposure = np.asarray(
+            observations
+            .raw_infection_exposure,
+            dtype=np.float64,
+        )
+
+    elif exposure_type == "weighted":
+
+        escape_exposure = np.asarray(
+            observations
+            .weighted_escape_exposure,
+            dtype=np.float64,
+        )
+
+        infection_exposure = np.asarray(
+            observations
+            .weighted_infection_exposure,
+            dtype=np.float64,
+        )
+
+    else:
+        raise ValueError(
+            "exposure_type must be "
+            "'raw' or 'weighted'"
+        )
+
+    # --------------------------------------------------------
+    # Validate observation arrays
+    # --------------------------------------------------------
+
+    if not (
+        infected.shape
+        == node_index.shape
+        == escape_exposure.shape
+        == infection_exposure.shape
+    ):
+        raise ValueError(
+            "Model A observation arrays "
+            "must have matching shapes"
+        )
+
+    if np.any(
+        ~np.isfinite(
+            escape_exposure
+        )
+    ):
+        raise ValueError(
+            "escape exposure must contain "
+            "only finite values"
+        )
+
+    if np.any(
+        ~np.isfinite(
+            infection_exposure
+        )
+    ):
+        raise ValueError(
+            "infection exposure must contain "
+            "only finite values"
+        )
+
+    if np.any(
+        escape_exposure < 0
+    ):
+        raise ValueError(
+            "escape exposure cannot be negative"
+        )
+
+    if np.any(
+        infection_exposure < 0
+    ):
+        raise ValueError(
+            "infection exposure cannot be negative"
+        )
+
+    # --------------------------------------------------------
+    # Convert person-level subgroup membership
+    # to run-person membership
+    # --------------------------------------------------------
+
+    observation_mask = mask[
+        node_index
+    ]
+
+    group_observations = int(
+        observation_mask.sum()
+    )
+
+    rest_observations = int(
+        (
+            ~observation_mask
+        ).sum()
+    )
+
+    group_infections = int(
+        infected[
+            observation_mask
+        ].sum()
+    )
+
+    rest_infections = int(
+        infected[
+            ~observation_mask
+        ].sum()
+    )
+
+    # --------------------------------------------------------
+    # Fit susceptibility hazards
+    # --------------------------------------------------------
+
+    group_hazard = (
+        fit_model_a_hazard(
+            infected[
+                observation_mask
+            ],
+            escape_exposure[
+                observation_mask
+            ],
+            infection_exposure[
+                observation_mask
+            ],
+        )
+    )
+
+    rest_hazard = (
+        fit_model_a_hazard(
+            infected[
+                ~observation_mask
+            ],
+            escape_exposure[
+                ~observation_mask
+            ],
+            infection_exposure[
+                ~observation_mask
+            ],
+        )
+    )
+
+    # Cannot compute a finite log hazard ratio
+    # if either side has no finite positive MLE.
+    if (
+        group_hazard is None
+        or rest_hazard is None
+        or group_hazard <= 0
+        or rest_hazard <= 0
+    ):
+        return None
+
+    # --------------------------------------------------------
+    # Model A effect
+    # --------------------------------------------------------
+
+    rate_ratio = (
+        group_hazard
+        / rest_hazard
+    )
+
+    log_rate_ratio = float(
+        np.log(
+            rate_ratio
+        )
+    )
+
+    if direction == "high":
+
+        effect = (
+            log_rate_ratio
+        )
+
+    elif direction == "low":
+
+        effect = (
+            -log_rate_ratio
+        )
+
+    elif direction == "both":
+
+        effect = abs(
+            log_rate_ratio
+        )
+
+    else:
+        raise ValueError(
+            "direction must be "
+            "'high', 'low', or 'both'"
+        )
+
+    # --------------------------------------------------------
+    # EMM quality
+    # --------------------------------------------------------
+
+    support = (
+        n_group
+        / n_people
+    )
+
+    quality = (
+        np.sqrt(
+            support
+        )
+        * effect
+    )
+
+    return {
+        "size":
+            n_group,
+
+        "support":
+            support,
+
+        "observations":
+            group_observations,
+
+        "rest_observations":
+            rest_observations,
+
+        "infections":
+            group_infections,
+
+        "rest_infections":
+            rest_infections,
+
+        "exposure_type":
+            exposure_type,
+
+        "group_escape_exposure":
+            float(
+                escape_exposure[
+                    observation_mask
+                ].sum()
+            ),
+
+        "rest_escape_exposure":
+            float(
+                escape_exposure[
+                    ~observation_mask
+                ].sum()
+            ),
+
+        "group_hazard":
+            group_hazard,
+
+        "rest_hazard":
+            rest_hazard,
+
+        "rate_ratio":
+            rate_ratio,
+
+        "log_rate_ratio":
+            log_rate_ratio,
+
+        "quality":
+            quality,
+    }
+
+
+def search_model_a_single_subgroups(
+    candidates: list[Candidate],
+    observations: ModelAObservations,
+    *,
+    min_size: int = 20,
+    direction: str = "high",
+    exposure_type: str = "weighted",
+) -> pd.DataFrame:
+    """
+    Evaluate all depth-1 subgroup descriptions
+    using Model A.
+    """
+
+    results = []
+
+    for candidate in candidates:
+
+        score = score_model_a_subgroup(
+            candidate.mask,
+            observations,
+            min_size=min_size,
+            direction=direction,
+            exposure_type=
+                exposure_type,
+        )
+
+        if score is None:
+            continue
+
+        results.append(
+            {
+                "description":
+                    candidate.description,
+                **score,
+            }
+        )
+
+    if not results:
+        return pd.DataFrame()
+
+    return (
+        pd.DataFrame(
+            results
+        )
+        .sort_values(
+            "quality",
+            ascending=False,
+        )
+        .reset_index(
+            drop=True
+        )
+    )
+
+
+def search_model_a_pair_subgroups(
+    candidates: list[Candidate],
+    observations: ModelAObservations,
+    *,
+    min_size: int = 20,
+    direction: str = "high",
+    exposure_type: str = "weighted",
+) -> pd.DataFrame:
+    """
+    Evaluate depth-2 conjunctions using Model A.
+
+    Equivalent member sets are evaluated only once.
+    """
+
+    results = []
+
+    seen_masks = {
+        _mask_key(
+            candidate.mask
+        )
+        for candidate
+        in candidates
+    }
+
+    for a, b in combinations(
+        candidates,
+        2,
+    ):
+
+        if (
+            a.attribute
+            == b.attribute
+        ):
+            continue
+
+        mask = (
+            a.mask
+            & b.mask
+        )
+
+        mask_key = (
+            _mask_key(
+                mask
+            )
+        )
+
+        if (
+            mask_key
+            in seen_masks
+        ):
+            continue
+
+        seen_masks.add(
+            mask_key
+        )
+
+        score = score_model_a_subgroup(
+            mask,
+            observations,
+            min_size=min_size,
+            direction=direction,
+            exposure_type=
+                exposure_type,
+        )
+
+        if score is None:
+            continue
+
+        results.append(
+            {
+                "description": (
+                    f"{a.description} "
+                    f"AND {b.description}"
+                ),
+                **score,
+            }
+        )
+
+    if not results:
+        return pd.DataFrame()
+
+    return (
+        pd.DataFrame(
+            results
+        )
+        .sort_values(
+            "quality",
+            ascending=False,
+        )
+        .reset_index(
+            drop=True
+        )
+    )
+
+
+def search_model_a_subgroups(
+    df: pd.DataFrame,
+    observations: ModelAObservations,
+    *,
+    categorical_columns: list[str],
+    age_column: str = "age",
+    age_thresholds=range(
+        20,
+        81,
+        5,
+    ),
+    min_size: int = 20,
+    max_depth: int = 2,
+    direction: str = "high",
+    exposure_type: str = "weighted",
+) -> pd.DataFrame:
+    """
+    Run EMM using Model A.
+
+    Model A searches for subgroups with
+    exceptional susceptibility after adjusting
+    for actual infectious exposure.
+
+    exposure_type="raw":
+        Count infectious neighbours.
+
+    exposure_type="weighted":
+        Weight infectious neighbours by
+        source infectiousness and edge multiplier.
+
+    Supports depths 1 and 2.
+    """
+
+    if len(
+        df
+    ) == 0:
+        raise ValueError(
+            "df must contain at least "
+            "one person"
+        )
+
+    if max_depth not in (
+        1,
+        2,
+    ):
+        raise ValueError(
+            "current implementation supports "
+            "max_depth 1 or 2"
+        )
+
+    if exposure_type not in (
+        "raw",
+        "weighted",
+    ):
+        raise ValueError(
+            "exposure_type must be "
+            "'raw' or 'weighted'"
+        )
+
+    candidates = generate_candidates(
+        df,
+        categorical_columns=
+            categorical_columns,
+        age_column=
+            age_column,
+        age_thresholds=
+            age_thresholds,
+    )
+
+    single_results = (
+        search_model_a_single_subgroups(
+            candidates,
+            observations,
+            min_size=min_size,
+            direction=direction,
+            exposure_type=
+                exposure_type,
+        )
+    )
+
+    if not single_results.empty:
+
+        single_results.insert(
+            0,
+            "depth",
+            1,
+        )
+
+    if max_depth == 1:
+        return single_results
+
+    pair_results = (
+        search_model_a_pair_subgroups(
+            candidates,
+            observations,
+            min_size=min_size,
+            direction=direction,
+            exposure_type=
+                exposure_type,
+        )
+    )
+
+    if not pair_results.empty:
+
+        pair_results.insert(
+            0,
+            "depth",
+            2,
+        )
+
+    result_frames = [
+        frame
+        for frame in (
+            single_results,
+            pair_results,
+        )
+        if not frame.empty
+    ]
+
+    if not result_frames:
+        return pd.DataFrame()
+
+    return (
+        pd.concat(
+            result_frames,
+            ignore_index=True,
+        )
+        .sort_values(
+            "quality",
+            ascending=False,
+        )
+        .reset_index(
+            drop=True
+        )
+    )
 # ============================================================
 # MODEL B
 # Opportunity-adjusted direct offspring
