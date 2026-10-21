@@ -105,15 +105,17 @@ def transmission_probability(
     edge_multiplier: float | NDArray[np.float64] = 1.0,
 ) -> NDArray[np.float64]:
     """
-    Per-edge transmission probabilities.
+    Per-edge transmission probabilities, with p the per-contact hazard (beta).
 
-    p_ij = min(
-        1,
-        p
+    p_ij = 1 - exp(
+        -p
         * infectiousness_i
         * susceptibility_j
         * edge_multiplier_ij
     )
+
+    Independent edges then give a susceptible node the daily infection
+    probability 1 - exp(-p * sigma_j * sum_i tau_i), Eq. (6) of the paper.
     """
 
     edge_multiplier = np.asarray(
@@ -135,9 +137,8 @@ def transmission_probability(
             "edge_multiplier cannot be negative"
         )
 
-    return np.minimum(
-        1.0,
-        p
+    return -np.expm1(
+        -p
         * params.infectiousness[src]
         * params.susceptibility[dst]
         * edge_multiplier,

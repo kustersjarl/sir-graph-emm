@@ -9,7 +9,9 @@ from sir_graph.scenarios import (
     Scenario,
     assign_degrees,
     build_world,
+    calibrate_beta,
     calibrate_plant,
+    diverse_top,
     exposure_decoy,
     harm,
     hidden_susceptibility,
@@ -17,6 +19,7 @@ from sir_graph.scenarios import (
     leave_one_out,
     make_run_plan,
     node_table,
+    observe,
     null_scenario,
     plant_diagnostics,
     recovery_report,
@@ -167,12 +170,18 @@ def test_node_table_and_diagnostics(people):
     world = build_world(people, exposure_decoy("alcohol == 1 AND age < 30", **SMALL), seed=9)
     runs = run_plan(world, make_run_plan(300, n_runs=30, n_seeds=3, seed=10))
     metrics = run_metrics(world.graph, runs)
-    table = node_table(world, metrics)
+    table = node_table(world, observe(world, runs))
 
     assert len(table) == 300 and "plant_decoy" in table
     assert table.n_infected.sum() == metrics.natural.sum()
     assert table.infection_freq.dropna().between(0, 1).all()
     assert (table.at_risk_runs <= 30).all()
+    # analysis observations agree with the per-run metrics
+    assert np.array_equal(table.exposure_total, np.where(metrics.is_seed, 0, metrics.exposure).sum(axis=0))
+    assert np.array_equal(table.offspring_total, np.where(metrics.natural, metrics.offspring, 0).sum(axis=0))
+    assert np.array_equal(table.opportunity_total, np.where(metrics.natural, metrics.opportunity, 0).sum(axis=0))
+    # homogeneous infectiousness, so weighting changes nothing for exposure
+    assert np.allclose(table.weighted_exposure_total, table.exposure_total)
 
     diag = plant_diagnostics(world, metrics)
     assert diag.loc["decoy", "n_in"] == world.masks["decoy"].sum()
@@ -245,3 +254,42 @@ def test_null_scenario_has_empty_ground_truth_tables(people):
     assert leave_one_out(world, plan).empty
     report = recovery_report(pd.DataFrame({"description": ["smoking == 1"]}), world, top_k=1)
     assert report.empty
+
+
+def test_recovery_report_flags_recovered(people):
+    world = build_world(people, exposure_decoy("alcohol == 1 AND age < 30", **SMALL), seed=9)
+    report = recovery_report(pd.DataFrame({"description": ["alcohol == 1 AND age < 30"]}), world, top_k=1)
+    assert bool(report.loc["decoy", "recovered"])
+    report = recovery_report(pd.DataFrame({"description": ["smoking == 1"]}), world, top_k=1)
+    assert not bool(report.loc["decoy", "recovered"])
+
+
+def test_diverse_top_skips_near_duplicates(people):
+    results = pd.DataFrame(
+        {
+            "description": ["age < 30", "age < 31", "sex == Male", "smoking == 1"],
+            "quality": [1.0, 0.99, 0.5, -0.1],
+        }
+    )
+    top = diverse_top(results, people, q=2, gamma=0.1)
+    assert top.description.tolist() == ["age < 30", "sex == Male"]
+    assert len(diverse_top(results, people, q=10)) == 3  # non-positive quality is never picked
+
+
+def test_not_equal_condition(people):
+    mask = Description.parse("occupation != Student").mask(people)
+    assert np.array_equal(mask, (people.occupation != "Student").to_numpy())
+
+
+def test_calibrate_beta_hits_attack_rate(people):
+    world = build_world(people, null_scenario(**SMALL), seed=17)
+    plan = make_run_plan(300, n_runs=20, n_seeds=5, seed=18)
+    p, info = calibrate_beta(world, plan, attack_rate=0.4, tol=0.02)
+    assert 0.01 <= p <= 0.5 and abs(info["gap"]) <= 0.05
+
+
+def test_leave_one_out_skips_minor_outbreaks(people):
+    sc = harm("obesity == 1", 3.0, "smoking == 1 AND obesity == 0", 1.5, **SMALL)
+    world = build_world(people, sc, seed=13)
+    table = leave_one_out(world, make_run_plan(300, n_runs=20, n_seeds=3, seed=14))
+    assert (table.runs <= 20).all() and (table.runs > 0).all()

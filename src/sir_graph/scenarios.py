@@ -6,6 +6,12 @@ from typing import Literal
 import numpy as np
 import pandas as pd
 from numpy.typing import NDArray
+from sir_graph.analysis import (
+    ModelAObservations,
+    ModelBObservations,
+    model_a_observations,
+    model_b_observations,
+)
 from sir_graph.dynamics import SimulationResult, simulate
 from sir_graph.exposure import RunMetrics, run_metrics
 from sir_graph.graph import Graph
@@ -16,28 +22,34 @@ from sir_graph.states import choose_seeds
 """
 people = load_people("data/synthetic_data.csv", n_nodes=1000, seed=0)
 world = build_world(people, exposure_decoy(), seed=1)
-plan = make_run_plan(world.graph.n_nodes, n_runs=300, n_seeds=5, seed=2)
+plan = make_run_plan(world.graph.n_nodes, n_runs=300, n_seeds=10, seed=2)
 runs = run_plan(world, plan)
+obs = observe(world, runs)              # Model A/B run-person observations
+table = node_table(world, obs)          # one row per person
 metrics = run_metrics(world.graph, runs)
-table = node_table(world, metrics)      # one row per person
 plant_diagnostics(world, metrics)       # did the plant do what we designed?
 """
 
 BoolArray = NDArray[np.bool_]
 IntArray = NDArray[np.int64]
 
-CONDITION_RE = re.compile(r"^(\w+) (==|>=|<) (.+)$")
+MINOR_OUTBREAK = 0.01 # drop runs that die out early
+RECOVERY_JACCARD = 0.8  # a plant is recovered at this Jaccard similarity
+
+CONDITION_RE = re.compile(r"^(\w+) (==|!=|>=|<) (.+)$")
 
 @dataclass(frozen=True)
 class Condition:
     attribute: str
-    op: Literal["==", ">=", "<"]
+    op: Literal["==", "!=", ">=", "<"]
     value: int | float | str
 
     def mask(self, df: pd.DataFrame) -> BoolArray:
         col = df[self.attribute]
         if self.op == "==":
             return (col == self.value).to_numpy(dtype=bool)
+        if self.op == "!=":
+            return (col != self.value).to_numpy(dtype=bool)
         if self.op == ">=":
             return (col >= self.value).to_numpy(dtype=bool)
         return (col < self.value).to_numpy(dtype=bool)
@@ -137,7 +149,7 @@ class Scenario:
     degree_dispersion: float | None = 5.0
     p: float = 0.12
     recovery: float = 0.4
-    n_seeds: int = 5
+    n_seeds: int = 10
     susceptibility_column: str = "infection_rate"
 
     def __post_init__(self) -> None:
@@ -375,9 +387,14 @@ def run_plan(world: World, plan: RunPlan) -> list[SimulationResult]:
         for seeds, run_seed in zip(plan.seed_sets, plan.run_seeds, strict=False)
     ]
 
+def is_major(run: SimulationResult) -> bool:
+    return run.final_size >= MINOR_OUTBREAK * run.n_nodes
+
+def major_runs(runs: Sequence[SimulationResult]) -> list[SimulationResult]:
+    return [run for run in runs if is_major(run)]
+
 def _rate(numer: float, denom: float) -> float:
     return float(numer / denom) if denom > 0 else float("nan")
-
 
 def _safe_div(a: NDArray, b: NDArray) -> NDArray[np.float64]:
     out = np.full(a.shape, np.nan)
@@ -385,33 +402,60 @@ def _safe_div(a: NDArray, b: NDArray) -> NDArray[np.float64]:
     return out
 
 
-def node_table(world: World, metrics: RunMetrics) -> pd.DataFrame:
+@dataclass(frozen=True, eq=False)
+class Observations:
+    model_a: ModelAObservations
+    model_b: ModelBObservations
+
+
+def observe(world: World, runs: Sequence[SimulationResult]) -> Observations:
+    return Observations(
+        model_a=model_a_observations(world.graph, runs, infectiousness=world.params.infectiousness),
+        model_b=model_b_observations(world.graph, runs, susceptibility=world.params.susceptibility),
+    )
+
+
+def _per_person(n: int, nodes: IntArray, values: NDArray) -> NDArray[np.float64]:
+    return np.bincount(nodes, weights=values, minlength=n)
+
+
+def node_table(world: World, obs: Observations) -> pd.DataFrame:
     """
-    Combine each person's data with their simulation results.
-    The rate columns describe infections, exposure contacts, and offspring.
+    Combine each person's data with their simulation results, summed over runs.
+    Exposure columns come from Model A observations, offspring and opportunity from Model B observations
     """
-    nat, seed = metrics.natural, metrics.is_seed
-    n_infected = nat.sum(axis=0)
-    at_risk = (~seed).sum(axis=0)
-    offspring = np.where(nat, metrics.offspring, 0).sum(axis=0)
-    opportunity = np.where(nat, metrics.opportunity, 0).sum(axis=0)
-    exposure = metrics.exposure.sum(axis=0)
+    n = len(world.people)
+    a, b = obs.model_a, obs.model_b
+
+    at_risk = np.bincount(a.node_index, minlength=n)
+    n_infected = np.bincount(a.node_index[a.infected], minlength=n)
+    exposure = _per_person(n, a.node_index, a.raw_escape_exposure + a.raw_infection_exposure)
+    weighted_exposure = _per_person(
+        n, a.node_index, a.weighted_escape_exposure + a.weighted_infection_exposure
+    )
+    offspring = _per_person(n, b.node_index, b.offspring)
+    opportunity = _per_person(n, b.node_index, b.opportunity)
+    weighted_opportunity = _per_person(n, b.node_index, b.weighted_opportunity)
 
     df = world.people.copy()
     df["degree"] = world.graph.degree()
-    
+
     for name, mask in world.masks.items():
         df[f"plant_{name}"] = mask
-        
+
     df["n_infected"] = n_infected
     df["at_risk_runs"] = at_risk
     df["infection_freq"] = _safe_div(n_infected.astype(float), at_risk.astype(float))
-    df["exposure_total"] = exposure
-    df["exposure_rate"] = _safe_div(n_infected.astype(float), exposure.astype(float))
-    df["offspring_total"] = offspring
-    df["opportunity_total"] = opportunity
-    df["offspring_per_opportunity"] = _safe_div(offspring.astype(float), opportunity.astype(float))
-    df["mean_secondary"] = _safe_div(offspring.astype(float), n_infected.astype(float))
+    df["exposure_total"] = exposure.astype(np.int64)
+    df["exposure_rate"] = _safe_div(n_infected.astype(float), exposure)
+    df["weighted_exposure_total"] = weighted_exposure
+    df["weighted_exposure_rate"] = _safe_div(n_infected.astype(float), weighted_exposure)
+    df["offspring_total"] = offspring.astype(np.int64)
+    df["opportunity_total"] = opportunity.astype(np.int64)
+    df["offspring_per_opportunity"] = _safe_div(offspring, opportunity)
+    df["weighted_opportunity_total"] = weighted_opportunity
+    df["offspring_per_weighted_opportunity"] = _safe_div(offspring, weighted_opportunity)
+    df["mean_secondary"] = _safe_div(offspring, n_infected.astype(float))
     return df
 
 
@@ -517,16 +561,55 @@ def calibrate_plant(
     return calibrated, {"multiplier": best, "gap": best_gap, "history": history}
 
 
-def leave_one_out(world: World, plan: RunPlan) -> pd.DataFrame:
-    """Measure how much each plant changes the final outbreak size"""
-    full = np.array([run.final_size for run in run_plan(world, plan)], dtype=float)
-    rows = []
+def calibrate_beta(
+    world: World,
+    plan: RunPlan,
+    *,
+    attack_rate: float = 0.40,
+    bracket: tuple[float, float] = (0.01, 0.5),
+    tol: float = 0.005,
+    max_iter: int = 20,
+) -> tuple[float, dict]:
     
+    def gap(p: float) -> float:
+        trial = replace(world, scenario=replace(world.scenario, p=p))
+        runs = major_runs(run_plan(trial, plan))
+        sizes = [run.final_size / run.n_nodes for run in runs]
+        return (float(np.mean(sizes)) if sizes else 0.0) - attack_rate
+
+    lo, hi = bracket
+    g_lo, g_hi = gap(lo), gap(hi)
+    history = [(lo, g_lo), (hi, g_hi)]
+    if g_lo > 0 or g_hi < 0:
+        raise ValueError(
+            f"bracket {bracket} does not enclose attack rate {attack_rate} "
+            f"(gap {g_lo:+.4f} .. {g_hi:+.4f})"
+        )
+    for _ in range(max_iter):
+        mid = (lo + hi) / 2
+        g = gap(mid)
+        history.append((mid, g))
+        if abs(g) <= tol:
+            break
+        lo, hi = (mid, hi) if g < 0 else (lo, mid)
+
+    best, best_gap = min(history, key=lambda item: abs(item[1]))
+    return best, {"p": best, "gap": best_gap, "history": history}
+
+
+def leave_one_out(world: World, plan: RunPlan) -> pd.DataFrame:
+    full_runs = run_plan(world, plan)
+    full = np.array([run.final_size for run in full_runs], dtype=float)
+    full_major = np.array([is_major(run) for run in full_runs])
+    rows = []
+
     for plant in world.scenario.plants:
         if not plant.has_parameter_effect:
             continue
-        without = np.array([run.final_size for run in run_plan(world.without(plant.name), plan)])
-        diff = full - without
+        without_runs = run_plan(world.without(plant.name), plan)
+        without = np.array([run.final_size for run in without_runs])
+        both = full_major & np.array([is_major(run) for run in without_runs])
+        diff = full[both] - without[both]
         size = int(world.masks[plant.name].sum())
         rows.append(
             {
@@ -535,14 +618,48 @@ def leave_one_out(world: World, plan: RunPlan) -> pd.DataFrame:
                 "contribution": diff.mean(),
                 "se": diff.std(ddof=1) / np.sqrt(diff.size),
                 "per_member": diff.mean() / size,
+                "runs": int(both.sum()),
             }
         )
-    columns = ["plant", "size", "contribution", "se", "per_member"]
+    columns = ["plant", "size", "contribution", "se", "per_member", "runs"]
     return pd.DataFrame(rows, columns=columns).set_index("plant")
 
 def jaccard(a: BoolArray, b: BoolArray) -> float:
     union = np.sum(a | b)
     return float(np.sum(a & b) / union) if union else float("nan")
+
+def diverse_top(
+    results: pd.DataFrame,
+    people: pd.DataFrame,
+    *,
+    q: int = 10,
+    pool: int = 100,
+    gamma: float = 0.9,
+    description_column: str = "description",
+) -> pd.DataFrame:
+    """
+    From the bestresults with positive quality, greedily pick "q".
+    each pick scores quality * mean(gamma ** times each member is already covered),
+    so near-duplicates of an earlier pick lose out.
+    """
+    candidates = results.head(pool)
+    candidates = candidates[candidates["quality"] > 0].reset_index(drop=True)
+    masks = [Description.parse(d).mask(people) for d in candidates[description_column]]
+    quality = candidates["quality"].to_numpy(dtype=float)
+    covered = np.zeros(len(people))
+    chosen: list[int] = []
+
+    while len(chosen) < min(q, len(candidates)):
+        weights = [
+            -np.inf if i in chosen else quality[i] * np.mean(gamma ** covered[mask])
+            for i, mask in enumerate(masks)
+        ]
+        best = int(np.argmax(weights))
+        chosen.append(best)
+        covered[masks[best]] += 1
+
+    return candidates.iloc[chosen].reset_index(drop=True)
+
 
 def recovery_report(
     results: pd.DataFrame,
@@ -571,6 +688,7 @@ def recovery_report(
                 "rank": ranks[0] if ranks else float("nan"),
                 "top1_jaccard": scores[0] if scores else float("nan"),
                 f"best_of_top{top_k}_jaccard": max(scores) if scores else float("nan"),
+                "recovered": bool(scores) and max(scores) >= RECOVERY_JACCARD,
             }
         )
         
@@ -580,6 +698,7 @@ def recovery_report(
         "rank",
         "top1_jaccard",
         f"best_of_top{top_k}_jaccard",
+        "recovered",
     ]
     return pd.DataFrame(rows, columns=columns).set_index("plant")
 

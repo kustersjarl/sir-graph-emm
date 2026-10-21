@@ -1,0 +1,2401 @@
+network,batch,method,alpha,max_quality,top_description,top_size,minor_outbreaks
+0,0,B0_infection,0.0,0.03143492896246414,occupation == Agriculture AND age >= 70,73,5
+0,0,B0_infection,0.25,0.009188469927459503,occupation == Agriculture AND age >= 70,73,5
+0,0,B0_infection,0.5,0.003997448334257374,age >= 45,4081,5
+0,0,B0_infection,0.75,0.0031950268194437955,age >= 45,4081,5
+0,0,B0_infection,1.0,0.0025536781274901866,age >= 45,4081,5
+0,0,B0+_infection,0.0,0.021762955835079024,occupation == Agriculture AND age >= 70,73,5
+0,0,B0+_infection,0.25,0.006361339816038119,occupation == Agriculture AND age >= 70,73,5
+0,0,B0+_infection,0.5,0.0023111071008163815,age >= 25,6713,5
+0,0,B0+_infection,0.75,0.002091940046092692,age >= 25,6713,5
+0,0,B0+_infection,1.0,0.0018935570553612296,age >= 25,6713,5
+0,0,B0_offspring,0.0,0.07924840440666625,occupation == Other AND age >= 70,110,5
+0,0,B0_offspring,0.25,0.025666131500532777,occupation == Other AND age >= 70,110,5
+0,0,B0_offspring,0.5,0.01766122087095786,obesity == 0,9252,5
+0,0,B0_offspring,0.75,0.017322132041133118,obesity == 0,9252,5
+0,0,B0_offspring,1.0,0.01698955358991425,obesity == 0,9252,5
+0,0,B0+_offspring,0.0,0.03191456338998104,occupation == Office-based AND age >= 70,103,5
+0,0,B0+_offspring,0.25,0.01191643612784971,obesity == 0,9252,5
+0,0,B0+_offspring,0.5,0.011687645014721262,obesity == 0,9252,5
+0,0,B0+_offspring,0.75,0.011463246605324447,obesity == 0,9252,5
+0,0,B0+_offspring,1.0,0.011243156561391876,obesity == 0,9252,5
+0,0,model_a,0.0,0.03202548324955955,occupation == Agriculture AND age >= 70,73,5
+0,0,model_a,0.25,0.010127823853725465,obesity == 1 AND age >= 60,161,5
+0,0,model_a,0.5,0.0056553576585934694,age >= 25,6713,5
+0,0,model_a,0.75,0.00511904842350646,age >= 25,6713,5
+0,0,model_a,1.0,0.004633598499713857,age >= 25,6713,5
+0,0,model_b,0.0,0.04391506076847804,occupation == Office-based AND age >= 70,103,5
+0,0,model_b,0.25,0.013990163635398699,occupation == Office-based AND age >= 70,103,5
+0,0,model_b,0.5,0.009114959202366237,obesity == 0,9254,5
+0,0,model_b,0.75,0.008939991439321521,obesity == 0,9254,5
+0,0,model_b,1.0,0.008768382299988135,obesity == 0,9254,5
+0,1,B0_infection,0.0,0.02026816167149803,obesity == 1 AND age >= 70,59,4
+0,1,B0_infection,0.25,0.0075950993487844,occupation == Office-based AND smoking == 1,898,4
+0,1,B0_infection,0.5,0.004157694196259105,occupation == Office-based AND smoking == 1,898,4
+0,1,B0_infection,0.75,0.0024728012562338095,occupation == Office-based AND age < 65,1314,4
+0,1,B0_infection,1.0,0.001961792980342799,age >= 45,4081,4
+0,1,B0+_infection,0.0,0.009406470644258248,occupation == Office-based AND obesity == 1,116,4
+0,1,B0+_infection,0.25,0.004243595885742337,occupation == Healthcare AND alcohol == 1,575,4
+0,1,B0+_infection,0.5,0.0021295833275122348,occupation == Healthcare AND age < 50,1291,4
+0,1,B0+_infection,0.75,0.001392801400188792,occupation == Healthcare,1967,4
+0,1,B0+_infection,1.0,0.0009275563110506169,occupation == Healthcare,1967,4
+0,1,B0_offspring,0.0,0.08227345835749167,occupation == Other AND age >= 70,110,4
+0,1,B0_offspring,0.25,0.026645853844211413,occupation == Other AND age >= 70,110,4
+0,1,B0_offspring,0.5,0.012822615025589335,sex == Male AND alcohol == 1,1816,4
+0,1,B0_offspring,0.75,0.008370998836143005,sex == Male AND alcohol == 1,1816,4
+0,1,B0_offspring,1.0,0.006724534680339802,obesity == 0,9252,4
+0,1,B0+_offspring,0.0,0.02319508505804926,sex == Female AND age >= 70,266,4
+0,1,B0+_offspring,0.25,0.009626933177521238,occupation == Healthcare AND age >= 50,676,4
+0,1,B0+_offspring,0.5,0.004909037483108653,occupation == Healthcare AND age >= 50,676,4
+0,1,B0+_offspring,0.75,0.0029757782520682583,sex == Female AND alcohol == 0,2852,4
+0,1,B0+_offspring,1.0,0.0025607357443450983,smoking == 1,5965,4
+0,1,model_a,0.0,0.038395352107949476,occupation == Agriculture AND obesity == 1,75,4
+0,1,model_a,0.25,0.011299103076448791,occupation == Agriculture AND obesity == 1,75,4
+0,1,model_a,0.5,0.008209773391299318,age < 70,9326,4
+0,1,model_a,0.75,0.008067798123355483,age < 70,9326,4
+0,1,model_a,1.0,0.007928278096956938,age < 70,9326,4
+0,1,model_b,0.0,0.030058626718975908,obesity == 1 AND age >= 70,59,4
+0,1,model_b,0.25,0.009691861008933657,occupation == Agriculture AND age < 20,251,4
+0,1,model_b,0.5,0.004419171732134717,alcohol == 1 AND age < 20,829,4
+0,1,model_b,0.75,0.0033723253761139406,sex == Female AND obesity == 0,3720,4
+0,1,model_b,1.0,0.0026336933399039074,sex == Female AND obesity == 0,3720,4
+0,2,B0_infection,0.0,0.026875924686642405,occupation == Office-based AND obesity == 1,116,4
+0,2,B0_infection,0.25,0.008820189434154063,occupation == Office-based AND obesity == 1,116,4
+0,2,B0_infection,0.5,0.004255460158688684,age >= 45,4081,4
+0,2,B0_infection,0.75,0.0034012470454132205,age >= 45,4081,4
+0,2,B0_infection,1.0,0.002718503060194783,age >= 45,4081,4
+0,2,B0+_infection,0.0,0.016663708356275286,occupation == Office-based AND obesity == 1,116,4
+0,2,B0+_infection,0.25,0.005468725861212622,occupation == Office-based AND obesity == 1,116,4
+0,2,B0+_infection,0.5,0.001986279035747156,smoking == 0 AND age >= 45,1596,4
+0,2,B0+_infection,0.75,0.0015764881927949684,age >= 40,4708,4
+0,2,B0+_infection,1.0,0.0013058696725568705,age >= 40,4708,4
+0,2,B0_offspring,0.0,0.07438277701371565,occupation == Other AND age >= 70,110,4
+0,2,B0_offspring,0.25,0.02409150868643353,occupation == Other AND age >= 70,110,4
+0,2,B0_offspring,0.5,0.012831180497126336,occupation == Office-based AND age < 55,1134,4
+0,2,B0_offspring,0.75,0.008986309482388308,smoking == 1 AND age < 70,5544,4
+0,2,B0_offspring,1.0,0.00775497879910974,smoking == 1 AND age < 70,5544,4
+0,2,B0+_offspring,0.0,0.0242415280656235,occupation == Other AND obesity == 1,116,4
+0,2,B0+_offspring,0.25,0.01221754549141958,age < 70,9323,4
+0,2,B0+_offspring,0.5,0.012006497201265015,age < 70,9323,4
+0,2,B0+_offspring,0.75,0.01179909460089392,age < 70,9323,4
+0,2,B0+_offspring,1.0,0.011595274713942038,age < 70,9323,4
+0,2,model_a,0.0,0.05282760303975728,occupation == Office-based AND obesity == 1,116,4
+0,2,model_a,0.25,0.017337058039701,occupation == Office-based AND obesity == 1,116,4
+0,2,model_a,0.5,0.006379517758793165,age < 70,9326,4
+0,2,model_a,0.75,0.006269193916710386,age < 70,9326,4
+0,2,model_a,1.0,0.006160777953967723,age < 70,9326,4
+0,2,model_b,0.0,0.015420133634698387,occupation == Office-based AND age < 30,599,4
+0,2,model_b,0.25,0.009765702447646145,age < 70,9326,4
+0,2,model_b,0.5,0.009596819805509676,age < 70,9326,4
+0,2,model_b,0.75,0.009430857726125133,age < 70,9326,4
+0,2,model_b,1.0,0.009267765702900008,age < 70,9326,4
+0,3,B0_infection,0.0,0.017327089375624383,occupation == Other AND age >= 70,110,3
+0,3,B0_infection,0.25,0.006611577413942577,occupation == Office-based AND age < 55,1134,3
+0,3,B0_infection,0.5,0.003930396696511707,occupation == Office-based AND age < 65,1314,3
+0,3,B0_infection,0.75,0.003623379562888203,obesity == 0,9254,3
+0,3,B0_infection,1.0,0.0035538263588962516,obesity == 0,9254,3
+0,3,B0+_infection,0.0,0.011511036517258792,occupation == Office-based AND age >= 60,307,3
+0,3,B0+_infection,0.25,0.004818357566767184,occupation == Office-based AND age >= 60,307,3
+0,3,B0+_infection,0.5,0.002406813058770743,obesity == 0 AND age >= 30,5567,3
+0,3,B0+_infection,0.75,0.0020789673294093845,obesity == 0 AND age >= 30,5567,3
+0,3,B0+_infection,1.0,0.0017957793360814916,obesity == 0 AND age >= 30,5567,3
+0,3,B0_offspring,0.0,0.09645619377780268,occupation == Other AND age >= 70,110,3
+0,3,B0_offspring,0.25,0.03123842646589087,occupation == Other AND age >= 70,110,3
+0,3,B0_offspring,0.5,0.019364590084021173,obesity == 0,9253,3
+0,3,B0_offspring,0.75,0.01899283549192684,obesity == 0,9253,3
+0,3,B0_offspring,1.0,0.01862821771378744,obesity == 0,9253,3
+0,3,B0+_offspring,0.0,0.02401988435355662,occupation == Other AND age >= 70,110,3
+0,3,B0+_offspring,0.25,0.013728014410166113,obesity == 0,9253,3
+0,3,B0+_offspring,0.5,0.01346446881611155,obesity == 0,9253,3
+0,3,B0+_offspring,0.75,0.013205982677712436,obesity == 0,9253,3
+0,3,B0+_offspring,1.0,0.012952458865317934,obesity == 0,9253,3
+0,3,model_a,0.0,0.017086926627951225,occupation == Office-based AND age >= 65,211,3
+0,3,model_a,0.25,0.009280321465201495,obesity == 0,9254,3
+0,3,model_a,0.5,0.009102179462472548,obesity == 0,9254,3
+0,3,model_a,0.75,0.00892745701511733,obesity == 0,9254,3
+0,3,model_a,1.0,0.008756088482474042,obesity == 0,9254,3
+0,3,model_b,0.0,0.01963891359279156,obesity == 0,9254,3
+0,3,model_b,0.25,0.019261931457855926,obesity == 0,9254,3
+0,3,model_b,0.5,0.01889218574816292,obesity == 0,9254,3
+0,3,model_b,0.75,0.018529537555670383,obesity == 0,9254,3
+0,3,model_b,1.0,0.01817385063876931,obesity == 0,9254,3
+0,4,B0_infection,0.0,0.020304604522900893,occupation == Agriculture AND age >= 70,73,4
+0,4,B0_infection,0.25,0.006889301390380483,occupation == Office-based AND age < 55,1134,4
+0,4,B0_infection,0.5,0.004090396279678324,occupation == Office-based AND age < 65,1314,4
+0,4,B0_infection,0.75,0.0024627153992742767,occupation == Office-based AND age < 65,1314,4
+0,4,B0_infection,1.0,0.0018896892351340342,age >= 45,4081,4
+0,4,B0+_infection,0.0,0.010658064867148572,occupation == Agriculture AND age >= 70,73,4
+0,4,B0+_infection,0.25,0.0031153659877407474,occupation == Agriculture AND age >= 70,73,4
+0,4,B0+_infection,0.5,0.0013849928058905403,occupation == Sales and services AND smoking == 0,577,4
+0,4,B0+_infection,0.75,0.0008315202676250074,smoking == 0 AND obesity == 0,3735,4
+0,4,B0+_infection,1.0,0.0006511465136557203,smoking == 0,4035,4
+0,4,B0_offspring,0.0,0.08069081565233405,occupation == Other AND age >= 70,110,4
+0,4,B0_offspring,0.25,0.026134591423565154,occupation == Other AND age >= 70,110,4
+0,4,B0_offspring,0.5,0.010740221978824278,occupation == Other AND age < 20,432,4
+0,4,B0_offspring,0.75,0.006437954066714702,age < 55,7321,4
+0,4,B0_offspring,1.0,0.005955715088087557,age < 55,7321,4
+0,4,B0+_offspring,0.0,0.014790062648714523,occupation == Other AND age < 45,930,4
+0,4,B0+_offspring,0.25,0.008711698492214513,alcohol == 0 AND age < 20,1795,4
+0,4,B0+_offspring,0.5,0.005671035783613089,alcohol == 0 AND age < 20,1795,4
+0,4,B0+_offspring,0.75,0.004861417817732037,age < 60,7975,4
+0,4,B0+_offspring,1.0,0.004594508501561598,age < 60,7975,4
+0,4,model_a,0.0,0.015734370799053054,occupation == Healthcare AND age >= 70,137,4
+0,4,model_a,0.25,0.006575790968526518,sex == Male AND occupation == Sales and services,874,4
+0,4,model_a,0.5,0.004078615435310776,sex == Male AND age < 25,1979,4
+0,4,model_a,0.75,0.0028618195800613686,sex == Male AND age < 55,4364,4
+0,4,model_a,1.0,0.0023260199548024874,sex == Male AND age < 55,4364,4
+0,4,model_b,0.0,0.016217345030639187,occupation == Student AND age >= 70,159,4
+0,4,model_b,0.25,0.010056052636520096,age < 60,7976,4
+0,4,model_b,0.5,0.009503286541637745,age < 60,7976,4
+0,4,model_b,0.75,0.008980905167947266,age < 60,7976,4
+0,4,model_b,1.0,0.008487238313005975,age < 60,7976,4
+0,5,B0_infection,0.0,0.0217236964004357,occupation == Agriculture AND age >= 70,73,2
+0,5,B0_infection,0.25,0.00738474283385778,occupation == Office-based AND age >= 20,1122,2
+0,5,B0_infection,0.5,0.004273990871765533,occupation == Office-based AND age >= 20,1122,2
+0,5,B0_infection,0.75,0.002718267220359364,age >= 45,4081,2
+0,5,B0_infection,1.0,0.002172620117947453,age >= 45,4081,2
+0,5,B0+_infection,0.0,0.015015134277994181,occupation == Office-based AND age >= 70,103,2
+0,5,B0+_infection,0.25,0.004783420126960304,occupation == Office-based AND age >= 70,103,2
+0,5,B0+_infection,0.5,0.0018064557890137658,occupation == Office-based AND age >= 60,307,2
+0,5,B0+_infection,0.75,0.0014676840916575736,obesity == 0 AND age >= 20,6815,2
+0,5,B0+_infection,1.0,0.0013335185211293039,obesity == 0 AND age >= 20,6815,2
+0,5,B0_offspring,0.0,0.06286429740997102,occupation == Other AND age >= 70,110,2
+0,5,B0_offspring,0.25,0.024647433665317065,occupation == Agriculture AND age < 25,311,2
+0,5,B0_offspring,0.5,0.010597472378481175,sex == Male AND age >= 65,827,2
+0,5,B0_offspring,0.75,0.007812429559576535,smoking == 1 AND obesity == 0,5516,2
+0,5,B0_offspring,1.0,0.006733418642838344,smoking == 1 AND obesity == 0,5516,2
+0,5,B0+_offspring,0.0,0.024026726587630835,occupation == Agriculture AND age < 20,251,2
+0,5,B0+_offspring,0.25,0.009564372341063327,occupation == Agriculture AND age < 20,251,2
+0,5,B0+_offspring,0.5,0.004171708006366207,occupation == Healthcare AND age >= 40,947,2
+0,5,B0+_offspring,0.75,0.002361409119393872,age < 20,2624,2
+0,5,B0+_offspring,1.0,0.0020289652664950736,smoking == 1 AND obesity == 0,5516,2
+0,5,model_a,0.0,0.03331277373985893,obesity == 1 AND age < 20,186,2
+0,5,model_a,0.25,0.012302376986689225,obesity == 1 AND age < 20,186,2
+0,5,model_a,0.5,0.004543256610947751,obesity == 1 AND age < 20,186,2
+0,5,model_a,0.75,0.003183772032988747,obesity == 0 AND age >= 20,6815,2
+0,5,model_a,1.0,0.0028927335229538887,obesity == 0 AND age >= 20,6815,2
+0,5,model_b,0.0,0.021026577945715927,occupation == Agriculture AND age < 20,251,2
+0,5,model_b,0.25,0.010202668784088468,sex == Male AND occupation == Agriculture,566,2
+0,5,model_b,0.5,0.004976429958338814,sex == Male AND occupation == Agriculture,566,2
+0,5,model_b,0.75,0.0035738882862783373,alcohol == 0 AND age >= 25,4729,2
+0,5,model_b,1.0,0.0029636935949843043,alcohol == 0 AND age >= 25,4729,2
+0,6,B0_infection,0.0,0.030675226635227426,obesity == 1 AND age >= 70,59,4
+0,6,B0_infection,0.25,0.008501602259276615,obesity == 1 AND age >= 70,59,4
+0,6,B0_infection,0.5,0.004205489282051722,occupation == Office-based AND smoking == 1,898,4
+0,6,B0_infection,0.75,0.0030331419486091175,obesity == 0,9254,4
+0,6,B0_infection,1.0,0.002974918751997611,obesity == 0,9254,4
+0,6,B0+_infection,0.0,0.016533470486166147,occupation == Office-based AND age >= 70,103,4
+0,6,B0+_infection,0.25,0.0053224809043262164,occupation == Office-based AND age >= 65,211,4
+0,6,B0+_infection,0.5,0.0023439885208756204,obesity == 0 AND age < 65,8009,4
+0,6,B0+_infection,0.75,0.0022174306894633656,obesity == 0 AND age < 65,8009,4
+0,6,B0+_infection,1.0,0.0020977060334481427,obesity == 0 AND age < 65,8009,4
+0,6,B0_offspring,0.0,0.08287186255649859,occupation == Other AND age >= 70,110,4
+0,6,B0_offspring,0.25,0.026838987556632676,occupation == Other AND age >= 70,110,4
+0,6,B0_offspring,0.5,0.014492956326844487,occupation == Office-based AND age < 55,1134,4
+0,6,B0_offspring,0.75,0.008943721654396587,obesity == 0 AND age < 55,6792,4
+0,6,B0_offspring,1.0,0.008295066313803315,obesity == 0,9253,4
+0,6,B0+_offspring,0.0,0.023342554976102034,occupation == Office-based AND age < 20,403,4
+0,6,B0+_offspring,0.25,0.010458887938033413,occupation == Office-based AND age < 20,403,4
+0,6,B0+_offspring,0.5,0.006936270743457867,obesity == 0 AND age < 60,7390,4
+0,6,B0+_offspring,0.75,0.006431288680108654,obesity == 0 AND age < 60,7390,4
+0,6,B0+_offspring,1.0,0.006005436352856934,age < 60,7975,4
+0,6,model_a,0.0,0.0451989243174308,obesity == 1 AND age >= 70,59,4
+0,6,model_a,0.25,0.01252682764705818,obesity == 1 AND age >= 70,59,4
+0,6,model_a,0.5,0.007323346775088126,obesity == 0 AND age < 65,8009,4
+0,6,model_a,0.75,0.006927940876859213,obesity == 0 AND age < 65,8009,4
+0,6,model_a,1.0,0.006553883936853345,obesity == 0 AND age < 65,8009,4
+0,6,model_b,0.0,0.033840425154105964,occupation == Agriculture AND obesity == 1,75,4
+0,6,model_b,0.25,0.010521536310980602,occupation == Office-based AND age < 20,403,4
+0,6,model_b,0.5,0.006017599137499695,age < 60,7976,4
+0,6,model_b,0.75,0.005686820759936011,age < 60,7976,4
+0,6,model_b,1.0,0.005374224772485658,age < 60,7976,4
+0,7,B0_infection,0.0,0.025213946871130433,obesity == 1 AND age >= 70,59,3
+0,7,B0_infection,0.25,0.008135311324194499,occupation == Sales and services AND age >= 40,698,3
+0,7,B0_infection,0.5,0.00418155711348548,occupation == Sales and services AND age >= 40,698,3
+0,7,B0_infection,0.75,0.003094318491273086,age >= 45,4081,3
+0,7,B0_infection,1.0,0.002473185327448397,age >= 45,4081,3
+0,7,B0+_infection,0.0,0.014373739486952879,occupation == Agriculture AND age >= 70,73,3
+0,7,B0+_infection,0.25,0.004201462429856586,occupation == Agriculture AND age >= 70,73,3
+0,7,B0+_infection,0.5,0.0013908533539039097,age >= 45,4081,3
+0,7,B0+_infection,0.75,0.0011116625897459895,age >= 45,4081,3
+0,7,B0+_infection,1.0,0.0008885147452620212,age >= 45,4081,3
+0,7,B0_offspring,0.0,0.05965932123485895,occupation == Other AND age >= 70,110,3
+0,7,B0_offspring,0.25,0.02019462969562986,sex == Male AND age >= 65,827,3
+0,7,B0_offspring,0.5,0.01255906719723757,sex == Male AND alcohol == 1,1816,3
+0,7,B0_offspring,0.75,0.008976607646380245,smoking == 1 AND obesity == 0,5516,3
+0,7,B0_offspring,1.0,0.007737000198884345,smoking == 1 AND obesity == 0,5516,3
+0,7,B0+_offspring,0.0,0.041712139608134045,occupation == Office-based AND age >= 70,103,3
+0,7,B0+_offspring,0.25,0.013290033447488862,occupation == Office-based AND age >= 70,103,3
+0,7,B0+_offspring,0.5,0.006301233696293854,age < 70,9321,3
+0,7,B0+_offspring,0.75,0.006192207686439114,age < 70,9321,3
+0,7,B0+_offspring,1.0,0.006085068080326523,age < 70,9321,3
+0,7,model_a,0.0,0.033103400590812744,obesity == 1 AND age >= 70,59,3
+0,7,model_a,0.25,0.009247314048426786,obesity == 1 AND age >= 65,111,3
+0,7,model_a,0.5,0.00411244533485776,occupation == Sales and services AND age >= 30,865,3
+0,7,model_a,0.75,0.0023103406133683337,age >= 40,4708,3
+0,7,model_a,1.0,0.0019137496582992324,age >= 40,4708,3
+0,7,model_b,0.0,0.04350266073272203,occupation == Office-based AND age >= 70,103,3
+0,7,model_b,0.25,0.013858784015684904,occupation == Office-based AND age >= 70,103,3
+0,7,model_b,0.5,0.004613344836950788,age >= 25,6713,3
+0,7,model_b,0.75,0.004175851827655771,age >= 25,6713,3
+0,7,model_b,1.0,0.0037798471830823716,age >= 25,6713,3
+1,0,B0_infection,0.0,0.03233778918366459,occupation == Healthcare AND age >= 70,137,6
+1,0,B0_infection,0.25,0.011063447192697095,occupation == Healthcare AND age >= 70,137,6
+1,0,B0_infection,0.5,0.004706769754298933,smoking == 1 AND age < 35,2691,6
+1,0,B0_infection,0.75,0.0034834674839714073,smoking == 1 AND age < 40,3089,6
+1,0,B0_infection,1.0,0.002921308820049602,age < 60,7976,6
+1,0,B0+_infection,0.0,0.005317980550267448,occupation == Student AND age < 20,658,6
+1,0,B0+_infection,0.25,0.002850917643119266,obesity == 0,9254,6
+1,0,B0+_infection,0.5,0.002796192364424458,obesity == 0,9254,6
+1,0,B0+_infection,0.75,0.002742517574204985,obesity == 0,9254,6
+1,0,B0+_infection,1.0,0.0026898731076291063,obesity == 0,9254,6
+1,0,B0_offspring,0.0,0.09662110603052931,occupation == Healthcare AND obesity == 1,141,6
+1,0,B0_offspring,0.25,0.03329566096458743,occupation == Healthcare AND obesity == 1,141,6
+1,0,B0_offspring,0.5,0.013573211001485192,occupation == Agriculture AND smoking == 1,576,6
+1,0,B0_offspring,0.75,0.012322542286197382,age < 70,9325,6
+1,0,B0_offspring,1.0,0.01210942119259157,age < 70,9325,6
+1,0,B0+_offspring,0.0,0.030429704558398007,occupation == Healthcare AND obesity == 1,141,6
+1,0,B0+_offspring,0.25,0.010486084954449266,occupation == Healthcare AND obesity == 1,141,6
+1,0,B0+_offspring,0.5,0.006460190772325177,occupation == Healthcare AND age < 55,1445,6
+1,0,B0+_offspring,0.75,0.005885890716868863,age < 70,9325,6
+1,0,B0+_offspring,1.0,0.005784092935429845,age < 70,9325,6
+1,0,model_a,0.0,0.018169553259220747,occupation == Agriculture AND alcohol == 1,290,6
+1,0,model_a,0.25,0.008292817143867228,occupation == Student AND age < 20,658,6
+1,0,model_a,0.5,0.0060528262916480415,obesity == 0,9254,6
+1,0,model_a,0.75,0.00593663822620141,obesity == 0,9254,6
+1,0,model_a,1.0,0.0058226804686971785,obesity == 0,9254,6
+1,0,model_b,0.0,0.031846291044621285,obesity == 1 AND age >= 70,59,6
+1,0,model_b,0.25,0.010325837816799476,occupation == Healthcare AND age < 30,774,6
+1,0,model_b,0.5,0.005725621079846554,occupation == Healthcare AND age < 55,1446,6
+1,0,model_b,0.75,0.003530731371238337,occupation == Healthcare AND age < 55,1446,6
+1,0,model_b,1.0,0.002739039134947898,smoking == 1,5965,6
+1,1,B0_infection,0.0,0.03362589374644448,occupation == Healthcare AND age >= 70,137,3
+1,1,B0_infection,0.25,0.011504135228853454,occupation == Healthcare AND age >= 70,137,3
+1,1,B0_infection,0.5,0.00399406570038138,age >= 25,6713,3
+1,1,B0_infection,0.75,0.003615300209324614,age >= 25,6713,3
+1,1,B0_infection,1.0,0.0032724538312663585,age >= 25,6713,3
+1,1,B0+_infection,0.0,0.014429056003975383,occupation == Sales and services AND age >= 70,92,3
+1,1,B0+_infection,0.25,0.0044687378247462144,occupation == Sales and services AND age >= 70,92,3
+1,1,B0+_infection,0.5,0.0020077720714137617,obesity == 0,9254,3
+1,1,B0+_infection,0.75,0.0019692315381826613,obesity == 0,9254,3
+1,1,B0+_infection,1.0,0.0019314308163688454,obesity == 0,9254,3
+1,1,B0_offspring,0.0,0.0977175093178202,occupation == Agriculture AND obesity == 1,75,3
+1,1,B0_offspring,0.25,0.028758768290426097,occupation == Agriculture AND obesity == 1,75,3
+1,1,B0_offspring,0.5,0.013789099317456423,occupation == Agriculture AND smoking == 1,576,3
+1,1,B0_offspring,0.75,0.011875650221735702,age < 60,7973,3
+1,1,B0_offspring,1.0,0.011222649918407662,age < 60,7973,3
+1,1,B0+_offspring,0.0,0.018638353353328013,occupation == Agriculture AND age >= 65,147,3
+1,1,B0+_offspring,0.25,0.011155562554160546,obesity == 0,9251,3
+1,1,B0+_offspring,0.5,0.01094135786673467,obesity == 0,9251,3
+1,1,B0+_offspring,0.75,0.010731266252754659,obesity == 0,9251,3
+1,1,B0+_offspring,1.0,0.010525208734615616,obesity == 0,9251,3
+1,1,model_a,0.0,0.029972614190255313,occupation == Sales and services AND age >= 70,92,3
+1,1,model_a,0.25,0.009282641546447458,occupation == Sales and services AND age >= 70,92,3
+1,1,model_a,0.5,0.006292000124244903,sex == Male,5975,3
+1,1,model_a,0.75,0.005531885723037813,sex == Male,5975,3
+1,1,model_a,1.0,0.00486359806873368,sex == Male,5975,3
+1,1,model_b,0.0,0.017967049921501964,occupation == Sales and services AND age >= 55,413,3
+1,1,model_b,0.25,0.012512861800012712,obesity == 0,9254,3
+1,1,model_b,0.5,0.012272669014743024,obesity == 0,9254,3
+1,1,model_b,0.75,0.012037086891288172,obesity == 0,9254,3
+1,1,model_b,1.0,0.011806026924898325,obesity == 0,9254,3
+1,2,B0_infection,0.0,0.033129385440455295,occupation == Other AND obesity == 1,116,3
+1,2,B0_infection,0.25,0.010872461462401372,occupation == Other AND obesity == 1,116,3
+1,2,B0_infection,0.5,0.004198810787328129,smoking == 1 AND age < 40,3089,3
+1,2,B0_infection,0.75,0.0032972019140764496,age >= 25,6713,3
+1,2,B0_infection,1.0,0.0030851413950899924,age < 60,7976,3
+1,2,B0+_infection,0.0,0.010794153488914555,occupation == Other AND obesity == 1,116,3
+1,2,B0+_infection,0.25,0.003673566145355937,occupation == Student AND obesity == 1,179,3
+1,2,B0+_infection,0.5,0.001537710198458525,obesity == 0,9254,3
+1,2,B0+_infection,0.75,0.0015081928185490803,obesity == 0,9254,3
+1,2,B0+_infection,1.0,0.001479242044569408,obesity == 0,9254,3
+1,2,B0_offspring,0.0,0.09498586587531865,occupation == Agriculture AND obesity == 1,75,3
+1,2,B0_offspring,0.25,0.031144372604007202,occupation == Healthcare AND age >= 70,137,3
+1,2,B0_offspring,0.5,0.014088028288327966,obesity == 1 AND age >= 20,560,3
+1,2,B0_offspring,0.75,0.012758323565173271,age < 70,9319,3
+1,2,B0_offspring,1.0,0.012537529509403896,age < 70,9319,3
+1,2,B0+_offspring,0.0,0.029080975681536933,obesity == 1 AND age >= 70,59,3
+1,2,B0+_offspring,0.25,0.008780279034703634,sex == Female AND obesity == 1,305,3
+1,2,B0+_offspring,0.5,0.00807348663152007,age < 65,8638,3
+1,2,B0+_offspring,0.75,0.007784674507157785,age < 65,8638,3
+1,2,B0+_offspring,1.0,0.00750619403341755,age < 65,8638,3
+1,2,model_a,0.0,0.024731609864310042,occupation == Student AND obesity == 1,179,3
+1,2,model_a,0.25,0.009046188741800234,occupation == Student AND obesity == 1,179,3
+1,2,model_a,0.5,0.0036326658664167346,age >= 20,7375,3
+1,2,model_a,0.75,0.0033664018696547694,age >= 20,7375,3
+1,2,model_a,1.0,0.003119654260740935,age >= 20,7375,3
+1,2,model_b,0.0,0.02745986895406784,obesity == 1 AND age >= 70,59,3
+1,2,model_b,0.25,0.009958313882774772,age < 65,8644,3
+1,2,model_b,0.5,0.009725045231888812,age < 70,9326,3
+1,2,model_b,0.75,0.00955686569309343,age < 70,9326,3
+1,2,model_b,1.0,0.009391594557970728,age < 70,9326,3
+1,3,B0_infection,0.0,0.03454984529365035,occupation == Healthcare AND age >= 70,137,4
+1,3,B0_infection,0.25,0.011820238753836745,occupation == Healthcare AND age >= 70,137,4
+1,3,B0_infection,0.5,0.004348617703579989,occupation == Healthcare AND age >= 65,249,4
+1,3,B0_infection,0.75,0.003402939978453106,age >= 25,6713,4
+1,3,B0_infection,1.0,0.0030802321592371083,age >= 25,6713,4
+1,3,B0+_infection,0.0,0.006478076731024367,occupation == Agriculture AND age >= 65,147,4
+1,3,B0+_infection,0.25,0.0024690452615636358,occupation == Healthcare AND age >= 65,249,4
+1,3,B0+_infection,0.5,0.0012511878898326305,occupation == Sales and services AND alcohol == 0,998,4
+1,3,B0+_infection,0.75,0.001045142361270842,obesity == 0 AND age >= 20,6815,4
+1,3,B0+_infection,1.0,0.0010052702010657979,obesity == 0,9254,4
+1,3,B0_offspring,0.0,0.09295399882294653,occupation == Healthcare AND age >= 70,137,4
+1,3,B0_offspring,0.25,0.031801544981534736,occupation == Healthcare AND age >= 70,137,4
+1,3,B0_offspring,0.5,0.014743942170535663,smoking == 0 AND age >= 40,1832,4
+1,3,B0_offspring,0.75,0.009976845761874954,age >= 25,6713,4
+1,3,B0_offspring,1.0,0.009030720893715337,age >= 25,6713,4
+1,3,B0+_offspring,0.0,0.04988659860267999,occupation == Sales and services AND age >= 70,92,4
+1,3,B0+_offspring,0.25,0.015450084195550126,occupation == Sales and services AND age >= 70,92,4
+1,3,B0+_offspring,0.5,0.00748728355450865,smoking == 0 AND age >= 35,2108,4
+1,3,B0+_offspring,0.75,0.005289938007079499,smoking == 0,4035,4
+1,3,B0+_offspring,1.0,0.004216105476599797,smoking == 0,4035,4
+1,3,model_a,0.0,0.027724102246865397,occupation == Healthcare AND age >= 65,249,4
+1,3,model_a,0.25,0.011013042840823328,occupation == Healthcare AND age >= 65,249,4
+1,3,model_a,0.5,0.004374789543546833,occupation == Healthcare AND age >= 65,249,4
+1,3,model_a,0.75,0.0027082928544832807,obesity == 0 AND age >= 20,6815,4
+1,3,model_a,1.0,0.0024607193759365355,obesity == 0 AND age >= 20,6815,4
+1,3,model_b,0.0,0.036446321892027234,occupation == Sales and services AND age >= 65,209,4
+1,3,model_b,0.25,0.013857672010562294,occupation == Sales and services AND age >= 65,209,4
+1,3,model_b,0.5,0.007763405343135391,age < 70,9326,4
+1,3,model_b,0.75,0.007629149316663775,age < 70,9326,4
+1,3,model_b,1.0,0.007497215039456468,age < 70,9326,4
+1,4,B0_infection,0.0,0.03438552859886207,occupation == Agriculture AND obesity == 1,75,0
+1,4,B0_infection,0.25,0.010119079801231435,occupation == Agriculture AND obesity == 1,75,0
+1,4,B0_infection,0.5,0.004178640119713275,age < 60,7976,0
+1,4,B0_infection,0.75,0.003948946554615554,age < 60,7976,0
+1,4,B0_infection,1.0,0.003731878899463608,age < 60,7976,0
+1,4,B0+_infection,0.0,0.00939253816816547,occupation == Student AND obesity == 1,179,0
+1,4,B0+_infection,0.25,0.004005966284940269,age < 65,8644,0
+1,4,B0+_infection,0.5,0.0038626555276835162,age < 65,8644,0
+1,4,B0+_infection,0.75,0.0037244716166567765,age < 65,8644,0
+1,4,B0+_infection,1.0,0.003591231142374472,age < 65,8644,0
+1,4,B0_offspring,0.0,0.10616745707548714,occupation == Healthcare AND age >= 70,137,0
+1,4,B0_offspring,0.25,0.03632305890031991,occupation == Healthcare AND age >= 70,137,0
+1,4,B0_offspring,0.5,0.013674041155116886,occupation == Agriculture AND smoking == 1,576,0
+1,4,B0_offspring,0.75,0.012137469424715726,age < 70,9325,0
+1,4,B0_offspring,1.0,0.011927549207172632,age < 70,9325,0
+1,4,B0+_offspring,0.0,0.0252316436767153,occupation == Office-based AND obesity == 1,116,0
+1,4,B0+_offspring,0.25,0.008280773353967498,occupation == Office-based AND obesity == 1,116,0
+1,4,B0+_offspring,0.5,0.005800388722384936,age < 70,9325,0
+1,4,B0+_offspring,0.75,0.005700069716846756,age < 70,9325,0
+1,4,B0+_offspring,1.0,0.005601485750691942,age < 70,9325,0
+1,4,model_a,0.0,0.025479504976549452,occupation == Student AND obesity == 1,179,0
+1,4,model_a,0.25,0.009690249598282203,age < 65,8644,0
+1,4,model_a,0.5,0.00934358741763495,age < 65,8644,0
+1,4,model_a,0.75,0.009009326844012601,age < 65,8644,0
+1,4,model_a,1.0,0.00868702421824093,age < 65,8644,0
+1,4,model_b,0.0,0.027652357536080783,occupation == Other AND age >= 70,110,0
+1,4,model_b,0.25,0.008955304034450239,occupation == Other AND age >= 70,110,0
+1,4,model_b,0.5,0.0034027181868657875,occupation == Student AND smoking == 0,1017,0
+1,4,model_b,0.75,0.002757226556403441,alcohol == 0 AND obesity == 0,6478,0
+1,4,model_b,1.0,0.0024736183199633556,alcohol == 0 AND obesity == 0,6478,0
+1,5,B0_infection,0.0,0.03891661773649274,occupation == Agriculture AND obesity == 1,75,5
+1,5,B0_infection,0.25,0.011452502739266334,occupation == Agriculture AND obesity == 1,75,5
+1,5,B0_infection,0.5,0.0039019380872906202,age >= 25,6713,5
+1,5,B0_infection,0.75,0.0035319092478640155,age >= 25,6713,5
+1,5,B0_infection,1.0,0.003196971006736082,age >= 25,6713,5
+1,5,B0+_infection,0.0,0.01127031073310035,occupation == Agriculture AND obesity == 1,75,5
+1,5,B0+_infection,0.25,0.003316661931342004,occupation == Agriculture AND obesity == 1,75,5
+1,5,B0+_infection,0.5,0.0015428991853080893,occupation == Sales and services AND smoking == 0,577,5
+1,5,B0+_infection,0.75,0.0010599188852718632,alcohol == 0 AND obesity == 0,6478,5
+1,5,B0+_infection,1.0,0.0009508956622351597,alcohol == 0 AND obesity == 0,6478,5
+1,5,B0_offspring,0.0,0.09648197507791922,occupation == Other AND obesity == 1,116,5
+1,5,B0_offspring,0.25,0.03320216397177548,alcohol == 0 AND obesity == 1,533,5
+1,5,B0_offspring,0.5,0.015954011809637417,alcohol == 0 AND obesity == 1,533,5
+1,5,B0_offspring,0.75,0.011603560958925965,age >= 25,6711,5
+1,5,B0_offspring,1.0,0.010502914129158363,age >= 25,6711,5
+1,5,B0+_offspring,0.0,0.02638005756742215,occupation == Other AND obesity == 1,116,5
+1,5,B0+_offspring,0.25,0.009147003938237606,sex == Female AND occupation == Agriculture,413,5
+1,5,B0+_offspring,0.5,0.006445294941810579,alcohol == 0,7009,5
+1,5,B0+_offspring,0.75,0.005897643647532406,alcohol == 0,7009,5
+1,5,B0+_offspring,1.0,0.005396525823457274,alcohol == 0,7009,5
+1,5,model_a,0.0,0.03695487605751023,obesity == 1 AND age >= 70,59,5
+1,5,model_a,0.25,0.010241999562637851,obesity == 1 AND age >= 70,59,5
+1,5,model_a,0.5,0.004947584265310436,age >= 30,6034,5
+1,5,model_a,0.75,0.0043605826867536696,age >= 30,6034,5
+1,5,model_a,1.0,0.0038432253698710435,age >= 30,6034,5
+1,5,model_b,0.0,0.01797979428056106,sex == Female AND obesity == 1,305,5
+1,5,model_b,0.25,0.00797833548353013,occupation == Sales and services AND age >= 50,514,5
+1,5,model_b,0.5,0.006480292925734129,alcohol == 0,7011,5
+1,5,model_b,0.75,0.005929794313981114,alcohol == 0,7011,5
+1,5,model_b,1.0,0.005426060366266441,alcohol == 0,7011,5
+1,6,B0_infection,0.0,0.043832277403922426,occupation == Agriculture AND obesity == 1,75,6
+1,6,B0_infection,0.25,0.012899098283301736,occupation == Agriculture AND obesity == 1,75,6
+1,6,B0_infection,0.5,0.004946833662324402,age < 70,9326,6
+1,6,B0_infection,0.75,0.004861285864448956,age < 70,9326,6
+1,6,B0_infection,1.0,0.004777217482745733,age < 70,9326,6
+1,6,B0+_infection,0.0,0.016268884655462394,occupation == Agriculture AND obesity == 1,75,6
+1,6,B0+_infection,0.25,0.004787657738991442,occupation == Agriculture AND obesity == 1,75,6
+1,6,B0+_infection,0.5,0.002891301011076811,age < 70,9326,6
+1,6,B0+_infection,0.75,0.0028413004548874105,age < 70,9326,6
+1,6,B0+_infection,1.0,0.002792164580586776,age < 70,9326,6
+1,6,B0_offspring,0.0,0.1258998350058348,occupation == Agriculture AND obesity == 1,75,6
+1,6,B0_offspring,0.25,0.03705482590782899,occupation == Agriculture AND obesity == 1,75,6
+1,6,B0_offspring,0.5,0.014199870063186484,obesity == 1 AND age >= 20,560,6
+1,6,B0_offspring,0.75,0.010971603542898266,age >= 25,6709,6
+1,6,B0_offspring,1.0,0.009930905617490075,age >= 25,6709,6
+1,6,B0+_offspring,0.0,0.03912046405045551,occupation == Agriculture AND obesity == 1,75,6
+1,6,B0+_offspring,0.25,0.011513930774857094,occupation == Agriculture AND obesity == 1,75,6
+1,6,B0+_offspring,0.5,0.006260399927838052,age < 70,9324,6
+1,6,B0+_offspring,0.75,0.0061525753952253875,age < 70,9324,6
+1,6,B0+_offspring,1.0,0.006046607953208717,age < 70,9324,6
+1,6,model_a,0.0,0.04009352983722015,occupation == Agriculture AND obesity == 1,75,6
+1,6,model_a,0.25,0.011798848075562536,occupation == Agriculture AND obesity == 1,75,6
+1,6,model_a,0.5,0.004991725439682811,sex == Male AND obesity == 1,441,6
+1,6,model_a,0.75,0.004099829293510754,age < 45,5919,6
+1,6,model_a,1.0,0.0035960676995936596,age < 45,5919,6
+1,6,model_b,0.0,0.027444427067956648,alcohol == 1 AND obesity == 1,213,6
+1,6,model_b,0.25,0.010650592213207237,occupation == Student AND age >= 50,799,6
+1,6,model_b,0.5,0.005662529162639328,occupation == Student AND age >= 50,799,6
+1,6,model_b,0.75,0.005101999486701104,age < 70,9326,6
+1,6,model_b,1.0,0.005013768337112814,age < 70,9326,6
+1,7,B0_infection,0.0,0.0336622869325271,occupation == Agriculture AND obesity == 1,75,6
+1,7,B0_infection,0.25,0.010528847698942424,occupation == Healthcare AND age >= 70,137,6
+1,7,B0_infection,0.5,0.005595059984171098,smoking == 1 AND age < 45,3480,6
+1,7,B0_infection,0.75,0.004403186705580435,smoking == 1,5965,6
+1,7,B0_infection,1.0,0.0038696324202692903,smoking == 1,5965,6
+1,7,B0+_infection,0.0,0.00816315345241855,occupation == Agriculture AND age >= 70,73,6
+1,7,B0+_infection,0.25,0.0034679191122860492,smoking == 1,5965,6
+1,7,B0+_infection,0.5,0.003047695481721483,smoking == 1,5965,6
+1,7,B0+_infection,0.75,0.0026783922717224526,smoking == 1,5965,6
+1,7,B0+_infection,1.0,0.002353839221880024,smoking == 1,5965,6
+1,7,B0_offspring,0.0,0.10166955296821101,occupation == Agriculture AND obesity == 1,75,6
+1,7,B0_offspring,0.25,0.029921126948209045,occupation == Agriculture AND obesity == 1,75,6
+1,7,B0_offspring,0.5,0.01270758437286537,age >= 25,6711,6
+1,7,B0_offspring,0.75,0.011502216253241753,age >= 25,6711,6
+1,7,B0_offspring,1.0,0.010411182397406887,age >= 25,6711,6
+1,7,B0+_offspring,0.0,0.03306719520824348,occupation == Office-based AND age >= 70,103,6
+1,7,B0+_offspring,0.25,0.010534850629751468,occupation == Office-based AND age >= 70,103,6
+1,7,B0+_offspring,0.5,0.0057447785992624,sex == Male,5973,6
+1,7,B0+_offspring,0.75,0.005050601942711277,sex == Male,5973,6
+1,7,B0+_offspring,1.0,0.0044403068878919195,sex == Male,5973,6
+1,7,model_a,0.0,0.021721721993642095,occupation == Healthcare AND obesity == 1,141,6
+1,7,model_a,0.25,0.007485124514963228,occupation == Healthcare AND obesity == 1,141,6
+1,7,model_a,0.5,0.005897261334278164,smoking == 1,5965,6
+1,7,model_a,0.75,0.005182663188231787,smoking == 1,5965,6
+1,7,model_a,1.0,0.004554656170064504,smoking == 1,5965,6
+1,7,model_b,0.0,0.021232591381535604,occupation == Sales and services AND obesity == 1,119,6
+1,7,model_b,0.25,0.007676844070564601,obesity == 1 AND age < 20,186,6
+1,7,model_b,0.5,0.004987452327499877,sex == Male AND age < 60,4744,6
+1,7,model_b,0.75,0.004139185858447368,sex == Male AND age < 60,4744,6
+1,7,model_b,1.0,0.003435192648620077,sex == Male AND age < 60,4744,6
+2,0,B0_infection,0.0,0.024141361148821816,occupation == Sales and services AND age >= 70,92,2
+2,0,B0_infection,0.25,0.007597831942751909,occupation == Office-based AND age >= 70,103,2
+2,0,B0_infection,0.5,0.005591420339400111,age >= 25,6713,2
+2,0,B0_infection,0.75,0.005061174412209817,age >= 25,6713,2
+2,0,B0_infection,1.0,0.004581212800316066,age >= 25,6713,2
+2,0,B0+_infection,0.0,0.010777493291368128,occupation == Sales and services AND age >= 70,92,2
+2,0,B0+_infection,0.25,0.003949259908516177,occupation == Sales and services AND age >= 55,413,2
+2,0,B0+_infection,0.5,0.003574009527440842,obesity == 0,9254,2
+2,0,B0+_infection,0.75,0.003505404014433774,obesity == 0,9254,2
+2,0,B0+_infection,1.0,0.0034381154303209428,obesity == 0,9254,2
+2,0,B0_offspring,0.0,0.10528422339068588,occupation == Office-based AND age >= 70,103,2
+2,0,B0_offspring,0.25,0.03354493112796948,occupation == Office-based AND age >= 70,103,2
+2,0,B0_offspring,0.5,0.020505697414685258,age >= 25,6710,2
+2,0,B0_offspring,0.75,0.018561346365216284,age >= 25,6710,2
+2,0,B0_offspring,1.0,0.01680135876006809,age >= 25,6710,2
+2,0,B0+_offspring,0.0,0.034044392585080796,occupation == Agriculture AND age >= 60,209,2
+2,0,B0+_offspring,0.25,0.012946025612121624,occupation == Agriculture AND age >= 60,209,2
+2,0,B0+_offspring,0.5,0.0063189313555426715,age >= 40,4705,2
+2,0,B0+_offspring,0.75,0.005234049732196767,age >= 40,4705,2
+2,0,B0+_offspring,1.0,0.00433542873908247,age >= 40,4705,2
+2,0,model_a,0.0,0.02239673075267683,occupation == Other AND alcohol == 1,503,2
+2,0,model_a,0.25,0.010606610610131895,occupation == Other AND alcohol == 1,503,2
+2,0,model_a,0.5,0.005369929499732824,sex == Male AND smoking == 0,2380,2
+2,0,model_a,0.75,0.0037507042733123047,sex == Male AND smoking == 0,2380,2
+2,0,model_a,1.0,0.0035622712663340647,obesity == 0,9254,2
+2,0,model_b,0.0,0.024162853186117036,occupation == Office-based AND obesity == 1,116,2
+2,0,model_b,0.25,0.009046597485673467,occupation == Other AND age >= 40,732,2
+2,0,model_b,0.5,0.006796264551222335,age >= 40,4708,2
+2,0,model_b,0.75,0.005629623998883211,age >= 40,4708,2
+2,0,model_b,1.0,0.0047280837733121115,age >= 30,6034,2
+2,1,B0_infection,0.0,0.022745866241369928,occupation == Office-based AND age >= 70,103,6
+2,1,B0_infection,0.25,0.008414527618838291,occupation == Office-based AND alcohol == 1,455,6
+2,1,B0_infection,0.5,0.00421409006242957,age >= 25,6713,6
+2,1,B0_infection,0.75,0.00381445920715817,age >= 25,6713,6
+2,1,B0_infection,1.0,0.0034527261704238696,age >= 25,6713,6
+2,1,B0+_infection,0.0,0.010141533408268287,occupation == Office-based AND alcohol == 1,455,6
+2,1,B0+_infection,0.25,0.004683887709159144,occupation == Office-based AND alcohol == 1,455,6
+2,1,B0+_infection,0.5,0.0035888701075877,obesity == 0,9254,6
+2,1,B0+_infection,0.75,0.003519979335765084,obesity == 0,9254,6
+2,1,B0+_infection,1.0,0.003452410968571234,obesity == 0,9254,6
+2,1,B0_offspring,0.0,0.0771885985766636,obesity == 1 AND age >= 70,59,6
+2,1,B0_offspring,0.25,0.026321966375663794,occupation == Agriculture AND alcohol == 1,290,6
+2,1,B0_offspring,0.5,0.018340454271545462,age >= 20,7372,6
+2,1,B0_offspring,0.75,0.016995697672155703,age >= 20,7372,6
+2,1,B0_offspring,1.0,0.015749541155666177,age >= 20,7372,6
+2,1,B0+_offspring,0.0,0.02234351158793393,alcohol == 1 AND obesity == 1,213,6
+2,1,B0+_offspring,0.25,0.008536481574867262,alcohol == 1 AND obesity == 1,213,6
+2,1,B0+_offspring,0.5,0.004570750803140205,sex == Female AND age < 30,1594,6
+2,1,B0+_offspring,0.75,0.004096175933628904,age < 70,9323,6
+2,1,B0+_offspring,1.0,0.0040253171133529195,age < 70,9323,6
+2,1,model_a,0.0,0.02488305791777623,occupation == Office-based AND alcohol == 1,455,6
+2,1,model_a,0.25,0.011492290608868442,occupation == Office-based AND alcohol == 1,455,6
+2,1,model_a,0.5,0.007087991917875669,sex == Female AND age < 50,2648,6
+2,1,model_a,0.75,0.00562892632816603,age < 60,7976,6
+2,1,model_a,1.0,0.005319512710589986,age < 60,7976,6
+2,1,model_b,0.0,0.018719481501339664,occupation == Student AND age >= 65,324,6
+2,1,model_b,0.25,0.007942003385936047,occupation == Student AND age >= 65,324,6
+2,1,model_b,0.5,0.004825818284778272,sex == Female AND age < 30,1594,6
+2,1,model_b,0.75,0.00305726108094908,sex == Female AND smoking == 0,1655,6
+2,1,model_b,1.0,0.0021288678573132794,age < 35,4618,6
+2,2,B0_infection,0.0,0.025863265769825117,obesity == 1 AND age >= 70,59,5
+2,2,B0_infection,0.25,0.00999741090838826,occupation == Agriculture AND alcohol == 1,290,5
+2,2,B0_infection,0.5,0.0048531809624148756,age >= 25,6713,5
+2,2,B0_infection,0.75,0.004392943798504204,age >= 25,6713,5
+2,2,B0_infection,1.0,0.0039763518744238505,age >= 25,6713,5
+2,2,B0+_infection,0.0,0.007476643601629461,occupation == Agriculture AND age < 20,251,5
+2,2,B0+_infection,0.25,0.0031995083310411123,occupation == Healthcare AND smoking == 1,1185,5
+2,2,B0+_infection,0.5,0.0023119189169143297,obesity == 0 AND age < 70,8639,5
+2,2,B0+_infection,0.75,0.0022288891341880786,obesity == 0 AND age < 70,8639,5
+2,2,B0+_infection,1.0,0.002183854291177905,obesity == 0,9254,5
+2,2,B0_offspring,0.0,0.11240068454749685,obesity == 1 AND age >= 70,59,5
+2,2,B0_offspring,0.25,0.031156389379651383,obesity == 1 AND age >= 70,59,5
+2,2,B0_offspring,0.5,0.017544177115479734,age >= 25,6710,5
+2,2,B0_offspring,0.75,0.01588103477868316,age >= 25,6710,5
+2,2,B0_offspring,1.0,0.014375554007558114,age >= 25,6710,5
+2,2,B0+_offspring,0.0,0.052837554964228,obesity == 1 AND age >= 70,59,5
+2,2,B0+_offspring,0.25,0.014646062370185812,obesity == 1 AND age >= 70,59,5
+2,2,B0+_offspring,0.5,0.006737069683774888,alcohol == 1 AND age < 40,1578,5
+2,2,B0+_offspring,0.75,0.00424681118857489,alcohol == 1 AND age < 40,1578,5
+2,2,B0+_offspring,1.0,0.0031819556039870836,age < 40,5288,5
+2,2,model_a,0.0,0.019431810607124806,sex == Female AND obesity == 1,305,5
+2,2,model_a,0.25,0.008737175562059609,sex == Female AND occupation == Agriculture,413,5
+2,2,model_a,0.5,0.003938751443002285,sex == Female AND occupation == Agriculture,413,5
+2,2,model_a,0.75,0.003197178052334858,alcohol == 0 AND age < 65,6075,5
+2,2,model_a,1.0,0.002822626363643522,alcohol == 0 AND age < 65,6075,5
+2,2,model_b,0.0,0.028292246546312835,occupation == Agriculture AND obesity == 1,75,5
+2,2,model_b,0.25,0.00884164311637436,alcohol == 1 AND age < 40,1579,5
+2,2,model_b,0.5,0.005573506520958,alcohol == 1 AND age < 40,1579,5
+2,2,model_b,0.75,0.003513371273901809,alcohol == 1 AND age < 40,1579,5
+2,2,model_b,1.0,0.0026021345914892203,age < 40,5292,5
+2,3,B0_infection,0.0,0.0238642943836751,occupation == Office-based AND age >= 70,103,5
+2,3,B0_infection,0.25,0.009055543510161187,occupation == Agriculture AND alcohol == 1,290,5
+2,3,B0_infection,0.5,0.005711895329105399,smoking == 1 AND age >= 30,3647,5
+2,3,B0_infection,0.75,0.005129810891446959,age >= 25,6713,5
+2,3,B0_infection,1.0,0.004643340340614076,age >= 25,6713,5
+2,3,B0+_infection,0.0,0.009076448561993489,occupation == Sales and services AND age >= 55,413,5
+2,3,B0+_infection,0.25,0.004091696981130659,occupation == Sales and services AND age >= 55,413,5
+2,3,B0+_infection,0.5,0.0024203528251724614,obesity == 0,9254,5
+2,3,B0+_infection,0.75,0.0023738925273041563,obesity == 0,9254,5
+2,3,B0+_infection,1.0,0.0023283240660538686,obesity == 0,9254,5
+2,3,B0_offspring,0.0,0.09241288351582289,occupation == Office-based AND age >= 70,103,5
+2,3,B0_offspring,0.25,0.02944321741212831,occupation == Office-based AND age >= 70,103,5
+2,3,B0_offspring,0.5,0.019329752040754752,age >= 25,6710,5
+2,3,B0_offspring,0.75,0.01749646656464055,age >= 25,6710,5
+2,3,B0_offspring,1.0,0.015837054795227037,age >= 25,6710,5
+2,3,B0+_offspring,0.0,0.05490140692817431,occupation == Agriculture AND age >= 70,73,5
+2,3,B0+_offspring,0.25,0.016049356616810215,occupation == Agriculture AND age >= 70,73,5
+2,3,B0+_offspring,0.5,0.00469171670136861,occupation == Agriculture AND age >= 70,73,5
+2,3,B0+_offspring,0.75,0.0030704061249204376,smoking == 1 AND age < 65,5127,5
+2,3,B0+_offspring,1.0,0.002598394517562319,smoking == 1 AND age < 65,5127,5
+2,3,model_a,0.0,0.037270128382356875,occupation == Sales and services AND obesity == 1,119,5
+2,3,model_a,0.25,0.012309704541750347,occupation == Sales and services AND obesity == 1,119,5
+2,3,model_a,0.5,0.005951022107552371,smoking == 1,5965,5
+2,3,model_a,0.75,0.005229909522559823,smoking == 1,5965,5
+2,3,model_a,1.0,0.004596177449828305,smoking == 1,5965,5
+2,3,model_b,0.0,0.038945914178164356,occupation == Office-based AND age >= 70,103,5
+2,3,model_b,0.25,0.012407126456120278,occupation == Office-based AND age >= 70,103,5
+2,3,model_b,0.5,0.005335837348134644,occupation == Office-based AND age >= 50,506,5
+2,3,model_b,0.75,0.0033970186728340085,age >= 20,7375,5
+2,3,model_b,1.0,0.003148026939995113,age >= 20,7375,5
+2,4,B0_infection,0.0,0.024877068300753813,occupation == Office-based AND age >= 70,103,4
+2,4,B0_infection,0.25,0.00902567365585677,occupation == Agriculture AND alcohol == 1,290,4
+2,4,B0_infection,0.5,0.004011313935760203,smoking == 1 AND age >= 30,3647,4
+2,4,B0_infection,0.75,0.0031172425318253664,smoking == 1 AND age >= 30,3647,4
+2,4,B0_infection,1.0,0.002637931829746591,smoking == 1 AND obesity == 0,5519,4
+2,4,B0+_infection,0.0,0.009810633808938278,occupation == Sales and services AND age >= 55,413,4
+2,4,B0+_infection,0.25,0.004422670438204366,occupation == Sales and services AND age >= 55,413,4
+2,4,B0+_infection,0.5,0.0023498020254196254,obesity == 0,9254,4
+2,4,B0+_infection,0.75,0.002304695997531,obesity == 0,9254,4
+2,4,B0+_infection,1.0,0.0022604558101386716,obesity == 0,9254,4
+2,4,B0_offspring,0.0,0.07635933872260225,occupation == Office-based AND age >= 70,103,4
+2,4,B0_offspring,0.25,0.024328475921552427,occupation == Office-based AND age >= 70,103,4
+2,4,B0_offspring,0.5,0.017307222796996515,age >= 25,6709,4
+2,4,B0_offspring,0.75,0.015665175708838675,age >= 25,6709,4
+2,4,B0_offspring,1.0,0.014178920146066155,age >= 25,6709,4
+2,4,B0+_offspring,0.0,0.030044754274847808,alcohol == 1 AND obesity == 1,213,4
+2,4,B0+_offspring,0.25,0.011479077696301255,alcohol == 1 AND obesity == 1,213,4
+2,4,B0+_offspring,0.5,0.004385764767862739,alcohol == 1 AND obesity == 1,213,4
+2,4,B0+_offspring,0.75,0.0038294302615810684,age < 55,7318,4
+2,4,B0+_offspring,1.0,0.0036823444507390825,age < 65,8640,4
+2,4,model_a,0.0,0.02833070979164062,occupation == Office-based AND obesity == 1,116,4
+2,4,model_a,0.25,0.009412533629880334,obesity == 0 AND age < 35,4300,4
+2,4,model_a,0.5,0.007739838657430893,age < 35,4618,4
+2,4,model_a,0.75,0.00638036302734555,age < 35,4618,4
+2,4,model_a,1.0,0.0052596745439433676,age < 35,4618,4
+2,4,model_b,0.0,0.020207877971080604,alcohol == 1 AND obesity == 1,213,4
+2,4,model_b,0.25,0.009402937913071122,age < 70,9326,4
+2,4,model_b,0.5,0.009240328719608814,age < 70,9326,4
+2,4,model_b,0.75,0.009080531599356272,age < 70,9326,4
+2,4,model_b,1.0,0.008923497921878968,age < 70,9326,4
+2,5,B0_infection,0.0,0.01991569934723275,obesity == 1 AND age >= 55,217,2
+2,5,B0_infection,0.25,0.007643820762816898,obesity == 1 AND age >= 55,217,2
+2,5,B0_infection,0.5,0.0042175146580020586,age >= 25,6713,2
+2,5,B0_infection,0.75,0.00381755904126678,age >= 25,6713,2
+2,5,B0_infection,1.0,0.0034555320408682787,age >= 25,6713,2
+2,5,B0+_infection,0.0,0.00833248845292205,occupation == Sales and services AND age >= 55,413,2
+2,5,B0+_infection,0.25,0.00402398883673782,occupation == Sales and services AND age >= 45,610,2
+2,5,B0+_infection,0.5,0.0032666499182399705,obesity == 0,9254,2
+2,5,B0+_infection,0.75,0.0032039443793390092,obesity == 0,9254,2
+2,5,B0+_infection,1.0,0.0031424425153671865,obesity == 0,9254,2
+2,5,B0_offspring,0.0,0.0758105330662282,occupation == Agriculture AND alcohol == 1,290,2
+2,5,B0_offspring,0.25,0.03128605228720928,occupation == Agriculture AND alcohol == 1,290,2
+2,5,B0_offspring,0.5,0.022782001646431443,age >= 25,6712,2
+2,5,B0_offspring,0.75,0.020621800579920233,age >= 25,6712,2
+2,5,B0_offspring,1.0,0.018666430885128597,age >= 25,6712,2
+2,5,B0+_offspring,0.0,0.014360191375058479,occupation == Sales and services AND smoking == 1,866,2
+2,5,B0+_offspring,0.25,0.01110371974175964,age < 70,9324,2
+2,5,B0+_offspring,0.5,0.010911658732487619,age < 70,9324,2
+2,5,B0+_offspring,0.75,0.01072291980195502,age < 70,9324,2
+2,5,B0+_offspring,1.0,0.01053744548817519,age < 70,9324,2
+2,5,model_a,0.0,0.01660042086684861,occupation == Office-based AND obesity == 1,116,2
+2,5,model_a,0.25,0.007841853876028154,occupation == Sales and services AND age >= 40,698,2
+2,5,model_a,0.5,0.004866933510222425,smoking == 0 AND age >= 40,1832,2
+2,5,model_a,0.75,0.0033165659104496294,smoking == 0 AND alcohol == 0,2828,2
+2,5,model_a,1.0,0.002418569009886041,smoking == 0 AND alcohol == 0,2828,2
+2,5,model_b,0.0,0.01476720831686334,occupation == Agriculture AND alcohol == 1,290,2
+2,5,model_b,0.25,0.011389565759258985,age < 70,9326,2
+2,5,model_b,0.5,0.011192600925595191,age < 70,9326,2
+2,5,model_b,0.75,0.0109990422925294,age < 70,9326,2
+2,5,model_b,1.0,0.01080883095511753,age < 70,9326,2
+2,6,B0_infection,0.0,0.01948690617603721,occupation == Agriculture AND alcohol == 1,290,3
+2,6,B0_infection,0.25,0.008041598643054797,occupation == Agriculture AND alcohol == 1,290,3
+2,6,B0_infection,0.5,0.004663830863764005,age >= 25,6713,3
+2,6,B0_infection,0.75,0.0042215501603818355,age >= 25,6713,3
+2,6,B0_infection,1.0,0.0038212118486296988,age >= 25,6713,3
+2,6,B0+_infection,0.0,0.006853527182316925,occupation == Sales and services AND age >= 55,413,3
+2,6,B0+_infection,0.25,0.003110434800420283,age < 70,9326,3
+2,6,B0+_infection,0.5,0.0030566446660081075,age < 70,9326,3
+2,6,B0+_infection,0.75,0.003003784748348807,age < 70,9326,3
+2,6,B0+_infection,1.0,0.002951838960789751,age < 70,9326,3
+2,6,B0_offspring,0.0,0.10539494720173259,occupation == Office-based AND age >= 70,103,3
+2,6,B0_offspring,0.25,0.033578529542567584,occupation == Office-based AND age >= 70,103,3
+2,6,B0_offspring,0.5,0.01841895745756807,age >= 25,6710,3
+2,6,B0_offspring,0.75,0.016671637238053847,age >= 25,6710,3
+2,6,B0_offspring,1.0,0.015090077103308633,age >= 25,6710,3
+2,6,B0+_offspring,0.0,0.03210390813373565,occupation == Agriculture AND age >= 70,73,3
+2,6,B0+_offspring,0.25,0.010331189729946018,alcohol == 1 AND age >= 70,206,3
+2,6,B0+_offspring,0.5,0.008600366231740868,obesity == 0,9251,3
+2,6,B0+_offspring,0.75,0.008435225410605762,obesity == 0,9251,3
+2,6,B0+_offspring,1.0,0.008273255558016685,obesity == 0,9251,3
+2,6,model_a,0.0,0.03000322729455931,occupation == Student AND obesity == 1,179,3
+2,6,model_a,0.25,0.010974411227527578,occupation == Student AND obesity == 1,179,3
+2,6,model_a,0.5,0.010033006451260996,age < 70,9326,3
+2,6,model_a,0.75,0.009859501201931018,age < 70,9326,3
+2,6,model_a,1.0,0.009688996456158106,age < 70,9326,3
+2,6,model_b,0.0,0.03392824524469222,occupation == Agriculture AND age >= 70,73,3
+2,6,model_b,0.25,0.01102888681867582,obesity == 0,9254,3
+2,6,model_b,0.5,0.010817179929737016,obesity == 0,9254,3
+2,6,model_b,0.75,0.01060953689670326,obesity == 0,9254,3
+2,6,model_b,1.0,0.010405879711131364,obesity == 0,9254,3
+2,7,B0_infection,0.0,0.029371239149014183,obesity == 1 AND age >= 70,59,3
+2,7,B0_infection,0.25,0.009186497023620248,occupation == Office-based AND age >= 70,103,3
+2,7,B0_infection,0.5,0.007149646125669402,age >= 25,6713,3
+2,7,B0_infection,0.75,0.006471630432183765,age >= 25,6713,3
+2,7,B0_infection,1.0,0.005857912365815969,age >= 25,6713,3
+2,7,B0+_infection,0.0,0.01039272963381888,obesity == 1 AND age >= 70,59,3
+2,7,B0+_infection,0.25,0.002880332549310619,obesity == 1 AND age >= 70,59,3
+2,7,B0+_infection,0.5,0.002441036790060784,obesity == 0,9254,3
+2,7,B0+_infection,0.75,0.002394179449596121,obesity == 0,9254,3
+2,7,B0+_infection,1.0,0.0023482215672487464,obesity == 0,9254,3
+2,7,B0_offspring,0.0,0.08641391082933947,occupation == Agriculture AND alcohol == 1,290,3
+2,7,B0_offspring,0.25,0.03566282454032005,occupation == Agriculture AND alcohol == 1,290,3
+2,7,B0_offspring,0.5,0.017578225477073384,age >= 25,6711,3
+2,7,B0_offspring,0.75,0.015911254326059963,age >= 25,6711,3
+2,7,B0_offspring,1.0,0.014402364707334046,age >= 25,6711,3
+2,7,B0+_offspring,0.0,0.03008801881649792,occupation == Student AND age >= 70,159,3
+2,7,B0+_offspring,0.25,0.011284356583114726,alcohol == 1 AND age >= 70,206,3
+2,7,B0+_offspring,0.5,0.004275394393266865,alcohol == 1 AND age >= 70,206,3
+2,7,B0+_offspring,0.75,0.003271917639722761,smoking == 1 AND age >= 30,3646,3
+2,7,B0+_offspring,1.0,0.0025490955676169334,smoking == 1 AND age >= 25,4048,3
+2,7,model_a,0.0,0.021103049518543963,obesity == 1 AND age >= 70,59,3
+2,7,model_a,0.25,0.006990433861679973,occupation == Healthcare AND age >= 70,137,3
+2,7,model_a,0.5,0.005954424130832718,age >= 25,6713,3
+2,7,model_a,0.75,0.005478131964375215,age >= 20,7375,3
+2,7,model_a,1.0,0.005077174315581577,age < 65,8644,3
+2,7,model_b,0.0,0.02527810585131329,occupation == Student AND obesity == 1,179,3
+2,7,model_b,0.25,0.009246082961068264,occupation == Student AND obesity == 1,179,3
+2,7,model_b,0.5,0.003531274151350784,age < 55,7322,3
+2,7,model_b,0.75,0.0032665466633870475,age < 55,7322,3
+2,7,model_b,1.0,0.003021664885464482,age < 55,7322,3
+3,0,B0_infection,0.0,0.04004733773470803,obesity == 1 AND age < 20,186,5
+3,0,B0_infection,0.25,0.014789445333282221,obesity == 1 AND age < 20,186,5
+3,0,B0_infection,0.5,0.00546172868506506,obesity == 1 AND age < 20,186,5
+3,0,B0_infection,0.75,0.004604350692795119,age < 70,9326,5
+3,0,B0_infection,1.0,0.004524725605455953,age < 70,9326,5
+3,0,B0+_infection,0.0,0.010595152882106534,obesity == 1 AND age < 20,186,5
+3,0,B0+_infection,0.25,0.005111708155003933,age < 70,9326,5
+3,0,B0+_infection,0.5,0.005023309109090376,age < 70,9326,5
+3,0,B0+_infection,0.75,0.00493643878725133,age < 70,9326,5
+3,0,B0+_infection,1.0,0.00485107075258047,age < 70,9326,5
+3,0,B0_offspring,0.0,0.10696103226692988,obesity == 1 AND age < 20,186,5
+3,0,B0_offspring,0.25,0.03950258702808692,obesity == 1 AND age < 20,186,5
+3,0,B0_offspring,0.5,0.016093559603278854,age >= 20,7373,5
+3,0,B0_offspring,0.75,0.014913682330717725,age >= 20,7373,5
+3,0,B0_offspring,1.0,0.013820306143846967,age >= 20,7373,5
+3,0,B0+_offspring,0.0,0.03093034787337239,obesity == 1 AND age >= 60,161,5
+3,0,B0+_offspring,0.25,0.011018259344233242,obesity == 1 AND age >= 60,161,5
+3,0,B0+_offspring,0.5,0.004403871732424182,sex == Male AND age < 30,2372,5
+3,0,B0+_offspring,0.75,0.003423171497796084,sex == Male AND age < 65,5147,5
+3,0,B0+_offspring,1.0,0.0028996055103292875,sex == Male AND age < 65,5147,5
+3,0,model_a,0.0,0.02000451993350828,occupation == Office-based AND obesity == 1,116,5
+3,0,model_a,0.25,0.011867532870064323,age < 70,9326,5
+3,0,model_a,0.5,0.011662302338263618,age < 70,9326,5
+3,0,model_a,0.75,0.011460620949460395,age < 70,9326,5
+3,0,model_a,1.0,0.01126242732674399,age < 70,9326,5
+3,0,model_b,0.0,0.023953120596630656,occupation == Office-based AND obesity == 1,116,5
+3,0,model_b,0.25,0.007860978316642758,occupation == Office-based AND obesity == 1,116,5
+3,0,model_b,0.5,0.002965590825634695,occupation == Student AND alcohol == 1,721,5
+3,0,model_b,0.75,0.0018962206846737282,smoking == 1 AND age < 35,2691,5
+3,0,model_b,1.0,0.0014610453883638409,smoking == 1 AND age < 65,5130,5
+3,1,B0_infection,0.0,0.03857521404079761,occupation == Agriculture AND age >= 70,73,2
+3,1,B0_infection,0.25,0.012343800309548687,obesity == 1 AND age < 20,186,2
+3,1,B0_infection,0.5,0.005038528171979514,age >= 25,6713,2
+3,1,B0_infection,0.75,0.004560714149771282,age >= 25,6713,2
+3,1,B0_infection,1.0,0.004128212217130886,age >= 25,6713,2
+3,1,B0+_infection,0.0,0.007860220433433904,occupation == Sales and services AND obesity == 1,119,2
+3,1,B0+_infection,0.25,0.002853663780597354,occupation == Other AND alcohol == 1,503,2
+3,1,B0+_infection,0.5,0.0014020892971852957,smoking == 0 AND age < 50,2718,2
+3,1,B0+_infection,0.75,0.0011424077815353644,age < 40,5292,2
+3,1,B0+_infection,1.0,0.0009743749528722275,age < 40,5292,2
+3,1,B0_offspring,0.0,0.10864954128966586,occupation == Agriculture AND age >= 70,73,2
+3,1,B0_offspring,0.25,0.03571790783599974,occupation == Healthcare AND obesity == 1,141,2
+3,1,B0_offspring,0.5,0.022244949636748012,age >= 20,7373,2
+3,1,B0_offspring,0.75,0.02061512267156277,age >= 20,7373,2
+3,1,B0_offspring,1.0,0.019104708695834548,age >= 20,7373,2
+3,1,B0+_offspring,0.0,0.023337246475889646,occupation == Healthcare AND age >= 70,137,2
+3,1,B0+_offspring,0.25,0.007984968237578128,occupation == Healthcare AND age >= 70,137,2
+3,1,B0+_offspring,0.5,0.006724507282629228,obesity == 0 AND age < 70,8635,2
+3,1,B0+_offspring,0.75,0.006577882447092892,obesity == 0,9250,2
+3,1,B0+_offspring,1.0,0.006451563545782039,obesity == 0,9250,2
+3,1,model_a,0.0,0.03224278793296386,obesity == 1 AND age >= 70,59,2
+3,1,model_a,0.25,0.008936049992258844,obesity == 1 AND age >= 70,59,2
+3,1,model_a,0.5,0.004491145656022729,obesity == 0 AND age < 45,5495,2
+3,1,model_a,0.75,0.003866776445682,obesity == 0 AND age < 45,5495,2
+3,1,model_a,1.0,0.0033292084528209857,obesity == 0 AND age < 45,5495,2
+3,1,model_b,0.0,0.02329599877672724,occupation == Healthcare AND age >= 70,137,2
+3,1,model_b,0.25,0.010106339338403663,obesity == 0 AND age < 70,8639,2
+3,1,model_b,0.5,0.009743382336198158,obesity == 0 AND age < 70,8639,2
+3,1,model_b,0.75,0.009393460497471622,obesity == 0 AND age < 70,8639,2
+3,1,model_b,1.0,0.009056105680031198,obesity == 0 AND age < 70,8639,2
+3,2,B0_infection,0.0,0.03526868989011489,obesity == 1 AND age < 20,186,5
+3,2,B0_infection,0.25,0.013024695038698565,obesity == 1 AND age < 20,186,5
+3,2,B0_infection,0.5,0.005622809681419577,age >= 20,7375,5
+3,2,B0_infection,0.75,0.0052106738467843266,age >= 20,7375,5
+3,2,B0_infection,1.0,0.004828746387643586,age >= 20,7375,5
+3,2,B0+_infection,0.0,0.006862453784227961,occupation == Healthcare AND age < 25,642,5
+3,2,B0+_infection,0.25,0.003454324951986466,occupation == Healthcare AND age < 25,642,5
+3,2,B0+_infection,0.5,0.0028621140687262584,age < 70,9326,5
+3,2,B0+_infection,0.75,0.0028126182553309853,age < 70,9326,5
+3,2,B0+_infection,1.0,0.002763978395082524,age < 70,9326,5
+3,2,B0_offspring,0.0,0.0969737023343078,occupation == Healthcare AND obesity == 1,141,5
+3,2,B0_offspring,0.25,0.033500574139692714,obesity == 1 AND age < 20,186,5
+3,2,B0_offspring,0.5,0.022348725815464713,age >= 25,6712,5
+3,2,B0_offspring,0.75,0.02023011405819401,age >= 25,6712,5
+3,2,B0_offspring,1.0,0.018312342197349965,age >= 25,6712,5
+3,2,B0+_offspring,0.0,0.03309986226459569,occupation == Sales and services AND obesity == 1,119,5
+3,2,B0+_offspring,0.25,0.01156323754555665,age < 65,8641,5
+3,2,B0+_offspring,0.5,0.01114943925652151,age < 65,8641,5
+3,2,B0+_offspring,0.75,0.010750449019585427,age < 65,8641,5
+3,2,B0+_offspring,1.0,0.010365736918572387,age < 65,8641,5
+3,2,model_a,0.0,0.014324392451774363,sex == Female AND age < 25,1308,5
+3,2,model_a,0.25,0.00861446175151381,sex == Female AND age < 25,1308,5
+3,2,model_a,0.5,0.00792250458543189,age < 60,7976,5
+3,2,model_a,0.75,0.007487016419282814,age < 60,7976,5
+3,2,model_a,1.0,0.007075466382902021,age < 60,7976,5
+3,2,model_b,0.0,0.018793020206033902,occupation == Sales and services AND obesity == 1,119,5
+3,2,model_b,0.25,0.007593213999827883,age >= 25,6713,5
+3,2,model_b,0.5,0.006873133849651761,age >= 25,6713,5
+3,2,model_b,0.75,0.006221340385810231,age >= 25,6713,5
+3,2,model_b,1.0,0.0056313578409468105,age >= 25,6713,5
+3,3,B0_infection,0.0,0.03850259762910241,obesity == 1 AND age < 20,186,3
+3,3,B0_infection,0.25,0.014218974219888257,obesity == 1 AND age < 20,186,3
+3,3,B0_infection,0.5,0.005265751555506114,age >= 25,6713,3
+3,3,B0_infection,0.75,0.0047663894710231886,age >= 25,6713,3
+3,3,B0_infection,1.0,0.004314382923312291,age >= 25,6713,3
+3,3,B0+_infection,0.0,0.009363399710627244,occupation == Sales and services AND obesity == 1,119,3
+3,3,B0+_infection,0.25,0.004605866363326441,age < 70,9326,3
+3,3,B0+_infection,0.5,0.004526215064821687,age < 70,9326,3
+3,3,B0+_infection,0.75,0.0044479412116991985,age < 70,9326,3
+3,3,B0+_infection,1.0,0.004371020983182456,age < 70,9326,3
+3,3,B0_offspring,0.0,0.094139340671624,obesity == 1 AND age < 20,186,3
+3,3,B0_offspring,0.25,0.03476818063484172,obesity == 1 AND age < 20,186,3
+3,3,B0_offspring,0.5,0.016439137013268965,age >= 25,6710,3
+3,3,B0_offspring,0.75,0.014879633085816924,age >= 25,6710,3
+3,3,B0_offspring,1.0,0.013468071991238364,age >= 25,6710,3
+3,3,B0+_offspring,0.0,0.021624848991189865,occupation == Sales and services AND age >= 70,92,3
+3,3,B0+_offspring,0.25,0.009624424247410463,occupation == Student AND age < 20,658,3
+3,3,B0+_offspring,0.5,0.006404426655784282,age < 65,8642,3
+3,3,B0+_offspring,0.75,0.006175418562533733,age < 65,8642,3
+3,3,B0+_offspring,1.0,0.005954599290795707,age < 65,8642,3
+3,3,model_a,0.0,0.02100186766033474,sex == Female AND occupation == Agriculture,413,3
+3,3,model_a,0.25,0.012337606603960051,age < 65,8644,3
+3,3,model_a,0.5,0.011896237001875198,age < 65,8644,3
+3,3,model_a,0.75,0.011470657101301983,age < 65,8644,3
+3,3,model_a,1.0,0.011060302036258133,age < 65,8644,3
+3,3,model_b,0.0,0.013769802547393442,occupation == Agriculture AND age >= 50,355,3
+3,3,model_b,0.25,0.006147946146912198,occupation == Healthcare AND smoking == 0,782,3
+3,3,model_b,0.5,0.00588807032830963,age < 65,8644,3
+3,3,model_b,0.75,0.0056774285611276955,age < 65,8644,3
+3,3,model_b,1.0,0.005474322361900545,age < 65,8644,3
+3,4,B0_infection,0.0,0.03889714782206283,obesity == 1 AND age < 20,186,3
+3,4,B0_infection,0.25,0.01436468124662444,obesity == 1 AND age < 20,186,3
+3,4,B0_infection,0.5,0.006689103330165427,age >= 20,7375,3
+3,4,B0_infection,0.75,0.0061988112270823376,age >= 20,7375,3
+3,4,B0_infection,1.0,0.005744456129974559,age >= 20,7375,3
+3,4,B0+_infection,0.0,0.012829137609544832,alcohol == 1 AND obesity == 1,213,3
+3,4,B0+_infection,0.25,0.0049010864649847875,alcohol == 1 AND obesity == 1,213,3
+3,4,B0+_infection,0.5,0.0018723509925862678,alcohol == 1 AND obesity == 1,213,3
+3,4,B0+_infection,0.75,0.001191207586397669,sex == Male AND age < 65,5148,3
+3,4,B0+_infection,1.0,0.0010090137516363942,sex == Male AND age < 65,5148,3
+3,4,B0_offspring,0.0,0.08696633362961126,occupation == Healthcare AND obesity == 1,141,3
+3,4,B0_offspring,0.25,0.029968623614697733,occupation == Healthcare AND obesity == 1,141,3
+3,4,B0_offspring,0.5,0.02658222198727451,age >= 20,7374,3
+3,4,B0_offspring,0.75,0.02463360207633997,age >= 20,7374,3
+3,4,B0_offspring,1.0,0.02282782649042492,age >= 20,7374,3
+3,4,B0+_offspring,0.0,0.02341135308435714,occupation == Sales and services AND age >= 70,92,3
+3,4,B0+_offspring,0.25,0.012169735127009458,obesity == 0,9253,3
+3,4,B0+_offspring,0.5,0.011936104830762153,obesity == 0,9253,3
+3,4,B0+_offspring,0.75,0.011706959686800822,obesity == 0,9253,3
+3,4,B0+_offspring,1.0,0.0114822135907488,obesity == 0,9253,3
+3,4,model_a,0.0,0.021730879941037288,alcohol == 1 AND obesity == 1,213,3
+3,4,model_a,0.25,0.010158534860630484,alcohol == 1 AND age >= 50,1006,3
+3,4,model_a,0.5,0.0057211135887517885,alcohol == 1 AND age >= 50,1006,3
+3,4,model_a,0.75,0.0032220336046933575,alcohol == 1 AND age >= 50,1006,3
+3,4,model_a,1.0,0.0018976757267118944,alcohol == 1 AND age >= 45,1227,3
+3,4,model_b,0.0,0.025812104003704418,occupation == Sales and services AND age >= 70,92,3
+3,4,model_b,0.25,0.01149342619143203,obesity == 0,9254,3
+3,4,model_b,0.5,0.011272802157271528,obesity == 0,9254,3
+3,4,model_b,0.75,0.011056413149606916,obesity == 0,9254,3
+3,4,model_b,1.0,0.01084417787426057,obesity == 0,9254,3
+3,5,B0_infection,0.0,0.033990487449949314,obesity == 1 AND age < 20,186,7
+3,5,B0_infection,0.25,0.012552656042275758,obesity == 1 AND age < 20,186,7
+3,5,B0_infection,0.5,0.006201669086813762,age >= 20,7375,7
+3,5,B0_infection,0.75,0.0057471045167783175,age >= 20,7375,7
+3,5,B0_infection,1.0,0.005325858226941158,age >= 20,7375,7
+3,5,B0+_infection,0.0,0.009971922358988809,occupation == Sales and services AND obesity == 1,119,7
+3,5,B0+_infection,0.25,0.003293560373420529,occupation == Sales and services AND obesity == 1,119,7
+3,5,B0+_infection,0.5,0.002619483010669049,age < 70,9326,7
+3,5,B0+_infection,0.75,0.002574183124230259,age < 70,9326,7
+3,5,B0+_infection,1.0,0.002529666628904528,age < 70,9326,7
+3,5,B0_offspring,0.0,0.11634063531332195,occupation == Agriculture AND age >= 70,73,7
+3,5,B0_offspring,0.25,0.04135225439037747,obesity == 1 AND age < 20,186,7
+3,5,B0_offspring,0.5,0.022574606735325915,age >= 20,7374,7
+3,5,B0_offspring,0.75,0.020920289666552207,age >= 20,7374,7
+3,5,B0_offspring,1.0,0.01938720460842316,age >= 20,7374,7
+3,5,B0+_offspring,0.0,0.022925614329306666,obesity == 1 AND age < 25,234,7
+3,5,B0+_offspring,0.25,0.008966989544593029,obesity == 1 AND age < 25,234,7
+3,5,B0+_offspring,0.5,0.003637373477257953,obesity == 1 AND age < 50,472,7
+3,5,B0+_offspring,0.75,0.0023852126471046006,age >= 20,7374,7
+3,5,B0+_offspring,1.0,0.002210418993287132,age >= 20,7374,7
+3,5,model_a,0.0,0.02084052452123106,occupation == Sales and services AND obesity == 1,119,7
+3,5,model_a,0.25,0.007533778933039462,occupation == Agriculture AND age < 35,433,7
+3,5,model_a,0.5,0.007258208665967873,obesity == 0,9254,7
+3,5,model_a,0.75,0.007118882476371051,obesity == 0,9254,7
+3,5,model_a,1.0,0.0069822307465481105,obesity == 0,9254,7
+3,5,model_b,0.0,0.0430201744726097,occupation == Agriculture AND age >= 70,73,7
+3,5,model_b,0.25,0.012574852002612864,occupation == Agriculture AND age >= 70,73,7
+3,5,model_b,0.5,0.004216041572852916,obesity == 0 AND age >= 70,615,7
+3,5,model_b,0.75,0.0026348738886934043,alcohol == 0 AND age >= 45,2854,7
+3,5,model_b,1.0,0.0021219752353130845,obesity == 0 AND age >= 20,6815,7
+3,6,B0_infection,0.0,0.040800902248669724,occupation == Agriculture AND age >= 70,73,2
+3,6,B0_infection,0.25,0.01294127550143476,obesity == 1 AND age < 20,186,2
+3,6,B0_infection,0.5,0.005132500582236626,age >= 20,7375,2
+3,6,B0_infection,0.75,0.0047563029993420965,age >= 20,7375,2
+3,6,B0_infection,1.0,0.00440767962108877,age >= 20,7375,2
+3,6,B0+_infection,0.0,0.010188323574633631,occupation == Agriculture AND age >= 70,73,2
+3,6,B0+_infection,0.25,0.003657780869400819,occupation == Healthcare AND age < 25,642,2
+3,6,B0+_infection,0.5,0.0019454688034822084,sex == Male AND alcohol == 1,1817,2
+3,6,B0+_infection,0.75,0.0015752699368165274,age < 70,9326,2
+3,6,B0+_infection,1.0,0.001548028092163371,age < 70,9326,2
+3,6,B0_offspring,0.0,0.0973179326902961,occupation == Healthcare AND obesity == 1,141,2
+3,6,B0_offspring,0.25,0.03353830353963966,occupation == Healthcare AND obesity == 1,141,2
+3,6,B0_offspring,0.5,0.018923453918551,age >= 20,7373,2
+3,6,B0_offspring,0.75,0.017536983911896332,age >= 20,7373,2
+3,6,B0_offspring,1.0,0.016252096792151574,age >= 20,7373,2
+3,6,B0+_offspring,0.0,0.02308393216634104,occupation == Office-based AND age < 30,599,2
+3,6,B0+_offspring,0.25,0.01142115257140204,occupation == Office-based AND age < 30,599,2
+3,6,B0+_offspring,0.5,0.005650801826971383,occupation == Office-based AND age < 30,599,2
+3,6,B0+_offspring,0.75,0.004759339307785595,smoking == 1,5962,2
+3,6,B0+_offspring,1.0,0.004182520700984346,smoking == 1,5962,2
+3,6,model_a,0.0,0.03285930369068737,occupation == Agriculture AND age >= 70,73,2
+3,6,model_a,0.25,0.009822243801254585,occupation == Healthcare AND obesity == 1,141,2
+3,6,model_a,0.5,0.004750083421499397,sex == Male AND alcohol == 1,1817,2
+3,6,model_a,0.75,0.0037955947514638796,age < 55,7322,2
+3,6,model_a,1.0,0.0035110520564428714,age < 55,7322,2
+3,6,model_b,0.0,0.01949338953832395,occupation == Agriculture AND alcohol == 1,290,2
+3,6,model_b,0.25,0.008044274111233096,occupation == Agriculture AND alcohol == 1,290,2
+3,6,model_b,0.5,0.007284698285941786,obesity == 0,9254,2
+3,6,model_b,0.75,0.007144863610300448,obesity == 0,9254,2
+3,6,model_b,1.0,0.0070077131551640895,obesity == 0,9254,2
+3,7,B0_infection,0.0,0.030169445043938703,obesity == 1 AND age < 20,186,1
+3,7,B0_infection,0.25,0.011141548563566374,obesity == 1 AND age < 20,186,1
+3,7,B0_infection,0.5,0.006120751304327519,age >= 20,7375,1
+3,7,B0_infection,0.75,0.005672117775837373,age >= 20,7375,1
+3,7,B0_infection,1.0,0.005256367799198648,age >= 20,7375,1
+3,7,B0+_infection,0.0,0.006240309775425096,occupation == Healthcare AND age < 25,642,1
+3,7,B0+_infection,0.25,0.0031411588978447406,occupation == Healthcare AND age < 25,642,1
+3,7,B0+_infection,0.5,0.0017150510234314753,occupation == Healthcare AND smoking == 1,1185,1
+3,7,B0+_infection,0.75,0.0010062517127345176,occupation == Healthcare AND smoking == 1,1185,1
+3,7,B0+_infection,1.0,0.0006461941949431651,occupation == Healthcare AND age < 70,1830,1
+3,7,B0_offspring,0.0,0.10881248448041192,obesity == 1 AND age < 20,186,1
+3,7,B0_offspring,0.25,0.040186360834690606,obesity == 1 AND age < 20,186,1
+3,7,B0_offspring,0.5,0.02243263106904299,age >= 25,6711,1
+3,7,B0_offspring,0.75,0.0203048011419295,age >= 25,6711,1
+3,7,B0_offspring,1.0,0.018674046388168303,age >= 20,7373,1
+3,7,B0+_offspring,0.0,0.03007238681207206,occupation == Student AND obesity == 1,179,1
+3,7,B0+_offspring,0.25,0.01100025805986394,occupation == Student AND obesity == 1,179,1
+3,7,B0+_offspring,0.5,0.005557518321671895,age < 55,7321,1
+3,7,B0+_offspring,0.75,0.005140971801398137,age < 55,7321,1
+3,7,B0+_offspring,1.0,0.00475564623146755,age < 55,7321,1
+3,7,model_a,0.0,0.03365711806854066,occupation == Sales and services AND age >= 70,92,1
+3,7,model_a,0.25,0.010423747509428094,occupation == Sales and services AND age >= 70,92,1
+3,7,model_a,0.5,0.004408668592006045,occupation == Healthcare AND smoking == 1,1185,1
+3,7,model_a,0.75,0.0027335424398551907,occupation == Healthcare,1967,1
+3,7,model_a,1.0,0.0020561416134257994,smoking == 1 AND alcohol == 0,4183,1
+3,7,model_b,0.0,0.02915130278525401,occupation == Student AND obesity == 1,179,1
+3,7,model_b,0.25,0.01066279908633564,occupation == Student AND obesity == 1,179,1
+3,7,model_b,0.5,0.008308608322168788,age < 65,8644,1
+3,7,model_b,0.75,0.008011373431581705,age < 65,8644,1
+3,7,model_b,1.0,0.007724771919865856,age < 65,8644,1
+4,0,B0_infection,0.0,0.02083889425037999,occupation == Agriculture AND age >= 65,147,5
+4,0,B0_infection,0.25,0.007262571774205212,occupation == Office-based AND smoking == 0,627,5
+4,0,B0_infection,0.5,0.005984987844507094,age >= 25,6713,5
+4,0,B0_infection,0.75,0.005417419098785899,age >= 25,6713,5
+4,0,B0_infection,1.0,0.004903674068248216,age >= 25,6713,5
+4,0,B0+_infection,0.0,0.014779392807969232,occupation == Agriculture AND obesity == 1,75,5
+4,0,B0+_infection,0.25,0.0043493254671831865,occupation == Agriculture AND obesity == 1,75,5
+4,0,B0+_infection,0.5,0.0020076762254594314,age < 70,9326,5
+4,0,B0+_infection,0.75,0.001972956586260114,age < 70,9326,5
+4,0,B0+_infection,1.0,0.0019388373692458304,age < 70,9326,5
+4,0,B0_offspring,0.0,0.0755520566308201,occupation == Other AND age >= 65,215,5
+4,0,B0_offspring,0.25,0.028932667954045775,occupation == Other AND age >= 65,215,5
+4,0,B0_offspring,0.5,0.023098402234278677,obesity == 0,9252,5
+4,0,B0_offspring,0.75,0.02265548807925968,obesity == 0,9252,5
+4,0,B0_offspring,1.0,0.022221066847115892,obesity == 0,9252,5
+4,0,B0+_offspring,0.0,0.022026470101343655,occupation == Other AND age >= 65,215,5
+4,0,B0+_offspring,0.25,0.018864024592986778,obesity == 0,9252,5
+4,0,B0+_offspring,0.5,0.018502305049439255,obesity == 0,9252,5
+4,0,B0+_offspring,0.75,0.018147521514034603,obesity == 0,9252,5
+4,0,B0+_offspring,1.0,0.017799540988128384,obesity == 0,9252,5
+4,0,model_a,0.0,0.019472062379247784,occupation == Agriculture AND obesity == 1,75,5
+4,0,model_a,0.25,0.007169972946661415,occupation == Office-based AND age >= 65,211,5
+4,0,model_a,0.5,0.004158239232600182,sex == Male AND alcohol == 0,4158,5
+4,0,model_a,0.75,0.0033391089748097667,sex == Male AND alcohol == 0,4158,5
+4,0,model_a,1.0,0.0029723910318849864,age < 70,9326,5
+4,0,model_b,0.0,0.021606233162458858,occupation == Office-based AND age >= 60,307,5
+4,0,model_b,0.25,0.013327552744580256,obesity == 0,9254,5
+4,0,model_b,0.5,0.013071721419523494,obesity == 0,9254,5
+4,0,model_b,0.75,0.012820800948554848,obesity == 0,9254,5
+4,0,model_b,1.0,0.01257469706453221,obesity == 0,9254,5
+4,1,B0_infection,0.0,0.02118856329176133,occupation == Other AND obesity == 1,116,3
+4,1,B0_infection,0.25,0.007928539345915482,alcohol == 1 AND age >= 30,1775,3
+4,1,B0_infection,0.5,0.005933696590681184,age >= 25,6713,3
+4,1,B0_infection,0.75,0.005370991900386126,age >= 25,6713,3
+4,1,B0_infection,1.0,0.0048616496568628376,age >= 25,6713,3
+4,1,B0+_infection,0.0,0.014368255535417073,occupation == Agriculture AND obesity == 1,75,3
+4,1,B0+_infection,0.25,0.004228334717884262,occupation == Agriculture AND obesity == 1,75,3
+4,1,B0+_infection,0.5,0.0030489023473185364,age < 70,9326,3
+4,1,B0+_infection,0.75,0.002996176321024816,age < 70,9326,3
+4,1,B0+_infection,1.0,0.002944362109388318,age < 70,9326,3
+4,1,B0_offspring,0.0,0.050176513305309034,occupation == Agriculture AND age >= 65,147,3
+4,1,B0_offspring,0.25,0.024573092286546628,occupation == Office-based AND smoking == 0,627,3
+4,1,B0_offspring,0.5,0.020852104967207623,age >= 25,6712,3
+4,1,B0_offspring,0.75,0.018874425755102713,age >= 25,6712,3
+4,1,B0_offspring,1.0,0.017084315859004166,age >= 25,6712,3
+4,1,B0+_offspring,0.0,0.01689811694729198,occupation == Agriculture AND age < 30,372,3
+4,1,B0+_offspring,0.25,0.009219051945432856,age < 70,9325,3
+4,1,B0+_offspring,0.5,0.00905960640351573,age < 70,9325,3
+4,1,B0+_offspring,0.75,0.008902918507502732,age < 70,9325,3
+4,1,B0+_offspring,1.0,0.008748940563298174,age < 70,9325,3
+4,1,model_a,0.0,0.027520348357387567,occupation == Agriculture AND obesity == 1,75,3
+4,1,model_a,0.25,0.008639307927581347,sex == Male AND occupation == Healthcare,1183,3
+4,1,model_a,0.5,0.005066699409851245,sex == Male AND occupation == Healthcare,1183,3
+4,1,model_a,0.75,0.004685636344887744,age < 70,9326,3
+4,1,model_a,1.0,0.004604605548561766,age < 70,9326,3
+4,1,model_b,0.0,0.021883599552425036,occupation == Student AND age >= 70,159,3
+4,1,model_b,0.25,0.010510945776375616,age < 70,9326,3
+4,1,model_b,0.5,0.010329175309419052,age < 70,9326,3
+4,1,model_b,0.75,0.010150548280109355,age < 70,9326,3
+4,1,model_b,1.0,0.009975010327579184,age < 70,9326,3
+4,2,B0_infection,0.0,0.02145393313442101,occupation == Agriculture AND age >= 65,147,7
+4,2,B0_infection,0.25,0.007863989803537069,alcohol == 1 AND age >= 65,420,7
+4,2,B0_infection,0.5,0.005933441301941826,age >= 25,6713,7
+4,2,B0_infection,0.75,0.005370760821204641,age >= 25,6713,7
+4,2,B0_infection,1.0,0.004861440491396904,age >= 25,6713,7
+4,2,B0+_infection,0.0,0.009474446113479952,occupation == Agriculture AND obesity == 1,75,7
+4,2,B0+_infection,0.25,0.002853720378145745,occupation == Agriculture AND age >= 65,147,7
+4,2,B0+_infection,0.5,0.0014962087394792087,smoking == 1 AND alcohol == 1,1782,7
+4,2,B0+_infection,0.75,0.0009721182851054792,smoking == 1 AND alcohol == 1,1782,7
+4,2,B0+_infection,1.0,0.0007035078806690876,smoking == 1,5965,7
+4,2,B0_offspring,0.0,0.058885212917248464,occupation == Other AND age >= 65,216,7
+4,2,B0_offspring,0.25,0.022577403146035194,occupation == Other AND age >= 65,216,7
+4,2,B0_offspring,0.5,0.017891863754733475,age >= 25,6709,7
+4,2,B0_offspring,0.75,0.01619475308003273,age >= 25,6709,7
+4,2,B0_offspring,1.0,0.014658619745740207,age >= 25,6709,7
+4,2,B0+_offspring,0.0,0.014234684910179575,occupation == Student AND obesity == 1,179,7
+4,2,B0+_offspring,0.25,0.006544356067909508,sex == Female AND occupation == Healthcare,784,7
+4,2,B0+_offspring,0.5,0.004551735861082188,sex == Male AND age < 45,3543,7
+4,2,B0+_offspring,0.75,0.003693133199260533,age < 45,5915,7
+4,2,B0+_offspring,1.0,0.003531943537803522,age < 70,9321,7
+4,2,model_a,0.0,0.037372137947548574,occupation == Agriculture AND age >= 70,73,7
+4,2,model_a,0.25,0.010923923704932087,occupation == Agriculture AND age >= 70,73,7
+4,2,model_a,0.5,0.0058985427158002824,occupation == Healthcare AND age >= 20,1460,7
+4,2,model_a,0.75,0.00364613666377776,occupation == Healthcare AND age >= 20,1460,7
+4,2,model_a,1.0,0.0022538300070851845,occupation == Healthcare AND age >= 20,1460,7
+4,2,model_b,0.0,0.01706719757576895,occupation == Sales and services AND age >= 70,92,7
+4,2,model_b,0.25,0.007637392573371031,obesity == 0,9254,7
+4,2,model_b,0.5,0.007490787694030468,obesity == 0,9254,7
+4,2,model_b,0.75,0.0073469969938014254,obesity == 0,9254,7
+4,2,model_b,1.0,0.007205966452625993,obesity == 0,9254,7
+4,3,B0_infection,0.0,0.018405860151787024,alcohol == 1 AND obesity == 1,213,2
+4,3,B0_infection,0.25,0.007064604228908851,smoking == 0 AND age < 55,3008,2
+4,3,B0_infection,0.5,0.006075967314416902,age >= 30,6034,2
+4,3,B0_infection,0.75,0.005441400734401804,age >= 25,6713,2
+4,3,B0_infection,1.0,0.004925381475878954,age >= 25,6713,2
+4,3,B0+_infection,0.0,0.013024675504520711,alcohol == 1 AND obesity == 1,213,2
+4,3,B0+_infection,0.25,0.004975787365359018,alcohol == 1 AND obesity == 1,213,2
+4,3,B0+_infection,0.5,0.0019008888088362025,alcohol == 1 AND obesity == 1,213,2
+4,3,B0+_infection,0.75,0.0012937949865349796,age < 70,9326,2
+4,3,B0+_infection,1.0,0.0012714208135678714,age < 70,9326,2
+4,3,B0_offspring,0.0,0.056233045585921904,occupation == Other AND age >= 65,215,2
+4,3,B0_offspring,0.25,0.024143549915915413,age >= 25,6710,2
+4,3,B0_offspring,0.5,0.021853710951123515,age >= 25,6710,2
+4,3,B0_offspring,0.75,0.019781046449198102,age >= 25,6710,2
+4,3,B0_offspring,1.0,0.017904959002178825,age >= 25,6710,2
+4,3,B0+_offspring,0.0,0.018140564854202842,occupation == Office-based AND alcohol == 1,455,2
+4,3,B0+_offspring,0.25,0.008379094590394659,occupation == Office-based AND alcohol == 1,455,2
+4,3,B0+_offspring,0.5,0.0062228569340625735,smoking == 1,5962,2
+4,3,B0+_offspring,0.75,0.005468664086085201,smoking == 1,5962,2
+4,3,B0+_offspring,1.0,0.004805877300944772,smoking == 1,5962,2
+4,3,model_a,0.0,0.017748084631547305,alcohol == 1 AND obesity == 1,213,2
+4,3,model_a,0.25,0.007592199456098637,occupation == Sales and services AND age >= 55,413,2
+4,3,model_a,0.5,0.0058138579602633475,alcohol == 0 AND obesity == 0,6478,2
+4,3,model_a,0.75,0.005215844714237519,alcohol == 0 AND obesity == 0,6478,2
+4,3,model_a,1.0,0.004679343091795654,alcohol == 0 AND obesity == 0,6478,2
+4,3,model_b,0.0,0.028572455750101793,obesity == 1 AND age >= 65,111,2
+4,3,model_b,0.25,0.009274239638292828,obesity == 1 AND age >= 65,111,2
+4,3,model_b,0.5,0.0062247051084697086,age < 70,9326,2
+4,3,model_b,0.75,0.0061170585105035655,age < 70,9326,2
+4,3,model_b,1.0,0.006011273493102566,age < 70,9326,2
+4,4,B0_infection,0.0,0.018963073560941512,alcohol == 1 AND age >= 65,420,3
+4,4,B0_infection,0.25,0.008584619536763751,alcohol == 1 AND age >= 65,420,3
+4,4,B0_infection,0.5,0.00586012992707833,smoking == 0 AND age < 55,3008,3
+4,4,B0_infection,0.75,0.00518278424541788,age >= 25,6713,3
+4,4,B0_infection,1.0,0.004691290122131543,age >= 25,6713,3
+4,4,B0+_infection,0.0,0.013530246195912629,occupation == Agriculture AND obesity == 1,75,3
+4,4,B0+_infection,0.25,0.004335714195778179,alcohol == 1 AND obesity == 1,213,3
+4,4,B0+_infection,0.5,0.002231707974448257,age < 65,8644,3
+4,4,B0+_infection,0.75,0.0021518701183493557,age < 65,8644,3
+4,4,B0+_infection,1.0,0.002074888408009419,age < 65,8644,3
+4,4,B0_offspring,0.0,0.05895554416169235,occupation == Other AND age >= 65,214,3
+4,4,B0_offspring,0.25,0.02318621188485074,age >= 30,6030,3
+4,4,B0_offspring,0.5,0.020433961297246277,age >= 30,6030,3
+4,4,B0_offspring,0.75,0.018008408461503485,age >= 30,6030,3
+4,4,B0_offspring,1.0,0.015870773688900646,age >= 30,6030,3
+4,4,B0+_offspring,0.0,0.04166904308936853,obesity == 1 AND age >= 70,59,3
+4,4,B0+_offspring,0.25,0.011549680441013928,obesity == 1 AND age >= 70,59,3
+4,4,B0+_offspring,0.5,0.006378928742870011,sex == Male AND alcohol == 0,4155,3
+4,4,B0+_offspring,0.75,0.005121933622761017,sex == Male AND alcohol == 0,4155,3
+4,4,B0+_offspring,1.0,0.004238711661151973,alcohol == 0,7007,3
+4,4,model_a,0.0,0.029857911511240565,occupation == Agriculture AND obesity == 1,75,3
+4,4,model_a,0.25,0.010434207116038005,occupation == Sales and services AND alcohol == 1,445,3
+4,4,model_a,0.5,0.004914673043913747,smoking == 0 AND obesity == 0,3735,3
+4,4,model_a,0.75,0.0038420877766598954,smoking == 0 AND obesity == 0,3735,3
+4,4,model_a,1.0,0.0030035850506555987,smoking == 0 AND obesity == 0,3735,3
+4,4,model_b,0.0,0.042443438522811794,obesity == 1 AND age >= 70,59,3
+4,4,model_b,0.25,0.011763148064980208,obesity == 1 AND age >= 70,59,3
+4,4,model_b,0.5,0.003956756616392321,alcohol == 0 AND age >= 70,468,3
+4,4,model_b,0.75,0.0032380633526673547,alcohol == 0,7011,3
+4,4,model_b,1.0,0.0029629910062718787,alcohol == 0,7011,3
+4,5,B0_infection,0.0,0.016754197221358846,alcohol == 1 AND age >= 65,420,5
+4,5,B0_infection,0.25,0.007584657008635739,alcohol == 1 AND age >= 65,420,5
+4,5,B0_infection,0.5,0.006389384526774729,age >= 30,6034,5
+4,5,B0_infection,0.75,0.005631321884058404,age >= 30,6034,5
+4,5,B0_infection,1.0,0.00496319888543048,age >= 30,6034,5
+4,5,B0+_infection,0.0,0.00794014652613635,occupation == Agriculture AND obesity == 1,75,5
+4,5,B0+_infection,0.25,0.0034600511760261975,occupation == Agriculture AND smoking == 0,403,5
+4,5,B0+_infection,0.5,0.0015502751436529078,occupation == Agriculture AND smoking == 0,403,5
+4,5,B0+_infection,0.75,0.0011535631442105003,smoking == 1 AND age < 70,5544,5
+4,5,B0+_infection,1.0,0.0009953989481806295,smoking == 1 AND age < 70,5544,5
+4,5,B0_offspring,0.0,0.061691325950862574,occupation == Other AND age >= 65,215,5
+4,5,B0_offspring,0.25,0.025935850082106398,alcohol == 1 AND age >= 65,420,5
+4,5,B0_offspring,0.5,0.018118553477922114,age >= 30,6031,5
+4,5,B0_offspring,0.75,0.016395248444862544,age >= 25,6710,5
+4,5,B0_offspring,1.0,0.01484102155627909,age >= 25,6710,5
+4,5,B0+_offspring,0.0,0.030534740539352637,occupation == Sales and services AND obesity == 1,119,5
+4,5,B0+_offspring,0.25,0.010771252887554558,sex == Female AND age >= 65,529,5
+4,5,B0+_offspring,0.5,0.005166486561784973,sex == Female AND age >= 65,529,5
+4,5,B0+_offspring,0.75,0.002776981414933221,obesity == 0 AND age >= 60,1862,5
+4,5,B0+_offspring,1.0,0.0018244545803552078,obesity == 0 AND age >= 60,1862,5
+4,5,model_a,0.0,0.02154825551009594,occupation == Sales and services AND obesity == 1,119,5
+4,5,model_a,0.25,0.0073773882892383446,sex == Male AND age >= 60,1231,5
+4,5,model_a,0.5,0.004866696056209964,sex == Male AND age >= 30,3603,5
+4,5,model_a,0.75,0.0037705116697442625,sex == Male AND age >= 30,3603,5
+4,5,model_a,1.0,0.002958489555360721,sex == Male AND age >= 25,3996,5
+4,5,model_b,0.0,0.03460025064298989,occupation == Office-based AND age >= 70,103,5
+4,5,model_b,0.25,0.012316670789050915,smoking == 0 AND age >= 65,521,5
+4,5,model_b,0.5,0.006630726252751546,obesity == 0 AND age >= 60,1863,5
+4,5,model_b,0.75,0.004356265215158293,obesity == 0 AND age >= 60,1863,5
+4,5,model_b,1.0,0.0028619861386862777,obesity == 0 AND age >= 60,1863,5
+4,6,B0_infection,0.0,0.016507826143857263,alcohol == 1 AND age >= 65,420,3
+4,6,B0_infection,0.25,0.0074731243523700405,alcohol == 1 AND age >= 65,420,3
+4,6,B0_infection,0.5,0.005607250269634423,age >= 25,6713,3
+4,6,B0_infection,0.75,0.005075503157499169,age >= 25,6713,3
+4,6,B0_infection,1.0,0.004594182721126084,age >= 25,6713,3
+4,6,B0+_infection,0.0,0.008967664962762007,occupation == Agriculture AND age >= 70,73,3
+4,6,B0+_infection,0.25,0.0031698993357827075,occupation == Agriculture AND age >= 55,288,3
+4,6,B0+_infection,0.5,0.001620506031133891,occupation == Agriculture AND age >= 20,728,3
+4,6,B0+_infection,0.75,0.0010091234024261415,obesity == 0,9254,3
+4,6,B0+_infection,1.0,0.0009897526010392587,obesity == 0,9254,3
+4,6,B0_offspring,0.0,0.0521282463883338,occupation == Other AND age >= 65,216,3
+4,6,B0_offspring,0.25,0.024013210855967353,smoking == 0 AND age < 55,3007,3
+4,6,B0_offspring,0.5,0.020430759332172036,age >= 25,6712,3
+4,6,B0_offspring,0.75,0.01849489181686097,age >= 25,6712,3
+4,6,B0_offspring,1.0,0.016742452777012168,age >= 25,6712,3
+4,6,B0+_offspring,0.0,0.03622159116167162,occupation == Student AND age >= 70,159,3
+4,6,B0+_offspring,0.25,0.012863854101796817,occupation == Student AND age >= 70,159,3
+4,6,B0+_offspring,0.5,0.004959185918490242,alcohol == 0 AND obesity == 0,6474,3
+4,6,B0+_offspring,0.75,0.004448953477021395,alcohol == 0 AND obesity == 0,6474,3
+4,6,B0+_offspring,1.0,0.004170657362008363,obesity == 0,9249,3
+4,6,model_a,0.0,0.02186784098364885,occupation == Agriculture AND age >= 70,73,3
+4,6,model_a,0.25,0.010271748059157015,obesity == 0,9254,3
+4,6,model_a,0.5,0.010074574957164078,obesity == 0,9254,3
+4,6,model_a,0.75,0.00988118672527559,obesity == 0,9254,3
+4,6,model_a,1.0,0.009691510710368162,obesity == 0,9254,3
+4,6,model_b,0.0,0.029893037942578707,occupation == Student AND age >= 70,159,3
+4,6,model_b,0.25,0.010614983769253674,occupation == Student AND age >= 70,159,3
+4,6,model_b,0.5,0.003999786194969085,sex == Female AND age >= 70,266,3
+4,6,model_b,0.75,0.0026083730006089467,obesity == 0,9254,3
+4,6,model_b,1.0,0.0025583035292080975,obesity == 0,9254,3
+4,7,B0_infection,0.0,0.020325045142444154,occupation == Agriculture AND age >= 65,147,5
+4,7,B0_infection,0.25,0.007816248008185658,alcohol == 1 AND age >= 65,420,5
+4,7,B0_infection,0.5,0.006363415028074628,age >= 25,6713,5
+4,7,B0_infection,0.75,0.005759959251752134,age >= 25,6713,5
+4,7,B0_infection,1.0,0.005213730431768392,age >= 25,6713,5
+4,7,B0+_infection,0.0,0.009097761763524897,occupation == Agriculture AND age >= 55,288,5
+4,7,B0+_infection,0.25,0.003747854152720612,occupation == Agriculture AND age >= 55,288,5
+4,7,B0+_infection,0.5,0.0027149698181939525,obesity == 0,9254,5
+4,7,B0+_infection,0.75,0.0026628541492944146,obesity == 0,9254,5
+4,7,B0+_infection,1.0,0.002611738875657706,obesity == 0,9254,5
+4,7,B0_offspring,0.0,0.06522836602378479,occupation == Agriculture AND age >= 65,147,5
+4,7,B0_offspring,0.25,0.02271481851990931,occupation == Agriculture AND age >= 65,147,5
+4,7,B0_offspring,0.5,0.019741593680354316,age >= 25,6710,5
+4,7,B0_offspring,0.75,0.01786924803964281,age >= 25,6710,5
+4,7,B0_offspring,1.0,0.01617448067630108,age >= 25,6710,5
+4,7,B0+_offspring,0.0,0.0424148662943994,obesity == 1 AND age >= 70,59,5
+4,7,B0+_offspring,0.25,0.013089553993748808,obesity == 1 AND age >= 50,274,5
+4,7,B0+_offspring,0.5,0.005326058443955637,obesity == 1 AND age >= 50,274,5
+4,7,B0+_offspring,0.75,0.004515943705546206,age < 60,7973,5
+4,7,B0+_offspring,1.0,0.004267734548687177,age < 60,7973,5
+4,7,model_a,0.0,0.02072404993763508,occupation == Agriculture AND age >= 70,73,5
+4,7,model_a,0.25,0.012517543797552258,obesity == 0,9254,5
+4,7,model_a,0.5,0.012277261138195602,obesity == 0,9254,5
+4,7,model_a,0.75,0.012041590865847234,obesity == 0,9254,5
+4,7,model_a,1.0,0.01181044444264108,obesity == 0,9254,5
+4,7,model_b,0.0,0.02628576368043453,occupation == Agriculture AND age >= 70,73,5
+4,7,model_b,0.25,0.00972602289200017,occupation == Agriculture AND alcohol == 1,290,5
+4,7,model_b,0.5,0.006998437678062632,obesity == 0 AND age < 60,7391,5
+4,7,model_b,0.75,0.006490296501781435,age < 60,7976,5
+4,7,model_b,1.0,0.006133534660769452,age < 60,7976,5
+5,0,B0_infection,0.0,0.050036908977351024,occupation == Office-based AND age >= 70,103,4
+5,0,B0_infection,0.25,0.01594042071564579,occupation == Office-based AND age >= 70,103,4
+5,0,B0_infection,0.5,0.0063016475821454435,age < 60,7976,4
+5,0,B0_infection,0.75,0.005955255488625856,age < 60,7976,4
+5,0,B0_infection,1.0,0.005627904047711605,age < 60,7976,4
+5,0,B0+_infection,0.0,0.006618571996446784,occupation == Other AND obesity == 1,116,4
+5,0,B0+_infection,0.25,0.0031710277627046246,occupation == Agriculture AND smoking == 1,576,4
+5,0,B0+_infection,0.5,0.002127365351621869,obesity == 0 AND age >= 20,6815,4
+5,0,B0+_infection,0.75,0.0019328962640676975,obesity == 0 AND age >= 20,6815,4
+5,0,B0+_infection,1.0,0.0017562042010313506,obesity == 0 AND age >= 20,6815,4
+5,0,B0_offspring,0.0,0.15154944158657802,occupation == Office-based AND age >= 70,103,4
+5,0,B0_offspring,0.25,0.04828321979927777,occupation == Office-based AND age >= 70,103,4
+5,0,B0_offspring,0.5,0.01919480040599702,age < 60,7973,4
+5,0,B0_offspring,0.75,0.018139345735860627,age < 60,7973,4
+5,0,B0_offspring,1.0,0.017141926811715356,age < 60,7973,4
+5,0,B0+_offspring,0.0,0.03287046988848214,occupation == Student AND obesity == 1,179,4
+5,0,B0+_offspring,0.25,0.012024076956270766,occupation == Student AND obesity == 1,179,4
+5,0,B0+_offspring,0.5,0.00854970310817198,age < 70,9323,4
+5,0,B0+_offspring,0.75,0.008401803729392546,age < 70,9323,4
+5,0,B0+_offspring,1.0,0.008256462828488494,age < 70,9323,4
+5,0,model_a,0.0,0.019497384010706185,occupation == Other AND obesity == 1,116,4
+5,0,model_a,0.25,0.0068909919188005694,sex == Male AND occupation == Office-based,914,4
+5,0,model_a,0.5,0.004482948300202303,age >= 20,7375,4
+5,0,model_a,0.75,0.004154361037959398,age >= 20,7375,4
+5,0,model_a,1.0,0.0038498582803054527,age >= 20,7375,4
+5,0,model_b,0.0,0.030132201318254625,occupation == Student AND obesity == 1,179,4
+5,0,model_b,0.25,0.011021586618354881,occupation == Student AND obesity == 1,179,4
+5,0,model_b,0.5,0.0051921883639086,age < 65,8644,4
+5,0,model_b,0.75,0.005006441307312357,age < 65,8644,4
+5,0,model_b,1.0,0.004827339227095245,age < 65,8644,4
+5,1,B0_infection,0.0,0.05255735739297568,occupation == Office-based AND age >= 70,103,7
+5,1,B0_infection,0.25,0.016743368159008565,occupation == Office-based AND age >= 70,103,7
+5,1,B0_infection,0.5,0.006002590492670872,age < 60,7976,7
+5,1,B0_infection,0.75,0.005672637117749018,age < 60,7976,7
+5,1,B0_infection,1.0,0.005360820783785605,age < 60,7976,7
+5,1,B0+_infection,0.0,0.0077825609973228745,occupation == Agriculture AND obesity == 1,75,7
+5,1,B0+_infection,0.25,0.0042312040049552755,obesity == 0,9254,7
+5,1,B0+_infection,0.5,0.0041499832026130464,obesity == 0,9254,7
+5,1,B0+_infection,0.75,0.004070321488115646,obesity == 0,9254,7
+5,1,B0+_infection,1.0,0.003992188933724886,obesity == 0,9254,7
+5,1,B0_offspring,0.0,0.13510809018417147,occupation == Office-based AND age >= 70,103,7
+5,1,B0_offspring,0.25,0.04304505214092946,occupation == Office-based AND age >= 70,103,7
+5,1,B0_offspring,0.5,0.019134957458852936,age < 60,7973,7
+5,1,B0_offspring,0.75,0.01808279334223635,age < 60,7973,7
+5,1,B0_offspring,1.0,0.01708848403562789,age < 60,7973,7
+5,1,B0+_offspring,0.0,0.019155141781642866,sex == Male AND obesity == 1,441,7
+5,1,B0+_offspring,0.25,0.008778647188820932,sex == Male AND obesity == 1,441,7
+5,1,B0+_offspring,0.5,0.004697464928136266,smoking == 1 AND alcohol == 1,1781,7
+5,1,B0+_offspring,0.75,0.004189684947657416,age < 70,9323,7
+5,1,B0+_offspring,1.0,0.004117208536114213,age < 70,9323,7
+5,1,model_a,0.0,0.02819713439010767,occupation == Agriculture AND obesity == 1,75,7
+5,1,model_a,0.25,0.008551211672270314,occupation == Sales and services AND age >= 65,209,7
+5,1,model_a,0.5,0.006956603828138102,obesity == 0,9254,7
+5,1,model_a,0.75,0.006823067145946299,obesity == 0,9254,7
+5,1,model_a,1.0,0.006692093790045791,obesity == 0,9254,7
+5,1,model_b,0.0,0.025251786782954446,occupation == Healthcare AND obesity == 1,141,7
+5,1,model_b,0.25,0.008701555445329814,occupation == Healthcare AND obesity == 1,141,7
+5,1,model_b,0.5,0.005267139994221264,alcohol == 1 AND age >= 30,1775,7
+5,1,model_b,0.75,0.003418805948103968,alcohol == 1 AND age >= 30,1775,7
+5,1,model_b,1.0,0.0022190855233797813,alcohol == 1 AND age >= 30,1775,7
+5,2,B0_infection,0.0,0.051374966638010444,occupation == Office-based AND age >= 70,103,4
+5,2,B0_infection,0.25,0.016366690093363716,occupation == Office-based AND age >= 70,103,4
+5,2,B0_infection,0.5,0.006638088935982704,age < 60,7976,4
+5,2,B0_infection,0.75,0.006273203167057902,age < 60,7976,4
+5,2,B0_infection,1.0,0.005928374620271558,age < 60,7976,4
+5,2,B0+_infection,0.0,0.008067161246494769,occupation == Student AND obesity == 1,179,4
+5,2,B0+_infection,0.25,0.0031436688745227572,occupation == Agriculture AND age < 30,372,4
+5,2,B0+_infection,0.5,0.001933952848596768,smoking == 1,5965,4
+5,2,B0+_infection,0.75,0.0016996069307525965,smoking == 1,5965,4
+5,2,B0+_infection,1.0,0.0015428952706742344,age < 60,7976,4
+5,2,B0_offspring,0.0,0.14981744494259996,occupation == Office-based AND age >= 70,103,4
+5,2,B0_offspring,0.25,0.047734992210826256,occupation == Office-based AND age >= 70,103,4
+5,2,B0_offspring,0.5,0.01520937352950227,occupation == Office-based AND age >= 70,103,4
+5,2,B0_offspring,0.75,0.013271163520553854,age < 60,7971,4
+5,2,B0_offspring,1.0,0.01254158328059337,age < 60,7971,4
+5,2,B0+_offspring,0.0,0.03418208415339293,obesity == 1 AND age >= 50,274,4
+5,2,B0+_offspring,0.25,0.013909174108952016,obesity == 1 AND age >= 50,274,4
+5,2,B0+_offspring,0.5,0.005659839918624086,obesity == 1 AND age >= 50,274,4
+5,2,B0+_offspring,0.75,0.005117510243457944,age < 70,9320,4
+5,2,B0+_offspring,1.0,0.005028956308027072,age < 70,9320,4
+5,2,model_a,0.0,0.035929205919238615,occupation == Healthcare AND obesity == 1,141,4
+5,2,model_a,0.25,0.012380905165252162,occupation == Healthcare AND obesity == 1,141,4
+5,2,model_a,0.5,0.004266356820006669,occupation == Healthcare AND obesity == 1,141,4
+5,2,model_a,0.75,0.002512851343460531,smoking == 1 AND age >= 45,2485,4
+5,2,model_a,1.0,0.0017741829257779838,smoking == 1 AND age >= 45,2485,4
+5,2,model_b,0.0,0.04000456822535338,occupation == Agriculture AND obesity == 1,75,4
+5,2,model_b,0.25,0.01278102136130793,sex == Female AND obesity == 1,305,4
+5,2,model_b,0.5,0.009230086889843317,age < 70,9326,4
+5,2,model_b,0.75,0.00907046688611469,age < 70,9326,4
+5,2,model_b,1.0,0.008913607262206361,age < 70,9326,4
+5,3,B0_infection,0.0,0.03863671585561884,occupation == Office-based AND age >= 70,103,3
+5,3,B0_infection,0.25,0.012308624141595247,occupation == Office-based AND age >= 70,103,3
+5,3,B0_infection,0.5,0.006665597945152757,age < 60,7976,3
+5,3,B0_infection,0.75,0.006299200047351682,age < 60,7976,3
+5,3,B0_infection,1.0,0.005952942491140017,age < 60,7976,3
+5,3,B0+_infection,0.0,0.004166702690070443,obesity == 0,9254,3
+5,3,B0+_infection,0.25,0.004086720033783318,obesity == 0,9254,3
+5,3,B0+_infection,0.5,0.004008272698296016,obesity == 0,9254,3
+5,3,B0+_infection,0.75,0.003931331212094739,obesity == 0,9254,3
+5,3,B0+_infection,1.0,0.003855866669391188,obesity == 0,9254,3
+5,3,B0_offspring,0.0,0.1446804302513267,occupation == Office-based AND age >= 70,103,3
+5,3,B0_offspring,0.25,0.04609246723948798,occupation == Office-based AND age >= 70,103,3
+5,3,B0_offspring,0.5,0.014684194210182699,occupation == Office-based AND age >= 70,103,3
+5,3,B0_offspring,0.75,0.010497676880900841,sex == Female AND age < 65,3495,3
+5,3,B0_offspring,1.0,0.009372618185978952,age < 60,7975,3
+5,3,B0+_offspring,0.0,0.04065253735275546,occupation == Office-based AND obesity == 1,116,3
+5,3,B0+_offspring,0.25,0.013341756581340937,occupation == Office-based AND obesity == 1,116,3
+5,3,B0+_offspring,0.5,0.005763699390964242,sex == Male AND smoking == 0,2380,3
+5,3,B0+_offspring,0.75,0.004025839150948194,sex == Male AND smoking == 0,2380,3
+5,3,B0+_offspring,1.0,0.0029033051348730902,alcohol == 0,7011,3
+5,3,model_a,0.0,0.01967817180100889,occupation == Sales and services AND obesity == 1,119,3
+5,3,model_a,0.25,0.006931700158602901,occupation == Sales and services AND smoking == 0,577,3
+5,3,model_a,0.5,0.0059600237794354555,age < 70,9326,3
+5,3,model_a,0.75,0.005856954433583139,age < 70,9326,3
+5,3,model_a,1.0,0.005755667511836425,age < 70,9326,3
+5,3,model_b,0.0,0.04173690789912886,obesity == 1 AND age >= 70,59,3
+5,3,model_b,0.25,0.011567333950288292,obesity == 1 AND age >= 70,59,3
+5,3,model_b,0.5,0.00520386736750204,sex == Male AND smoking == 0,2380,3
+5,3,model_b,0.75,0.003634715795432968,sex == Male AND smoking == 0,2380,3
+5,3,model_b,1.0,0.003016344289827887,sex == Male,5975,3
+5,4,B0_infection,0.0,0.044770320467770575,occupation == Office-based AND age >= 70,103,1
+5,4,B0_infection,0.25,0.014262626497443809,occupation == Office-based AND age >= 70,103,1
+5,4,B0_infection,0.5,0.006290908450406019,age < 60,7976,1
+5,4,B0_infection,0.75,0.005945106670812641,age < 60,7976,1
+5,4,B0_infection,1.0,0.005618313095155569,age < 60,7976,1
+5,4,B0+_infection,0.0,0.010272865017606225,occupation == Agriculture AND age >= 70,73,1
+5,4,B0+_infection,0.25,0.0030027715792148653,occupation == Agriculture AND age >= 70,73,1
+5,4,B0+_infection,0.5,0.0021115968004908068,age < 65,8644,1
+5,4,B0+_infection,0.75,0.002036055841088103,age < 65,8644,1
+5,4,B0+_infection,1.0,0.001963217308846756,age < 65,8644,1
+5,4,B0_offspring,0.0,0.16341559823425522,occupation == Office-based AND age >= 70,103,1
+5,4,B0_offspring,0.25,0.052065045524960475,occupation == Office-based AND age >= 70,103,1
+5,4,B0_offspring,0.5,0.018578923413352676,sex == Female AND age < 65,3495,1
+5,4,B0_offspring,0.75,0.014286497766415503,sex == Female AND age < 65,3495,1
+5,4,B0_offspring,1.0,0.010985782862052469,sex == Female AND age < 65,3495,1
+5,4,B0+_offspring,0.0,0.028591108204975513,obesity == 1 AND age >= 60,161,1
+5,4,B0+_offspring,0.25,0.010900007503694454,occupation == Agriculture AND age < 20,250,1
+5,4,B0+_offspring,0.5,0.006675239276913963,obesity == 0,9251,1
+5,4,B0+_offspring,0.75,0.006547227715937553,obesity == 0,9251,1
+5,4,B0+_offspring,1.0,0.006421671042203956,obesity == 0,9251,1
+5,4,model_a,0.0,0.040555972727015964,occupation == Agriculture AND age >= 70,73,1
+5,4,model_a,0.25,0.011854562681723418,occupation == Agriculture AND age >= 70,73,1
+5,4,model_a,0.5,0.00556065337152915,age < 65,8644,1
+5,4,model_a,0.75,0.005361724726395024,age < 65,8644,1
+5,4,model_a,1.0,0.005169912620129786,age < 65,8644,1
+5,4,model_b,0.0,0.02556170664431061,obesity == 1 AND age >= 60,161,1
+5,4,model_b,0.25,0.010117473309533161,sex == Female AND smoking == 0,1655,1
+5,4,model_b,0.5,0.006453147128269397,sex == Female AND smoking == 0,1655,1
+5,4,model_b,0.75,0.0042061210830779405,sex == Female AND obesity == 0,3720,1
+5,4,model_b,1.0,0.0034807583061450945,obesity == 0 AND age < 65,8009,1
+5,5,B0_infection,0.0,0.04555551762093307,occupation == Office-based AND age >= 70,103,4
+5,5,B0_infection,0.25,0.01451276930646111,occupation == Office-based AND age >= 70,103,4
+5,5,B0_infection,0.5,0.0069095073649084,age < 60,7976,4
+5,5,B0_infection,0.75,0.006529702133003512,age < 60,7976,4
+5,5,B0_infection,1.0,0.006170774223686765,age < 60,7976,4
+5,5,B0+_infection,0.0,0.010258357697349793,occupation == Agriculture AND age < 40,498,4
+5,5,B0+_infection,0.25,0.004846019686011954,occupation == Agriculture AND age < 40,498,4
+5,5,B0+_infection,0.5,0.003053081072837566,obesity == 0,9254,4
+5,5,B0+_infection,0.75,0.0029944751313463656,obesity == 0,9254,4
+5,5,B0+_infection,1.0,0.0029369941702589377,obesity == 0,9254,4
+5,5,B0_offspring,0.0,0.11051696527176358,occupation == Office-based AND age >= 70,103,4
+5,5,B0_offspring,0.25,0.0352095094204183,occupation == Office-based AND age >= 70,103,4
+5,5,B0_offspring,0.5,0.014542269015780464,age < 60,7974,4
+5,5,B0_offspring,0.75,0.01374272794220329,age < 60,7974,4
+5,5,B0_offspring,1.0,0.012987146028482345,age < 60,7974,4
+5,5,B0+_offspring,0.0,0.021837953534613104,occupation == Sales and services AND age < 20,374,4
+5,5,B0+_offspring,0.25,0.009693318271393926,occupation == Healthcare AND alcohol == 1,574,4
+5,5,B0+_offspring,0.5,0.005232871601082067,age < 70,9324,4
+5,5,B0+_offspring,0.75,0.005142358635655271,age < 70,9324,4
+5,5,B0+_offspring,1.0,0.00505341127273794,age < 70,9324,4
+5,5,model_a,0.0,0.024120085315495973,occupation == Agriculture AND age < 20,251,4
+5,5,model_a,0.25,0.009600575559280436,occupation == Agriculture AND age < 20,251,4
+5,5,model_a,0.5,0.004582724973530881,occupation == Office-based AND age >= 40,706,4
+5,5,model_a,0.75,0.0027261333369185035,alcohol == 0 AND obesity == 0,6478,4
+5,5,model_a,1.0,0.0024457233480518316,alcohol == 0 AND obesity == 0,6478,4
+5,5,model_b,0.0,0.023518205759702673,occupation == Agriculture AND alcohol == 1,290,4
+5,5,model_b,0.25,0.014398036693439793,age < 70,9326,4
+5,5,model_b,0.5,0.014149045031918092,age < 70,9326,4
+5,5,model_b,0.75,0.01390435929410164,age < 70,9326,4
+5,5,model_b,1.0,0.013663905015733916,age < 70,9326,4
+5,6,B0_infection,0.0,0.050451165232335504,occupation == Office-based AND age >= 70,103,3
+5,6,B0_infection,0.25,0.016072391677152013,occupation == Office-based AND age >= 70,103,3
+5,6,B0_infection,0.5,0.005210683777515901,age < 60,7976,3
+5,6,B0_infection,0.75,0.004924260324151697,age < 60,7976,3
+5,6,B0_infection,1.0,0.004653581137401996,age < 60,7976,3
+5,6,B0+_infection,0.0,0.009746204386958742,obesity == 1 AND age >= 70,59,3
+5,6,B0+_infection,0.25,0.0031752153934391457,occupation == Student AND age >= 70,159,3
+5,6,B0+_infection,0.5,0.0013588580976845906,occupation == Student AND smoking == 1,1500,3
+5,6,B0+_infection,0.75,0.001067710994285594,age < 50,6612,3
+5,6,B0+_infection,1.0,0.0009628018718110221,age < 50,6612,3
+5,6,B0_offspring,0.0,0.12516599470822187,occupation == Office-based AND age >= 70,103,3
+5,6,B0_offspring,0.25,0.03987852618156304,occupation == Office-based AND age >= 70,103,3
+5,6,B0_offspring,0.5,0.015002386249314957,sex == Female AND age < 70,3757,3
+5,6,B0_offspring,0.75,0.011746651369490473,sex == Female AND age < 70,3757,3
+5,6,B0_offspring,1.0,0.009197458064556433,sex == Female AND age < 70,3757,3
+5,6,B0+_offspring,0.0,0.03459981182762138,occupation == Healthcare AND age >= 70,137,3
+5,6,B0+_offspring,0.25,0.011838517399864102,occupation == Healthcare AND age >= 70,137,3
+5,6,B0+_offspring,0.5,0.006026075070771365,age >= 40,4705,3
+5,6,B0+_offspring,0.75,0.004991348373828901,age >= 40,4705,3
+5,6,B0+_offspring,1.0,0.0041342927687316984,age >= 40,4705,3
+5,6,model_a,0.0,0.029981692250603403,occupation == Other AND obesity == 1,116,3
+5,6,model_a,0.25,0.009839445834519034,occupation == Other AND obesity == 1,116,3
+5,6,model_a,0.5,0.003689124747231343,occupation == Student AND age >= 55,641,3
+5,6,model_a,0.75,0.0018976872557362845,occupation == Other AND age < 55,1145,3
+5,6,model_a,1.0,0.001199412029283251,age >= 25,6713,3
+5,6,model_b,0.0,0.02748116105234724,occupation == Other AND age >= 70,110,3
+5,6,model_b,0.25,0.010439502708415838,alcohol == 1 AND age >= 40,1410,3
+5,6,model_b,0.5,0.006397121354847827,alcohol == 1 AND age >= 40,1410,3
+5,6,model_b,0.75,0.003920029791807972,alcohol == 1 AND age >= 40,1410,3
+5,6,model_b,1.0,0.002621312607799846,age >= 40,4708,3
+5,7,B0_infection,0.0,0.04484009663661781,occupation == Office-based AND age >= 70,103,2
+5,7,B0_infection,0.25,0.014284855318329895,occupation == Office-based AND age >= 70,103,2
+5,7,B0_infection,0.5,0.00568697769375721,age < 60,7976,2
+5,7,B0_infection,0.75,0.0053743730798906444,age < 60,7976,2
+5,7,B0_infection,1.0,0.005078951871669918,age < 60,7976,2
+5,7,B0+_infection,0.0,0.009349303324552473,occupation == Sales and services AND age >= 70,92,2
+5,7,B0+_infection,0.25,0.0028955175854846202,occupation == Sales and services AND age >= 70,92,2
+5,7,B0+_infection,0.5,0.0015224324951250154,obesity == 0,9254,2
+5,7,B0+_infection,0.75,0.0014932083809908066,obesity == 0,9254,2
+5,7,B0+_infection,1.0,0.0014645452433528717,obesity == 0,9254,2
+5,7,B0_offspring,0.0,0.14998976856333135,occupation == Office-based AND age >= 70,103,2
+5,7,B0_offspring,0.25,0.04778392268915954,occupation == Office-based AND age >= 70,103,2
+5,7,B0_offspring,0.5,0.017497374954577174,sex == Female AND age < 70,3759,2
+5,7,B0_offspring,0.75,0.013700986482031127,sex == Female AND age < 70,3759,2
+5,7,B0_offspring,1.0,0.010728296734116358,sex == Female AND age < 70,3759,2
+5,7,B0+_offspring,0.0,0.03175560599300362,obesity == 1 AND age >= 65,111,2
+5,7,B0+_offspring,0.25,0.010693447614688751,occupation == Healthcare AND obesity == 1,141,2
+5,7,B0+_offspring,0.5,0.004103039267011847,alcohol == 1 AND age >= 65,420,2
+5,7,B0+_offspring,0.75,0.002816850643831302,sex == Female,4025,2
+5,7,B0+_offspring,1.0,0.002243707033427284,sex == Female,4025,2
+5,7,model_a,0.0,0.03267599345398401,occupation == Sales and services AND age >= 70,92,2
+5,7,model_a,0.25,0.010119889192248446,occupation == Sales and services AND age >= 70,92,2
+5,7,model_a,0.5,0.003957443224999192,sex == Female AND occupation == Sales and services,569,2
+5,7,model_a,0.75,0.0019328260026570097,sex == Female AND occupation == Sales and services,569,2
+5,7,model_a,1.0,0.001279713343390719,alcohol == 1,2989,2
+5,7,model_b,0.0,0.024524415926292325,alcohol == 1 AND age >= 65,420,2
+5,7,model_b,0.25,0.01110224982316191,alcohol == 1 AND age >= 65,420,2
+5,7,model_b,0.5,0.005026009651212658,alcohol == 1 AND age >= 65,420,2
+5,7,model_b,0.75,0.0030100248488538544,occupation == Office-based AND age < 70,1422,2
+5,7,model_b,1.0,0.0022857939455389934,alcohol == 0 AND age < 55,5146,2
+6,0,B0_infection,0.0,0.014866436235493607,occupation == Office-based AND age < 20,403,4
+6,0,B0_infection,0.25,0.01437416487185049,age < 70,9326,4
+6,0,B0_infection,0.5,0.014125586036372201,age < 70,9326,4
+6,0,B0_infection,0.75,0.013881305985414519,age < 70,9326,4
+6,0,B0_infection,1.0,0.01364125037818202,age < 70,9326,4
+6,0,B0+_infection,0.0,0.010324936215063765,occupation == Agriculture AND age >= 70,73,4
+6,0,B0+_infection,0.25,0.0030179920568083325,occupation == Agriculture AND age >= 70,73,4
+6,0,B0+_infection,0.5,0.0012481908454012275,occupation == Office-based AND smoking == 0,627,4
+6,0,B0+_infection,0.75,0.0009328396029465087,age < 55,7322,4
+6,0,B0+_infection,1.0,0.0008768688601627736,age < 70,9326,4
+6,0,B0_offspring,0.0,0.036140463082050434,age < 70,9323,4
+6,0,B0_offspring,0.25,0.035516165595765835,age < 70,9323,4
+6,0,B0_offspring,0.5,0.034902652347372616,age < 70,9323,4
+6,0,B0_offspring,0.75,0.034299737047818746,age < 70,9323,4
+6,0,B0_offspring,1.0,0.033707236626046036,age < 70,9323,4
+6,0,B0+_offspring,0.0,0.024649046689920802,alcohol == 1 AND age >= 70,206,4
+6,0,B0+_offspring,0.25,0.009339214939418939,alcohol == 1 AND age >= 70,206,4
+6,0,B0+_offspring,0.5,0.004449381784632192,smoking == 0 AND age >= 45,1595,4
+6,0,B0+_offspring,0.75,0.0033996434998872535,obesity == 0,9250,4
+6,0,B0+_offspring,1.0,0.003334358169051927,obesity == 0,9250,4
+6,0,model_a,0.0,0.030937253240976438,occupation == Agriculture AND age >= 70,73,4
+6,0,model_a,0.25,0.009042998677755812,occupation == Agriculture AND age >= 70,73,4
+6,0,model_a,0.5,0.0051260474138923534,obesity == 0,9254,4
+6,0,model_a,0.75,0.005027649491383049,obesity == 0,9254,4
+6,0,model_a,1.0,0.004931140383075484,obesity == 0,9254,4
+6,0,model_b,0.0,0.023102888264394585,alcohol == 1 AND age >= 70,206,4
+6,0,model_b,0.25,0.008752519414459082,alcohol == 1 AND age >= 70,206,4
+6,0,model_b,0.5,0.004948315137118377,smoking == 0 AND age >= 40,1832,4
+6,0,model_b,0.75,0.0038641413823805276,age >= 40,4708,4
+6,0,model_b,1.0,0.003200826409474405,age >= 40,4708,4
+6,1,B0_infection,0.0,0.019691415976638038,occupation == Healthcare AND obesity == 1,141,3
+6,1,B0_infection,0.25,0.0150670096638159,age < 70,9326,3
+6,1,B0_infection,0.5,0.014806449154752441,age < 70,9326,3
+6,1,B0_infection,0.75,0.014550394634627612,age < 70,9326,3
+6,1,B0_infection,1.0,0.014298768179367701,age < 70,9326,3
+6,1,B0+_infection,0.0,0.016037269848302893,occupation == Healthcare AND obesity == 1,141,3
+6,1,B0+_infection,0.25,0.005526309642014033,occupation == Healthcare AND obesity == 1,141,3
+6,1,B0+_infection,0.5,0.0019043202832088723,occupation == Healthcare AND obesity == 1,141,3
+6,1,B0+_infection,0.75,0.0013426000662618716,age < 70,9326,3
+6,1,B0+_infection,1.0,0.0013193818853129368,age < 70,9326,3
+6,1,B0_offspring,0.0,0.047058250836074955,occupation == Office-based AND age < 20,403,3
+6,1,B0_offspring,0.25,0.04053810908616787,age < 70,9324,3
+6,1,B0_offspring,0.5,0.039836921526850484,age < 70,9324,3
+6,1,B0_offspring,0.75,0.03914786240678261,age < 70,9324,3
+6,1,B0_offspring,1.0,0.03847072194038452,age < 70,9324,3
+6,1,B0+_offspring,0.0,0.04074216364827314,occupation == Sales and services AND obesity == 1,119,3
+6,1,B0+_offspring,0.25,0.013457133044761658,occupation == Sales and services AND obesity == 1,119,3
+6,1,B0+_offspring,0.5,0.00444488985287584,occupation == Sales and services AND obesity == 1,119,3
+6,1,B0+_offspring,0.75,0.0035686768162675906,alcohol == 0 AND age < 65,6073,3
+6,1,B0+_offspring,1.0,0.0031505019784130615,alcohol == 0 AND age < 65,6073,3
+6,1,model_a,0.0,0.03796874939665254,occupation == Healthcare AND obesity == 1,141,3
+6,1,model_a,0.25,0.013083714863608154,occupation == Healthcare AND obesity == 1,141,3
+6,1,model_a,0.5,0.004508539189528668,occupation == Healthcare AND obesity == 1,141,3
+6,1,model_a,0.75,0.0024974758297387264,age < 30,3966,3
+6,1,model_a,1.0,0.0020523591777402315,age < 40,5292,3
+6,1,model_b,0.0,0.027385444566649805,occupation == Office-based AND obesity == 1,116,3
+6,1,model_b,0.25,0.008987404587289475,occupation == Office-based AND obesity == 1,116,3
+6,1,model_b,0.5,0.005298154735693782,smoking == 1 AND alcohol == 0,4183,3
+6,1,model_b,0.75,0.004260853518743277,smoking == 1 AND alcohol == 0,4183,3
+6,1,model_b,1.0,0.0034266407105623385,smoking == 1 AND alcohol == 0,4183,3
+6,2,B0_infection,0.0,0.014896878458556972,age < 70,9326,4
+6,2,B0_infection,0.25,0.014639260104203633,age < 70,9326,4
+6,2,B0_infection,0.5,0.01438609685879707,age < 70,9326,4
+6,2,B0_infection,0.75,0.014137311678153927,age < 70,9326,4
+6,2,B0_infection,1.0,0.013892828850450232,age < 70,9326,4
+6,2,B0+_infection,0.0,0.01275800142648161,occupation == Sales and services AND age >= 70,92,4
+6,2,B0+_infection,0.25,0.003951205368319104,occupation == Sales and services AND age >= 70,92,4
+6,2,B0+_infection,0.5,0.0016124317180538721,alcohol == 0 AND age >= 20,5215,4
+6,2,B0+_infection,0.75,0.0013702345399933494,alcohol == 0 AND age >= 20,5215,4
+6,2,B0+_infection,1.0,0.0012719864504194198,age < 65,8644,4
+6,2,B0_offspring,0.0,0.04568438029921307,occupation == Office-based AND age < 20,403,4
+6,2,B0_offspring,0.25,0.037813646042950004,age < 70,9324,4
+6,2,B0_offspring,0.5,0.03715958351326002,age < 70,9324,4
+6,2,B0_offspring,0.75,0.036516834301314076,age < 70,9324,4
+6,2,B0_offspring,1.0,0.03588520272068684,age < 70,9324,4
+6,2,B0+_offspring,0.0,0.03964976539878105,occupation == Sales and services AND age >= 70,92,4
+6,2,B0+_offspring,0.25,0.012280309027764207,occupation == Sales and services AND age >= 70,92,4
+6,2,B0+_offspring,0.5,0.0047515856973948025,occupation == Sales and services AND age >= 55,413,4
+6,2,B0+_offspring,0.75,0.002840628317617532,alcohol == 1,2989,4
+6,2,B0+_offspring,1.0,0.0021004754395253524,alcohol == 1,2989,4
+6,2,model_a,0.0,0.037969243621229096,occupation == Sales and services AND age >= 70,92,4
+6,2,model_a,0.25,0.011759230479141734,occupation == Sales and services AND age >= 70,92,4
+6,2,model_a,0.5,0.004931373064236797,sex == Female AND smoking == 0,1655,4
+6,2,model_a,0.75,0.00467297086927442,obesity == 0,9254,4
+6,2,model_a,1.0,0.004583270055302831,obesity == 0,9254,4
+6,2,model_b,0.0,0.0226608520481089,occupation == Sales and services AND age >= 70,92,4
+6,2,model_b,0.25,0.008253643798240956,occupation == Agriculture AND alcohol == 1,290,4
+6,2,model_b,0.5,0.003406004532921161,occupation == Agriculture AND alcohol == 1,290,4
+6,2,model_b,0.75,0.0023355874083588937,alcohol == 1,2989,4
+6,2,model_b,1.0,0.00172694141190511,alcohol == 1,2989,4
+6,3,B0_infection,0.0,0.012628335956870629,occupation == Healthcare AND obesity == 1,141,7
+6,3,B0_infection,0.25,0.01014037314931138,age < 70,9326,7
+6,3,B0_infection,0.5,0.009965011159850172,age < 70,9326,7
+6,3,B0_infection,0.75,0.00979268178338012,age < 70,9326,7
+6,3,B0_infection,1.0,0.009623332575574026,age < 70,9326,7
+6,3,B0+_infection,0.0,0.00897654228459879,occupation == Healthcare AND obesity == 1,141,7
+6,3,B0+_infection,0.25,0.003361530612276876,occupation == Agriculture AND age >= 40,481,7
+6,3,B0+_infection,0.5,0.002009158654198445,sex == Male AND alcohol == 0,4158,7
+6,3,B0+_infection,0.75,0.0017912836237836756,alcohol == 0,7011,7
+6,3,B0+_infection,1.0,0.001639114708049498,alcohol == 0,7011,7
+6,3,B0_offspring,0.0,0.041855935485714424,age < 70,9323,7
+6,3,B0_offspring,0.25,0.041131879132149086,age < 70,9323,7
+6,3,B0_offspring,0.5,0.04042034806554854,age < 70,9323,7
+6,3,B0_offspring,0.75,0.03972112561380877,age < 70,9323,7
+6,3,B0_offspring,1.0,0.03903399885298745,age < 70,9323,7
+6,3,B0+_offspring,0.0,0.04320681360203916,occupation == Agriculture AND age >= 70,73,7
+6,3,B0+_offspring,0.25,0.012630354241931544,occupation == Agriculture AND age >= 70,73,7
+6,3,B0+_offspring,0.5,0.00499617096645303,alcohol == 1 AND age >= 25,1984,7
+6,3,B0+_offspring,0.75,0.0033346886029001193,alcohol == 1 AND age >= 25,1984,7
+6,3,B0+_offspring,1.0,0.0027006567932529382,age < 65,8641,7
+6,3,model_a,0.0,0.026395818916151528,occupation == Student AND age >= 70,159,7
+6,3,model_a,0.25,0.011233823271342884,obesity == 0 AND age >= 70,615,7
+6,3,model_a,0.5,0.0059293479587568,obesity == 0 AND age >= 65,1245,7
+6,3,model_a,0.75,0.0036601612805134093,age >= 60,2024,7
+6,3,model_a,1.0,0.003004626568031545,alcohol == 0 AND obesity == 0,6478,7
+6,3,model_b,0.0,0.023654160905477437,occupation == Agriculture AND age >= 70,73,7
+6,3,model_b,0.25,0.010213029133600943,alcohol == 1 AND age >= 25,1984,7
+6,3,model_b,0.5,0.00681616331762265,alcohol == 1 AND age >= 25,1984,7
+6,3,model_b,0.75,0.004549099171728648,alcohol == 1 AND age >= 25,1984,7
+6,3,model_b,1.0,0.003067968769478729,alcohol == 1 AND age >= 20,2160,7
+6,4,B0_infection,0.0,0.013410986253106938,age < 70,9326,5
+6,4,B0_infection,0.25,0.013179064094488794,age < 70,9326,5
+6,4,B0_infection,0.5,0.012951152669059319,age < 70,9326,5
+6,4,B0_infection,0.75,0.012727182617423071,age < 70,9326,5
+6,4,B0_infection,1.0,0.01250708577964753,age < 70,9326,5
+6,4,B0+_infection,0.0,0.008565207448796608,occupation == Agriculture AND age >= 70,73,5
+6,4,B0+_infection,0.25,0.0026259624354819894,occupation == Other AND age < 25,522,5
+6,4,B0+_infection,0.5,0.001432444071528589,sex == Male AND alcohol == 0,4158,5
+6,4,B0+_infection,0.75,0.0012325724291170235,sex == Male,5975,5
+6,4,B0+_infection,1.0,0.0010836696898604678,sex == Male,5975,5
+6,4,B0_offspring,0.0,0.05808977903432666,occupation == Office-based AND age < 20,403,5
+6,4,B0_offspring,0.25,0.03916086319902201,age < 70,9319,5
+6,4,B0_offspring,0.5,0.03848314987963699,age < 70,9319,5
+6,4,B0_offspring,0.75,0.037817164987711226,age < 70,9319,5
+6,4,B0_offspring,1.0,0.03716270555245054,age < 70,9319,5
+6,4,B0+_offspring,0.0,0.016557926038240963,occupation == Office-based AND age < 20,403,5
+6,4,B0+_offspring,0.25,0.008556848105160905,alcohol == 0 AND age < 30,2750,5
+6,4,B0+_offspring,0.5,0.0065297073015731,obesity == 0,9248,5
+6,4,B0+_offspring,0.75,0.006404447908304427,obesity == 0,9248,5
+6,4,B0+_offspring,1.0,0.006281591366324091,obesity == 0,9248,5
+6,4,model_a,0.0,0.0405257051952557,obesity == 1 AND age >= 70,59,5
+6,4,model_a,0.25,0.011231650574053193,obesity == 1 AND age >= 70,59,5
+6,4,model_a,0.5,0.005961873603337374,obesity == 0,9254,5
+6,4,model_a,0.75,0.005847431435822189,obesity == 0,9254,5
+6,4,model_a,1.0,0.00573518606256615,obesity == 0,9254,5
+6,4,model_b,0.0,0.028328797225926985,occupation == Healthcare AND age >= 70,137,5
+6,4,model_b,0.25,0.009691885563407287,occupation == Healthcare AND age >= 70,137,5
+6,4,model_b,0.5,0.0059091340209705134,obesity == 0,9254,5
+6,4,model_b,0.75,0.005795704225156152,obesity == 0,9254,5
+6,4,model_b,1.0,0.005684451790446281,obesity == 0,9254,5
+6,5,B0_infection,0.0,0.015090712847541599,occupation == Office-based AND age < 20,403,3
+6,5,B0_infection,0.25,0.013087277447404254,age < 70,9326,3
+6,5,B0_infection,0.5,0.012860953329345198,age < 70,9326,3
+6,5,B0_infection,0.75,0.012638543135066018,age < 70,9326,3
+6,5,B0_infection,1.0,0.012419979179339498,age < 70,9326,3
+6,5,B0+_infection,0.0,0.011036308037047362,occupation == Agriculture AND age >= 70,73,3
+6,5,B0+_infection,0.25,0.0032259269499122223,occupation == Agriculture AND age >= 70,73,3
+6,5,B0+_infection,0.5,0.002116138517702011,age >= 30,6034,3
+6,5,B0+_infection,0.75,0.0018650712121797445,age >= 30,6034,3
+6,5,B0+_infection,1.0,0.0016437915558944773,age >= 30,6034,3
+6,5,B0_offspring,0.0,0.04944352566650356,age < 70,9321,3
+6,5,B0_offspring,0.25,0.04858925297108284,age < 70,9321,3
+6,5,B0_offspring,0.5,0.047749740182612604,age < 70,9321,3
+6,5,B0_offspring,0.75,0.04692473228316432,age < 70,9321,3
+6,5,B0_offspring,1.0,0.04611397866094454,age < 70,9321,3
+6,5,B0+_offspring,0.0,0.02708450416466297,occupation == Other AND obesity == 1,116,3
+6,5,B0+_offspring,0.25,0.008889975219846788,occupation == Other AND obesity == 1,116,3
+6,5,B0+_offspring,0.5,0.00838567150945462,age < 60,7971,3
+6,5,B0+_offspring,0.75,0.007924670465904645,age < 60,7971,3
+6,5,B0+_offspring,1.0,0.00748901288613268,age < 60,7971,3
+6,5,model_a,0.0,0.028675444914325863,occupation == Agriculture AND age >= 70,73,3
+6,5,model_a,0.25,0.008686604983188654,occupation == Office-based AND age >= 65,211,3
+6,5,model_a,0.5,0.0049761049764111285,obesity == 0 AND age >= 35,4954,3
+6,5,model_a,0.75,0.00421528124821663,obesity == 0 AND age >= 30,5567,3
+6,5,model_a,1.0,0.003641093755653057,obesity == 0 AND age >= 30,5567,3
+6,5,model_b,0.0,0.03048301836489856,occupation == Office-based AND obesity == 1,116,3
+6,5,model_b,0.25,0.010003971942845618,occupation == Office-based AND obesity == 1,116,3
+6,5,model_b,0.5,0.0035461223550836076,occupation == Student,2517,3
+6,5,model_b,0.75,0.0025746950727519465,age < 70,9326,3
+6,5,model_b,1.0,0.0025301697240724045,age < 70,9326,3
+6,6,B0_infection,0.0,0.013661120279665206,age < 70,9326,9
+6,6,B0_infection,0.25,0.013424872441914417,age < 70,9326,9
+6,6,B0_infection,0.5,0.013192710143248226,age < 70,9326,9
+6,6,B0_infection,0.75,0.012964562730619512,age < 70,9326,9
+6,6,B0_infection,1.0,0.01274036077281577,age < 70,9326,9
+6,6,B0+_infection,0.0,0.010658739050221687,occupation == Agriculture AND age >= 70,73,9
+6,6,B0+_infection,0.25,0.0031155630523150087,occupation == Agriculture AND age >= 70,73,9
+6,6,B0+_infection,0.5,0.0018127043915545443,age >= 20,7375,9
+6,6,B0+_infection,0.75,0.0016798383548773607,age >= 20,7375,9
+6,6,B0+_infection,1.0,0.0015567110178936019,age >= 20,7375,9
+6,6,B0_offspring,0.0,0.04078502897133651,age < 70,9321,9
+6,6,B0_offspring,0.25,0.040079353037880794,age < 70,9321,9
+6,6,B0_offspring,0.5,0.039385886940622776,age < 70,9321,9
+6,6,B0_offspring,0.75,0.03870441942097633,age < 70,9321,9
+6,6,B0_offspring,1.0,0.03803474287562057,age < 70,9321,9
+6,6,B0+_offspring,0.0,0.024864936494380707,occupation == Other AND age >= 70,110,9
+6,6,B0+_offspring,0.25,0.009662090069271498,age >= 20,7371,9
+6,6,B0+_offspring,0.5,0.008953791659362328,age >= 20,7371,9
+6,6,B0+_offspring,0.75,0.00829741644970104,age >= 20,7371,9
+6,6,B0+_offspring,1.0,0.007689158108540644,age >= 20,7371,9
+6,6,model_a,0.0,0.021320155135485196,alcohol == 1 AND obesity == 1,213,9
+6,6,model_a,0.25,0.008680171489966674,occupation == Office-based AND age >= 25,1024,9
+6,6,model_a,0.5,0.005104973456091567,age >= 20,7375,9
+6,6,model_a,0.75,0.00473079353265053,age >= 20,7375,9
+6,6,model_a,1.0,0.0043840399251953805,age >= 20,7375,9
+6,6,model_b,0.0,0.018734775935286236,occupation == Other AND age >= 70,110,9
+6,6,model_b,0.25,0.007270784414745005,age >= 20,7375,9
+6,6,model_b,0.5,0.0067378567552643836,age >= 20,7375,9
+6,6,model_b,0.75,0.006243991165849205,age >= 20,7375,9
+6,6,model_b,1.0,0.0057863245087158436,age >= 20,7375,9
+6,7,B0_infection,0.0,0.013742212169114143,occupation == Office-based AND age < 20,403,4
+6,7,B0_infection,0.25,0.013290646443576144,age < 70,9326,4
+6,7,B0_infection,0.5,0.013060805374884375,age < 70,9326,4
+6,7,B0_infection,0.75,0.012834939050166244,age < 70,9326,4
+6,7,B0_infection,1.0,0.01261297873240384,age < 70,9326,4
+6,7,B0+_infection,0.0,0.011921159659806915,occupation == Agriculture AND age >= 70,73,4
+6,7,B0+_infection,0.25,0.00348457021058885,occupation == Agriculture AND age >= 70,73,4
+6,7,B0+_infection,0.5,0.0015811957767696899,obesity == 0,9254,4
+6,7,B0+_infection,0.75,0.0015508436619818009,obesity == 0,9254,4
+6,7,B0+_infection,1.0,0.0015210741764202429,obesity == 0,9254,4
+6,7,B0_offspring,0.0,0.03434198608117567,occupation == Sales and services AND age < 20,374,4
+6,7,B0_offspring,0.25,0.033746017233458166,age < 70,9321,4
+6,7,B0_offspring,0.5,0.033162962107167474,age < 70,9321,4
+6,7,B0_offspring,0.75,0.03258998085946049,age < 70,9321,4
+6,7,B0_offspring,1.0,0.03202689943641824,age < 70,9321,4
+6,7,B0+_offspring,0.0,0.0353510945069588,occupation == Office-based AND age >= 70,102,4
+6,7,B0+_offspring,0.25,0.011236164046501159,occupation == Office-based AND age >= 70,102,4
+6,7,B0+_offspring,0.5,0.005470976588974046,age >= 30,6029,4
+6,7,B0+_offspring,0.75,0.0048216018053008295,age >= 30,6029,4
+6,7,B0+_offspring,1.0,0.004249304231301748,age >= 30,6029,4
+6,7,model_a,0.0,0.030839382452932648,occupation == Healthcare AND age >= 70,137,4
+6,7,model_a,0.25,0.010550810300778434,occupation == Healthcare AND age >= 70,137,4
+6,7,model_a,0.5,0.008632120618718049,obesity == 0,9254,4
+6,7,model_a,0.75,0.008466421266536947,obesity == 0,9254,4
+6,7,model_a,1.0,0.00830390262469644,obesity == 0,9254,4
+6,7,model_b,0.0,0.04763474080101195,occupation == Sales and services AND obesity == 1,119,4
+6,7,model_b,0.25,0.015732963921339643,occupation == Sales and services AND obesity == 1,119,4
+6,7,model_b,0.5,0.00578521172169235,age >= 30,6034,4
+6,7,model_b,0.75,0.005098830605007027,age >= 30,6034,4
+6,7,model_b,1.0,0.004493884543771044,age >= 30,6034,4
+7,0,B0_infection,0.0,0.03633219540474625,occupation == Sales and services AND obesity == 1,119,3
+7,0,B0_infection,0.25,0.011999920853432908,occupation == Sales and services AND obesity == 1,119,3
+7,0,B0_infection,0.5,0.0042740115404869645,age < 65,8644,3
+7,0,B0_infection,0.75,0.004121111643976623,age < 65,8644,3
+7,0,B0_infection,1.0,0.003973681638722169,age < 65,8644,3
+7,0,B0+_infection,0.0,0.008844778195184255,occupation == Healthcare AND obesity == 1,141,3
+7,0,B0+_infection,0.25,0.0030478369126335264,occupation == Healthcare AND obesity == 1,141,3
+7,0,B0+_infection,0.5,0.0017135080650618926,smoking == 0 AND age < 65,3514,3
+7,0,B0+_infection,0.75,0.0013192788259105807,smoking == 0 AND age < 65,3514,3
+7,0,B0+_infection,1.0,0.0010157504688681656,smoking == 0 AND age < 65,3514,3
+7,0,B0_offspring,0.0,0.0952212116441159,occupation == Sales and services AND obesity == 1,119,3
+7,0,B0_offspring,0.25,0.03145234426834089,occupation == Sales and services AND obesity == 1,119,3
+7,0,B0_offspring,0.5,0.0184172410970077,age < 65,8641,3
+7,0,B0_offspring,0.75,0.017758167647667553,age < 65,8641,3
+7,0,B0_offspring,1.0,0.017122679588198627,age < 65,8641,3
+7,0,B0+_offspring,0.0,0.025269260788023665,obesity == 1 AND age >= 55,217,3
+7,0,B0+_offspring,0.25,0.009699292309497844,obesity == 1 AND age >= 55,217,3
+7,0,B0+_offspring,0.5,0.004992530325678416,age >= 25,6710,3
+7,0,B0+_offspring,0.75,0.0045189123587173466,age >= 25,6710,3
+7,0,B0+_offspring,1.0,0.00409022430985304,age >= 25,6710,3
+7,0,model_a,0.0,0.017517094028355346,occupation == Healthcare AND obesity == 1,141,3
+7,0,model_a,0.25,0.008332583387849674,occupation == Other AND smoking == 0,629,3
+7,0,model_a,0.5,0.005507032955168887,smoking == 0 AND age < 35,1927,3
+7,0,model_a,0.75,0.004228769952304426,smoking == 0,4035,3
+7,0,model_a,1.0,0.003370349544991069,smoking == 0,4035,3
+7,0,model_b,0.0,0.0346249168136222,occupation == Sales and services AND age >= 70,92,3
+7,0,model_b,0.25,0.01072347875017567,occupation == Sales and services AND age >= 70,92,3
+7,0,model_b,0.5,0.004541417923223262,occupation == Student AND smoking == 0,1017,3
+7,0,model_b,0.75,0.0031546368035074985,age >= 20,7375,3
+7,0,model_b,1.0,0.002923410967022063,age >= 20,7375,3
+7,1,B0_infection,0.0,0.031326049586845206,occupation == Other AND age >= 70,110,2
+7,1,B0_infection,0.25,0.010321473126537582,occupation == Sales and services AND obesity == 1,119,2
+7,1,B0_infection,0.5,0.005247157773948944,age < 65,8644,2
+7,1,B0_infection,0.75,0.005059444223573547,age < 65,8644,2
+7,1,B0_infection,1.0,0.004878445999573406,age < 65,8644,2
+7,1,B0+_infection,0.0,0.012675445370325264,obesity == 1 AND age >= 60,161,2
+7,1,B0+_infection,0.25,0.004515124154911961,obesity == 1 AND age >= 60,161,2
+7,1,B0+_infection,0.5,0.0018586303317182308,alcohol == 0,7011,2
+7,1,B0+_infection,0.75,0.0017007403367598596,alcohol == 0,7011,2
+7,1,B0+_infection,1.0,0.0015562630415097236,alcohol == 0,7011,2
+7,1,B0_offspring,0.0,0.08005903413229754,occupation == Other AND age >= 70,110,2
+7,1,B0_offspring,0.25,0.025930615050234293,occupation == Other AND age >= 70,110,2
+7,1,B0_offspring,0.5,0.01294168641584945,occupation == Other AND age >= 20,1136,2
+7,1,B0_offspring,0.75,0.010843965266540502,age >= 20,7372,2
+7,1,B0_offspring,1.0,0.010049367996259327,age >= 20,7372,2
+7,1,B0+_offspring,0.0,0.03245669500637307,obesity == 1 AND age >= 70,59,2
+7,1,B0+_offspring,0.25,0.010242671813936932,occupation == Other AND obesity == 1,116,2
+7,1,B0+_offspring,0.5,0.005601406224425907,age >= 20,7372,2
+7,1,B0+_offspring,0.75,0.005190960231077135,age >= 20,7372,2
+7,1,B0+_offspring,1.0,0.004810589884218958,age >= 20,7372,2
+7,1,model_a,0.0,0.041879072412439614,occupation == Office-based AND obesity == 1,116,2
+7,1,model_a,0.25,0.013743949512850023,occupation == Office-based AND obesity == 1,116,2
+7,1,model_a,0.5,0.004850780864803045,smoking == 0 AND age >= 50,1317,2
+7,1,model_a,0.75,0.0037376521170989128,alcohol == 0,7011,2
+7,1,model_a,1.0,0.003420139880343724,alcohol == 0,7011,2
+7,1,model_b,0.0,0.04405022614950143,obesity == 1 AND age >= 70,59,2
+7,1,model_b,0.25,0.012208467327969935,obesity == 1 AND age >= 70,59,2
+7,1,model_b,0.5,0.005515808004322796,alcohol == 1 AND age >= 40,1410,2
+7,1,model_b,0.75,0.0045235146780623426,age >= 30,6034,2
+7,1,model_b,1.0,0.003986826445127175,age >= 30,6034,2
+7,2,B0_infection,0.0,0.04167123358318203,occupation == Sales and services AND obesity == 1,119,4
+7,2,B0_infection,0.25,0.01376331651012137,occupation == Sales and services AND obesity == 1,119,4
+7,2,B0_infection,0.5,0.007137692774295641,age < 65,8644,4
+7,2,B0_infection,0.75,0.006882346602163389,age < 65,8644,4
+7,2,B0_infection,1.0,0.006636135268092168,age < 65,8644,4
+7,2,B0+_infection,0.0,0.010184399158855818,occupation == Sales and services AND obesity == 1,119,4
+7,2,B0+_infection,0.25,0.0033637379322823237,occupation == Sales and services AND obesity == 1,119,4
+7,2,B0+_infection,0.5,0.0025571673953332786,age < 65,8644,4
+7,2,B0+_infection,0.75,0.002465686446720414,age < 65,8644,4
+7,2,B0+_infection,1.0,0.002377478167692803,age < 65,8644,4
+7,2,B0_offspring,0.0,0.12280629952931654,occupation == Sales and services AND obesity == 1,119,4
+7,2,B0_offspring,0.25,0.04056189564619314,occupation == Sales and services AND obesity == 1,119,4
+7,2,B0_offspring,0.5,0.013982705095550035,age < 65,8644,4
+7,2,B0_offspring,0.75,0.013482820281355895,age < 65,8644,4
+7,2,B0_offspring,1.0,0.013000806460346145,age < 65,8644,4
+7,2,B0+_offspring,0.0,0.02409187373292984,occupation == Sales and services AND obesity == 1,119,4
+7,2,B0+_offspring,0.25,0.010239969822329482,occupation == Sales and services AND smoking == 1,866,4
+7,2,B0+_offspring,0.5,0.00555506324333472,occupation == Sales and services AND smoking == 1,866,4
+7,2,B0+_offspring,0.75,0.003973531367482849,smoking == 1 AND alcohol == 0,4183,4
+7,2,B0+_offspring,1.0,0.003195651929009359,smoking == 1 AND alcohol == 0,4183,4
+7,2,model_a,0.0,0.01970778460155743,occupation == Agriculture AND age >= 70,73,4
+7,2,model_a,0.25,0.006877210413545908,occupation == Office-based AND age < 35,709,4
+7,2,model_a,0.5,0.004807760478524477,obesity == 0,9254,4
+7,2,model_a,0.75,0.0047154722874853065,obesity == 0,9254,4
+7,2,model_a,1.0,0.004624955630249312,obesity == 0,9254,4
+7,2,model_b,0.0,0.018686562262521522,occupation == Sales and services AND smoking == 1,866,4
+7,2,model_b,0.25,0.010136986900026134,occupation == Sales and services AND smoking == 1,866,4
+7,2,model_b,0.5,0.005499058733633301,occupation == Sales and services AND smoking == 1,866,4
+7,2,model_b,0.75,0.005027137167477742,alcohol == 0,7011,4
+7,2,model_b,1.0,0.004600083627845509,alcohol == 0,7011,4
+7,3,B0_infection,0.0,0.036105626082864495,occupation == Sales and services AND obesity == 1,119,4
+7,3,B0_infection,0.25,0.01192508876855312,occupation == Sales and services AND obesity == 1,119,4
+7,3,B0_infection,0.5,0.005809551230445192,age < 65,8644,4
+7,3,B0_infection,0.75,0.005601718431330805,age < 65,8644,4
+7,3,B0_infection,1.0,0.00540132071122241,age < 65,8644,4
+7,3,B0+_infection,0.0,0.010269073554997496,occupation == Office-based AND age >= 70,103,4
+7,3,B0+_infection,0.25,0.003413584016677078,alcohol == 1 AND age >= 70,206,4
+7,3,B0+_infection,0.5,0.002008105447402601,age < 40,5292,4
+7,3,B0+_infection,0.75,0.001712740128613001,age < 40,5292,4
+7,3,B0+_infection,1.0,0.0014608190779799978,age < 40,5292,4
+7,3,B0_offspring,0.0,0.0919798810634137,occupation == Other AND age >= 70,110,4
+7,3,B0_offspring,0.25,0.029790211867888067,occupation == Other AND age >= 70,110,4
+7,3,B0_offspring,0.5,0.014528722457814941,age >= 20,7372,4
+7,3,B0_offspring,0.75,0.013463449203588045,age >= 20,7372,4
+7,3,B0_offspring,1.0,0.01247628378778026,age >= 20,7372,4
+7,3,B0+_offspring,0.0,0.03026444353433726,occupation == Other AND age >= 70,110,4
+7,3,B0+_offspring,0.25,0.013030709704373498,obesity == 0 AND age >= 70,614,4
+7,3,B0+_offspring,0.5,0.009011244967987747,obesity == 0,9251,4
+7,3,B0+_offspring,0.75,0.008838214616330052,obesity == 0,9251,4
+7,3,B0+_offspring,1.0,0.008668506724854178,obesity == 0,9251,4
+7,3,model_a,0.0,0.04353697175502248,occupation == Agriculture AND obesity == 1,75,4
+7,3,model_a,0.25,0.012812194822783991,occupation == Agriculture AND obesity == 1,75,4
+7,3,model_a,0.5,0.005705249792910029,age < 40,5292,4
+7,3,model_a,0.75,0.004866084237118713,age < 40,5292,4
+7,3,model_a,1.0,0.00424721806853141,age < 50,6612,4
+7,3,model_b,0.0,0.03384256993121045,occupation == Office-based AND age >= 70,103,4
+7,3,model_b,0.25,0.01078133749321615,occupation == Office-based AND age >= 70,103,4
+7,3,model_b,0.5,0.005999377467466596,obesity == 0 AND age >= 55,2461,4
+7,3,model_b,0.75,0.004567533724204428,age >= 20,7375,4
+7,3,model_b,1.0,0.004232746592804598,age >= 20,7375,4
+7,4,B0_infection,0.0,0.036015502683304945,occupation == Sales and services AND obesity == 1,119,4
+7,4,B0_infection,0.25,0.01189532250615942,occupation == Sales and services AND obesity == 1,119,4
+7,4,B0_infection,0.5,0.005805422202580033,age < 65,8644,4
+7,4,B0_infection,0.75,0.005597737116668404,age < 65,8644,4
+7,4,B0_infection,1.0,0.005397481825422002,age < 65,8644,4
+7,4,B0+_infection,0.0,0.007364137124728658,occupation == Student AND obesity == 1,179,4
+7,4,B0+_infection,0.25,0.002693612535386483,occupation == Student AND obesity == 1,179,4
+7,4,B0+_infection,0.5,0.0015267400740898455,alcohol == 0 AND age >= 30,4259,4
+7,4,B0+_infection,0.75,0.0012333661222709018,alcohol == 0 AND age >= 30,4259,4
+7,4,B0+_infection,1.0,0.0011785052887426776,age < 65,8644,4
+7,4,B0_offspring,0.0,0.10853900995968357,occupation == Sales and services AND obesity == 1,119,4
+7,4,B0_offspring,0.25,0.03585042537710393,occupation == Sales and services AND obesity == 1,119,4
+7,4,B0_offspring,0.5,0.011841392327023251,occupation == Sales and services AND obesity == 1,119,4
+7,4,B0_offspring,0.75,0.010637874996061338,age < 65,8642,4
+7,4,B0_offspring,1.0,0.010257231681128541,age < 65,8642,4
+7,4,B0+_offspring,0.0,0.02938724216885661,occupation == Other AND obesity == 1,116,4
+7,4,B0+_offspring,0.25,0.009644840412798936,occupation == Other AND obesity == 1,116,4
+7,4,B0+_offspring,0.5,0.007885818031738281,obesity == 0,9252,4
+7,4,B0+_offspring,0.75,0.007734413277325743,obesity == 0,9252,4
+7,4,B0+_offspring,1.0,0.00758591543752453,obesity == 0,9252,4
+7,4,model_a,0.0,0.027848689592671907,occupation == Student AND age >= 70,159,4
+7,4,model_a,0.25,0.009889037995704465,occupation == Student AND age >= 70,159,4
+7,4,model_a,0.5,0.006444885387495135,age >= 30,6034,4
+7,4,model_a,0.75,0.0056802378962735375,age >= 30,6034,4
+7,4,model_a,1.0,0.00500631130242677,age >= 30,6034,4
+7,4,model_b,0.0,0.027963747850430758,occupation == Other AND age >= 70,110,4
+7,4,model_b,0.25,0.011265276103442204,obesity == 0,9254,4
+7,4,model_b,0.5,0.011049031563434971,obesity == 0,9254,4
+7,4,model_b,0.75,0.010836937982592304,obesity == 0,9254,4
+7,4,model_b,1.0,0.01062891568046546,obesity == 0,9254,4
+7,5,B0_infection,0.0,0.04090213735346182,occupation == Sales and services AND obesity == 1,119,3
+7,5,B0_infection,0.25,0.013509296796132091,occupation == Sales and services AND obesity == 1,119,3
+7,5,B0_infection,0.5,0.005430150552605661,age < 65,8644,3
+7,5,B0_infection,0.75,0.005235890558297273,age < 65,8644,3
+7,5,B0_infection,1.0,0.005048580085005496,age < 65,8644,3
+7,5,B0+_infection,0.0,0.009654429146410654,occupation == Sales and services AND obesity == 1,119,3
+7,5,B0+_infection,0.25,0.003188697637216531,occupation == Sales and services AND obesity == 1,119,3
+7,5,B0+_infection,0.5,0.0019804297204936276,age < 70,9326,3
+7,5,B0+_infection,0.75,0.0019461812672404597,age < 70,9326,3
+7,5,B0+_infection,1.0,0.0019125250877438896,age < 70,9326,3
+7,5,B0_offspring,0.0,0.0927226829938298,occupation == Sales and services AND obesity == 1,119,3
+7,5,B0_offspring,0.25,0.030625528218387016,occupation == Sales and services AND obesity == 1,119,3
+7,5,B0_offspring,0.5,0.01650601368481436,age < 65,8644,3
+7,5,B0_offspring,0.75,0.01591592002786201,age < 65,8644,3
+7,5,B0_offspring,1.0,0.015346922350267524,age < 65,8644,3
+7,5,B0+_offspring,0.0,0.022914478565365506,occupation == Agriculture AND obesity == 1,75,3
+7,5,B0+_offspring,0.25,0.0070868762315965915,occupation == Student AND alcohol == 1,721,3
+7,5,B0+_offspring,0.5,0.006100731483013525,obesity == 0,9253,3
+7,5,B0+_offspring,0.75,0.005983611784940692,obesity == 0,9253,3
+7,5,B0+_offspring,1.0,0.005868740509653693,obesity == 0,9253,3
+7,5,model_a,0.0,0.02546999521538434,occupation == Office-based AND age >= 70,103,3
+7,5,model_a,0.25,0.008114059154662947,occupation == Office-based AND age >= 70,103,3
+7,5,model_a,0.5,0.004215054861357013,obesity == 0,9254,3
+7,5,model_a,0.75,0.004134144052671118,obesity == 0,9254,3
+7,5,model_a,1.0,0.004054786381293642,obesity == 0,9254,3
+7,5,model_b,0.0,0.020210010595267936,sex == Female AND age >= 70,266,3
+7,5,model_b,0.25,0.008161818829213923,sex == Female AND age >= 70,266,3
+7,5,model_b,0.5,0.0048059121087827665,occupation == Student AND age < 45,1535,3
+7,5,model_b,0.75,0.003008173762921497,occupation == Student AND age < 45,1535,3
+7,5,model_b,1.0,0.0019255401559340746,age >= 20,7375,3
+7,6,B0_infection,0.0,0.03597413402086408,occupation == Sales and services AND obesity == 1,119,7
+7,6,B0_infection,0.25,0.011881659123873472,occupation == Sales and services AND obesity == 1,119,7
+7,6,B0_infection,0.5,0.005578924204561082,age < 65,8644,7
+7,6,B0_infection,0.75,0.0053793419326285076,age < 65,8644,7
+7,6,B0_infection,1.0,0.0051868995826251825,age < 65,8644,7
+7,6,B0+_infection,0.0,0.008416768728980813,occupation == Office-based AND obesity == 1,116,7
+7,6,B0+_infection,0.25,0.0032188156078858292,occupation == Healthcare AND age >= 60,384,7
+7,6,B0+_infection,0.5,0.0020655885283839466,age < 70,9326,7
+7,6,B0+_infection,0.75,0.002029867385935628,age < 70,9326,7
+7,6,B0+_infection,1.0,0.0019947639851141037,age < 70,9326,7
+7,6,B0_offspring,0.0,0.0847027732058615,occupation == Sales and services AND obesity == 1,119,7
+7,6,B0_offspring,0.25,0.027976618959185733,occupation == Sales and services AND obesity == 1,119,7
+7,6,B0_offspring,0.5,0.01252643639616141,occupation == Sales and services AND age < 60,1125,7
+7,6,B0_offspring,0.75,0.011358674346197167,age < 65,8643,7
+7,6,B0_offspring,1.0,0.010952282431787877,age < 65,8643,7
+7,6,B0+_offspring,0.0,0.013965144431052064,occupation == Student AND age >= 70,159,7
+7,6,B0+_offspring,0.25,0.010413176944744517,obesity == 0,9253,7
+7,6,B0+_offspring,0.5,0.01021326843489726,obesity == 0,9253,7
+7,6,B0+_offspring,0.75,0.010017197698336812,obesity == 0,9253,7
+7,6,B0+_offspring,1.0,0.009824891058840926,obesity == 0,9253,7
+7,6,model_a,0.0,0.022428350707547468,occupation == Office-based AND obesity == 1,116,7
+7,6,model_a,0.25,0.008485446897366545,occupation == Healthcare AND age >= 60,384,7
+7,6,model_a,0.5,0.004024601898556987,sex == Female AND alcohol == 0,2853,7
+7,6,model_a,0.75,0.0038352449912501746,age < 70,9326,7
+7,6,model_a,1.0,0.0037689203913726602,age < 70,9326,7
+7,6,model_b,0.0,0.02414008048154899,occupation == Office-based AND obesity == 1,116,7
+7,6,model_b,0.25,0.007922335148855751,occupation == Office-based AND obesity == 1,116,7
+7,6,model_b,0.5,0.006834035096702748,age >= 25,6713,7
+7,6,model_b,0.75,0.006185949448273223,age >= 25,6713,7
+7,6,model_b,1.0,0.005599323099036201,age >= 25,6713,7
+7,7,B0_infection,0.0,0.04050399134599647,occupation == Sales and services AND obesity == 1,119,4
+7,7,B0_infection,0.25,0.013377795781000196,occupation == Sales and services AND obesity == 1,119,4
+7,7,B0_infection,0.5,0.00629584531678819,age < 65,8644,4
+7,7,B0_infection,0.75,0.0060706156728662745,age < 65,8644,4
+7,7,B0_infection,1.0,0.0058534434684062095,age < 65,8644,4
+7,7,B0+_infection,0.0,0.009415268147969919,occupation == Sales and services AND age >= 70,92,4
+7,7,B0+_infection,0.25,0.0033525910164571653,occupation == Sales and services AND alcohol == 1,445,4
+7,7,B0+_infection,0.5,0.0024211276032812916,age >= 20,7375,4
+7,7,B0+_infection,0.75,0.0022436658889298184,age >= 20,7375,4
+7,7,B0+_infection,1.0,0.0020792116096337637,age >= 20,7375,4
+7,7,B0_offspring,0.0,0.08983342694432406,occupation == Sales and services AND obesity == 1,119,4
+7,7,B0_offspring,0.25,0.029671231062423878,occupation == Sales and services AND obesity == 1,119,4
+7,7,B0_offspring,0.5,0.013063055249404406,age < 65,8643,4
+7,7,B0_offspring,0.75,0.01259568380542801,age < 65,8643,4
+7,7,B0_offspring,1.0,0.012145034028969218,age < 65,8643,4
+7,7,B0+_offspring,0.0,0.029351612361898732,occupation == Agriculture AND age >= 70,73,4
+7,7,B0+_offspring,0.25,0.008579728322701877,occupation == Agriculture AND age >= 70,73,4
+7,7,B0+_offspring,0.5,0.005849312752820724,obesity == 0,9253,4
+7,7,B0+_offspring,0.75,0.005737019703134567,obesity == 0,9253,4
+7,7,B0+_offspring,1.0,0.005626882415935505,obesity == 0,9253,4
+7,7,model_a,0.0,0.01998758298274546,occupation == Sales and services AND alcohol == 1,445,4
+7,7,model_a,0.25,0.009180160677097982,occupation == Sales and services AND alcohol == 1,445,4
+7,7,model_a,0.5,0.008049103317919267,age >= 25,6713,4
+7,7,model_a,0.75,0.00728579024310249,age >= 25,6713,4
+7,7,model_a,1.0,0.006594863722063589,age >= 25,6713,4
+7,7,model_b,0.0,0.026038147320971747,occupation == Agriculture AND age >= 70,73,4
+7,7,model_b,0.25,0.00893377842254518,alcohol == 1 AND age >= 70,206,4
+7,7,model_b,0.5,0.005303139551638006,obesity == 0,9254,4
+7,7,model_b,0.75,0.005201342226618363,obesity == 0,9254,4
+7,7,model_b,1.0,0.005101498969614516,obesity == 0,9254,4
+8,0,B0_infection,0.0,0.027069420887812723,occupation == Other AND obesity == 1,116,3
+8,0,B0_infection,0.25,0.00888369136642282,occupation == Other AND obesity == 1,116,3
+8,0,B0_infection,0.5,0.0035977883137557113,sex == Female AND age < 70,3759,3
+8,0,B0_infection,0.75,0.003166879117601612,age >= 30,6034,3
+8,0,B0_infection,1.0,0.003024250529585504,obesity == 0 AND age < 70,8639,3
+8,0,B0+_infection,0.0,0.01452032367007291,occupation == Healthcare AND obesity == 1,141,3
+8,0,B0+_infection,0.25,0.005003582621114288,occupation == Healthcare AND obesity == 1,141,3
+8,0,B0+_infection,0.5,0.002816217713923365,smoking == 1,5965,3
+8,0,B0+_infection,0.75,0.0024749637244596387,smoking == 1,5965,3
+8,0,B0+_infection,1.0,0.0021750610427265465,smoking == 1,5965,3
+8,0,B0_offspring,0.0,0.10119205178224966,occupation == Other AND obesity == 1,116,3
+8,0,B0_offspring,0.25,0.03321105072995889,occupation == Other AND obesity == 1,116,3
+8,0,B0_offspring,0.5,0.015075452320202276,obesity == 0,9252,3
+8,0,B0_offspring,0.75,0.014786009278654559,obesity == 0,9252,3
+8,0,B0_offspring,1.0,0.014502123435161064,obesity == 0,9252,3
+8,0,B0+_offspring,0.0,0.029450002589345537,smoking == 1 AND age >= 70,421,3
+8,0,B0+_offspring,0.25,0.013340668056724103,smoking == 1 AND age >= 70,421,3
+8,0,B0+_offspring,0.5,0.006043239679173622,smoking == 1 AND age >= 70,421,3
+8,0,B0+_offspring,0.75,0.0040740740315981395,obesity == 0 AND age >= 25,6200,3
+8,0,B0+_offspring,1.0,0.0036153350845156617,obesity == 0 AND age >= 25,6200,3
+8,0,model_a,0.0,0.025557767678512155,occupation == Healthcare AND obesity == 1,141,3
+8,0,model_a,0.25,0.008806993913933721,occupation == Healthcare AND obesity == 1,141,3
+8,0,model_a,0.5,0.004968576336356635,smoking == 1 AND age < 60,4719,3
+8,0,model_a,0.75,0.004118076982480371,smoking == 1 AND age < 60,4719,3
+8,0,model_a,1.0,0.0034131624202980515,smoking == 1 AND age < 60,4719,3
+8,0,model_b,0.0,0.029871974865683534,obesity == 1 AND age < 30,279,3
+8,0,model_b,0.25,0.01220857529501707,obesity == 1 AND age < 30,279,3
+8,0,model_b,0.5,0.006402575898552887,alcohol == 0 AND age >= 25,4729,3
+8,0,model_b,0.75,0.005309419786509874,alcohol == 0 AND age >= 25,4729,3
+8,0,model_b,1.0,0.0045028795121979884,alcohol == 0,7011,3
+8,1,B0_infection,0.0,0.026771900419923944,occupation == Other AND obesity == 1,116,3
+8,1,B0_infection,0.25,0.00944875873748763,occupation == Student AND age >= 65,324,3
+8,1,B0_infection,0.5,0.0047319499820192715,obesity == 0,9254,3
+8,1,B0_infection,0.75,0.004641117024371094,obesity == 0,9254,3
+8,1,B0_infection,1.0,0.004552027666343891,obesity == 0,9254,3
+8,1,B0+_infection,0.0,0.009083490810148412,occupation == Other AND age >= 65,216,3
+8,1,B0+_infection,0.25,0.003482300289377229,occupation == Other AND age >= 65,216,3
+8,1,B0+_infection,0.5,0.0023150226739232244,age >= 30,6034,3
+8,1,B0+_infection,0.75,0.0020403589408534107,age >= 30,6034,3
+8,1,B0+_infection,1.0,0.0018390865465013374,age >= 20,7375,3
+8,1,B0_offspring,0.0,0.06456776215312965,occupation == Other AND obesity == 1,116,3
+8,1,B0_offspring,0.25,0.02467275557140756,obesity == 0,9251,3
+8,1,B0_offspring,0.5,0.024198999105120047,obesity == 0,9251,3
+8,1,B0_offspring,0.75,0.023734339522587557,obesity == 0,9251,3
+8,1,B0_offspring,1.0,0.023278602149056415,obesity == 0,9251,3
+8,1,B0+_offspring,0.0,0.025670344719027557,occupation == Office-based AND age >= 70,103,3
+8,1,B0+_offspring,0.25,0.01056080042736261,age < 55,7319,3
+8,1,B0+_offspring,0.5,0.009768825443587098,age < 55,7319,3
+8,1,B0+_offspring,0.75,0.009036242205658908,age < 55,7319,3
+8,1,B0+_offspring,1.0,0.008358596810933318,age < 55,7319,3
+8,1,model_a,0.0,0.02996484201368871,occupation == Other AND age >= 65,216,3
+8,1,model_a,0.25,0.011487497504685234,occupation == Other AND age >= 65,216,3
+8,1,model_a,0.5,0.004650407424698472,smoking == 0 AND age >= 20,2929,3
+8,1,model_a,0.75,0.0034211399959767123,smoking == 0 AND age >= 20,2929,3
+8,1,model_a,1.0,0.002516811496969091,smoking == 0 AND age >= 20,2929,3
+8,1,model_b,0.0,0.019251077484086263,occupation == Healthcare AND obesity == 1,141,3
+8,1,model_b,0.25,0.010879602374835836,age < 55,7322,3
+8,1,model_b,0.5,0.010063995972361283,age < 55,7322,3
+8,1,model_b,0.75,0.009309532779062839,age < 55,7322,3
+8,1,model_b,1.0,0.008611629098666161,age < 55,7322,3
+8,2,B0_infection,0.0,0.03345481067230821,occupation == Other AND obesity == 1,116,4
+8,2,B0_infection,0.25,0.010979260101892381,occupation == Other AND obesity == 1,116,4
+8,2,B0_infection,0.5,0.00464439738415438,sex == Female AND age < 70,3759,4
+8,2,B0_infection,0.75,0.0036366160674021998,sex == Female AND age < 70,3759,4
+8,2,B0_infection,1.0,0.0028704481181929,age < 70,9326,4
+8,2,B0+_infection,0.0,0.01184556661887052,obesity == 1 AND age < 20,186,4
+8,2,B0+_infection,0.25,0.0051023404755324055,obesity == 1 AND age < 45,424,4
+8,2,B0+_infection,0.5,0.0023153193404072073,obesity == 1 AND age < 45,424,4
+8,2,B0+_infection,0.75,0.001687486313386959,sex == Female AND age < 70,3759,4
+8,2,B0+_infection,1.0,0.0013213210096365718,sex == Female AND age < 70,3759,4
+8,2,B0_offspring,0.0,0.094382965412378,obesity == 1 AND age >= 70,59,4
+8,2,B0_offspring,0.25,0.028469563844057997,obesity == 1 AND age >= 65,110,4
+8,2,B0_offspring,0.5,0.01943567036753205,obesity == 0,9250,4
+8,2,B0_offspring,0.75,0.01906291267009267,obesity == 0,9250,4
+8,2,B0_offspring,1.0,0.018697304111240882,obesity == 0,9250,4
+8,2,B0+_offspring,0.0,0.04650006382314144,obesity == 1 AND age >= 70,59,4
+8,2,B0+_offspring,0.25,0.014744550778409074,obesity == 1 AND age >= 65,110,4
+8,2,B0+_offspring,0.5,0.005205565554054418,obesity == 1 AND age >= 60,160,4
+8,2,B0+_offspring,0.75,0.004314999842534723,obesity == 0 AND age < 50,6136,4
+8,2,B0+_offspring,1.0,0.0038194991905400547,obesity == 0 AND age < 50,6136,4
+8,2,model_a,0.0,0.03765342791109829,occupation == Agriculture AND obesity == 1,75,4
+8,2,model_a,0.25,0.01425367041047319,obesity == 1 AND age < 40,378,4
+8,2,model_a,0.5,0.006685164748818937,age < 70,9326,4
+8,2,model_a,0.75,0.006569555217200424,age < 70,9326,4
+8,2,model_a,1.0,0.00645594497270545,age < 70,9326,4
+8,2,model_b,0.0,0.02669938710763421,occupation == Office-based AND age >= 70,103,4
+8,2,model_b,0.25,0.008505710525368864,occupation == Office-based AND age >= 70,103,4
+8,2,model_b,0.5,0.006791357355529388,obesity == 0,9254,4
+8,2,model_b,0.75,0.006660992690350658,obesity == 0,9254,4
+8,2,model_b,1.0,0.006533130462466488,obesity == 0,9254,4
+8,3,B0_infection,0.0,0.029526774499072095,occupation == Student AND age >= 70,159,2
+8,3,B0_infection,0.25,0.010484924037099257,occupation == Student AND age >= 70,159,2
+8,3,B0_infection,0.5,0.004947959926485933,obesity == 0,9254,2
+8,3,B0_infection,0.75,0.004852980512892135,obesity == 0,9254,2
+8,3,B0_infection,1.0,0.004759824292925741,obesity == 0,9254,2
+8,3,B0+_infection,0.0,0.010282604818320492,occupation == Student AND age >= 70,159,2
+8,3,B0+_infection,0.25,0.003915989938852267,occupation == Student AND age >= 65,324,2
+8,3,B0+_infection,0.5,0.0018867460752532692,age >= 30,6034,2
+8,3,B0+_infection,0.75,0.0016628948248006486,age >= 30,6034,2
+8,3,B0+_infection,1.0,0.0014656021997965934,age >= 30,6034,2
+8,3,B0_offspring,0.0,0.09876748203370644,obesity == 1 AND age >= 70,59,2
+8,3,B0_offspring,0.25,0.02737602716257099,obesity == 1 AND age >= 70,59,2
+8,3,B0_offspring,0.5,0.024276971286367806,obesity == 0 AND age < 70,8635,2
+8,3,B0_offspring,0.75,0.023404724225806018,obesity == 0 AND age < 70,8635,2
+8,3,B0_offspring,1.0,0.022563816121231955,obesity == 0 AND age < 70,8635,2
+8,3,B0+_offspring,0.0,0.05044805837158637,obesity == 1 AND age >= 70,59,2
+8,3,B0+_offspring,0.25,0.013983017364036855,obesity == 1 AND age >= 70,59,2
+8,3,B0+_offspring,0.5,0.008533007531414458,obesity == 0 AND age < 70,8635,2
+8,3,B0+_offspring,0.75,0.00837632256931134,age < 70,9322,2
+8,3,B0+_offspring,1.0,0.008231407578105643,age < 70,9322,2
+8,3,model_a,0.0,0.0395643281970217,occupation == Office-based AND obesity == 1,116,2
+8,3,model_a,0.25,0.012984292581613512,occupation == Office-based AND obesity == 1,116,2
+8,3,model_a,0.5,0.004607249989397276,smoking == 0 AND age >= 55,1027,2
+8,3,model_a,0.75,0.002608160952085372,smoking == 0 AND age >= 55,1027,2
+8,3,model_a,1.0,0.0017209187487884881,alcohol == 1 AND obesity == 0,2776,2
+8,3,model_b,0.0,0.01656787811395837,obesity == 1 AND age >= 70,59,2
+8,3,model_b,0.25,0.011944932214470697,age < 70,9326,2
+8,3,model_b,0.5,0.011738363181332985,age < 70,9326,2
+8,3,model_b,0.75,0.011535366438492557,age < 70,9326,2
+8,3,model_b,1.0,0.011335880208742176,age < 70,9326,2
+8,4,B0_infection,0.0,0.024863350267741446,obesity == 1 AND age >= 70,59,6
+8,4,B0_infection,0.25,0.007934789927660318,occupation == Student AND age >= 65,324,6
+8,4,B0_infection,0.5,0.005823496360874809,obesity == 0,9254,6
+8,4,B0_infection,0.75,0.005711710437455997,obesity == 0,9254,6
+8,4,B0_infection,1.0,0.0056020703199071,obesity == 0,9254,6
+8,4,B0+_infection,0.0,0.009328231969572878,obesity == 1 AND age >= 70,59,6
+8,4,B0+_infection,0.25,0.002657340618509217,occupation == Healthcare AND obesity == 1,141,6
+8,4,B0+_infection,0.5,0.0015473940237383057,age >= 30,6034,6
+8,4,B0+_infection,0.75,0.0013638048849029516,age >= 30,6034,6
+8,4,B0+_infection,1.0,0.001201997510363727,age >= 30,6034,6
+8,4,B0_offspring,0.0,0.08474739150967103,occupation == Other AND obesity == 1,116,6
+8,4,B0_offspring,0.25,0.02781394258825651,occupation == Other AND obesity == 1,116,6
+8,4,B0_offspring,0.5,0.020607217640842525,obesity == 0,9252,6
+8,4,B0_offspring,0.75,0.020211566775773078,obesity == 0,9252,6
+8,4,B0_offspring,1.0,0.01982351225921406,obesity == 0,9252,6
+8,4,B0+_offspring,0.0,0.031907712957225165,obesity == 1 AND age < 20,186,6
+8,4,B0+_offspring,0.25,0.011784078568113301,obesity == 1 AND age < 20,186,6
+8,4,B0+_offspring,0.5,0.004377007351210511,obesity == 1 AND age < 25,234,6
+8,4,B0+_offspring,0.75,0.0029951883637820828,smoking == 0,4034,6
+8,4,B0+_offspring,1.0,0.0026419067209640895,obesity == 0 AND age >= 20,6814,6
+8,4,model_a,0.0,0.021276863424826174,occupation == Healthcare AND age >= 70,137,6
+8,4,model_a,0.25,0.008677079926203944,occupation == Sales and services AND age >= 60,318,6
+8,4,model_a,0.5,0.005789560581987625,obesity == 0,9254,6
+8,4,model_a,0.75,0.005678426078634141,obesity == 0,9254,6
+8,4,model_a,1.0,0.005569424876704957,obesity == 0,9254,6
+8,4,model_b,0.0,0.023787242709306395,obesity == 1 AND age < 20,186,6
+8,4,model_b,0.25,0.009081047923716761,obesity == 1 AND age < 25,234,6
+8,4,model_b,0.5,0.004283128761694815,alcohol == 1 AND age < 30,1214,6
+8,4,model_b,0.75,0.0029861324061696095,alcohol == 1 AND age < 60,2366,6
+8,4,model_b,1.0,0.0020826330000611923,alcohol == 1 AND age < 60,2366,6
+8,5,B0_infection,0.0,0.0231259745763967,occupation == Other AND obesity == 1,116,2
+8,5,B0_infection,0.25,0.007589524043971869,occupation == Other AND obesity == 1,116,2
+8,5,B0_infection,0.5,0.004793415489590968,obesity == 0 AND age < 70,8639,2
+8,5,B0_infection,0.75,0.004621265746922405,obesity == 0 AND age < 70,8639,2
+8,5,B0_infection,1.0,0.004455298554872541,obesity == 0 AND age < 70,8639,2
+8,5,B0+_infection,0.0,0.008169738493910204,occupation == Healthcare AND obesity == 1,141,2
+8,5,B0+_infection,0.25,0.0028227165155473807,alcohol == 0 AND obesity == 1,533,2
+8,5,B0+_infection,0.5,0.001916003000313302,smoking == 1 AND age >= 20,4446,2
+8,5,B0+_infection,0.75,0.0018767208757649004,age < 70,9326,2
+8,5,B0+_infection,1.0,0.001844265905756241,age < 70,9326,2
+8,5,B0_offspring,0.0,0.13542741647922807,occupation == Other AND obesity == 1,116,2
+8,5,B0_offspring,0.25,0.04444592497209211,occupation == Other AND obesity == 1,116,2
+8,5,B0_offspring,0.5,0.014830259502752127,obesity == 0,9253,2
+8,5,B0_offspring,0.75,0.014545553394945177,obesity == 0,9253,2
+8,5,B0_offspring,1.0,0.01426631297489693,obesity == 0,9253,2
+8,5,B0+_offspring,0.0,0.05158459075911067,occupation == Other AND obesity == 1,116,2
+8,5,B0+_offspring,0.25,0.016929547282231203,occupation == Other AND obesity == 1,116,2
+8,5,B0+_offspring,0.5,0.005556108267286817,occupation == Other AND obesity == 1,116,2
+8,5,B0+_offspring,0.75,0.0033281627459292354,age < 50,6612,2
+8,5,B0+_offspring,1.0,0.003001225474555218,age < 50,6612,2
+8,5,model_a,0.0,0.03170928870961121,occupation == Office-based AND age >= 70,103,2
+8,5,model_a,0.25,0.01010173116116892,occupation == Office-based AND age >= 70,103,2
+8,5,model_a,0.5,0.007555507561201036,age < 60,7976,2
+8,5,model_a,0.75,0.007140192669720472,age < 60,7976,2
+8,5,model_a,1.0,0.00674770701342872,age < 60,7976,2
+8,5,model_b,0.0,0.03556653858192782,occupation == Other AND obesity == 1,116,2
+8,5,model_b,0.25,0.011672290775753897,occupation == Other AND obesity == 1,116,2
+8,5,model_b,0.5,0.0038306334376597842,occupation == Other AND obesity == 1,116,2
+8,5,model_b,0.75,0.002802353840995979,sex == Male AND age < 45,3547,2
+8,5,model_b,1.0,0.002379864179806393,age < 45,5919,2
+8,6,B0_infection,0.0,0.02133278211686901,occupation == Agriculture AND obesity == 1,75,3
+8,6,B0_infection,0.25,0.00894975182423649,occupation == Student AND age >= 65,324,3
+8,6,B0_infection,0.5,0.005438235972892846,age < 70,9326,3
+8,6,B0_infection,0.75,0.005344190135986857,age < 70,9326,3
+8,6,B0_infection,1.0,0.00525177067562713,age < 70,9326,3
+8,6,B0+_infection,0.0,0.006516375294294021,occupation == Agriculture AND obesity == 1,75,3
+8,6,B0+_infection,0.25,0.0035788512268195762,age < 70,9326,3
+8,6,B0+_infection,0.5,0.0035169605585098616,age < 70,9326,3
+8,6,B0+_infection,0.75,0.003456140193093745,age < 70,9326,3
+8,6,B0+_infection,1.0,0.0033963716213465675,age < 70,9326,3
+8,6,B0_offspring,0.0,0.09722229842821528,occupation == Other AND obesity == 1,116,3
+8,6,B0_offspring,0.25,0.031908982680704676,occupation == Other AND obesity == 1,116,3
+8,6,B0_offspring,0.5,0.014063756601573578,obesity == 0,9251,3
+8,6,B0_offspring,0.75,0.013793709925554523,obesity == 0,9251,3
+8,6,B0_offspring,1.0,0.013528848578697152,obesity == 0,9251,3
+8,6,B0+_offspring,0.0,0.029712579640618395,alcohol == 1 AND age >= 70,205,3
+8,6,B0+_offspring,0.25,0.011243755704889278,alcohol == 1 AND age >= 70,205,3
+8,6,B0+_offspring,0.5,0.004477282800289306,age < 30,3965,3
+8,6,B0+_offspring,0.75,0.003553103853450052,age < 30,3965,3
+8,6,B0+_offspring,1.0,0.002819689431408232,age < 30,3965,3
+8,6,model_a,0.0,0.03258856629100662,occupation == Sales and services AND age >= 70,92,3
+8,6,model_a,0.25,0.012615345056432435,age < 70,9326,3
+8,6,model_a,0.5,0.012397182275412307,age < 70,9326,3
+8,6,model_a,0.75,0.012182792280535523,age < 70,9326,3
+8,6,model_a,1.0,0.011972109827330884,age < 70,9326,3
+8,6,model_b,0.0,0.022298529400858233,occupation == Other AND age < 40,837,3
+8,6,model_b,0.25,0.011993821650830048,occupation == Other AND age < 40,837,3
+8,6,model_b,0.5,0.006451176900768309,occupation == Other AND age < 40,837,3
+8,6,model_b,0.75,0.0037645513788983173,age < 40,5292,3
+8,6,model_b,1.0,0.0032108364733557074,age < 40,5292,3
+8,7,B0_infection,0.0,0.02533522954717482,occupation == Other AND obesity == 1,116,3
+8,7,B0_infection,0.25,0.008314561324653575,occupation == Other AND obesity == 1,116,3
+8,7,B0_infection,0.5,0.005410696452647294,age >= 30,6034,3
+8,7,B0_infection,0.75,0.004768749355138654,age >= 30,6034,3
+8,7,B0_infection,1.0,0.004202965479796754,age >= 30,6034,3
+8,7,B0+_infection,0.0,0.016283583823580087,occupation == Healthcare AND obesity == 1,141,3
+8,7,B0+_infection,0.25,0.0056111873867556806,occupation == Healthcare AND obesity == 1,141,3
+8,7,B0+_infection,0.5,0.003524655360873285,age >= 30,6034,3
+8,7,B0+_infection,0.75,0.0031064758717016406,age >= 30,6034,3
+8,7,B0+_infection,1.0,0.002737910902889947,age >= 30,6034,3
+8,7,B0_offspring,0.0,0.08672675661724327,occupation == Other AND obesity == 1,116,3
+8,7,B0_offspring,0.25,0.028465702277727382,occupation == Other AND obesity == 1,116,3
+8,7,B0_offspring,0.5,0.014264755262084238,obesity == 0,9249,3
+8,7,B0_offspring,0.75,0.013990792649893821,obesity == 0,9249,3
+8,7,B0_offspring,1.0,0.013722091643072667,obesity == 0,9249,3
+8,7,B0+_offspring,0.0,0.01944016628223027,occupation == Healthcare AND obesity == 1,141,3
+8,7,B0+_offspring,0.25,0.006699757042790115,occupation == Healthcare AND obesity == 1,141,3
+8,7,B0+_offspring,0.5,0.004104475454704944,age < 60,7971,3
+8,7,B0+_offspring,0.75,0.0038787355043136853,age < 60,7971,3
+8,7,B0+_offspring,1.0,0.0036654109102243473,age < 60,7971,3
+8,7,model_a,0.0,0.03602147706489019,occupation == Healthcare AND obesity == 1,141,3
+8,7,model_a,0.25,0.012412701033670995,occupation == Healthcare AND obesity == 1,141,3
+8,7,model_a,0.5,0.007240967345100674,sex == Male AND age >= 35,3211,3
+8,7,model_a,0.75,0.006356880955517657,age >= 30,6034,3
+8,7,model_a,1.0,0.005618063845572083,age >= 25,6713,3
+8,7,model_b,0.0,0.023995397189175784,alcohol == 1 AND age >= 70,206,3
+8,7,model_b,0.25,0.00909064604184552,alcohol == 1 AND age >= 70,206,3
+8,7,model_b,0.5,0.004021641755048618,sex == Male,5975,3
+8,7,model_b,0.75,0.0035358013618278583,sex == Male,5975,3
+8,7,model_b,1.0,0.0031086536374378285,sex == Male,5975,3
+9,0,B0_infection,0.0,0.0293192341727333,obesity == 1 AND age >= 65,111,6
+9,0,B0_infection,0.25,0.009516633995598508,obesity == 1 AND age >= 65,111,6
+9,0,B0_infection,0.5,0.0043542428802573405,alcohol == 0 AND obesity == 1,533,6
+9,0,B0_infection,0.75,0.0024813384772479252,age < 45,5919,6
+9,0,B0_infection,1.0,0.0021764469959550956,age < 45,5919,6
+9,0,B0+_infection,0.0,0.011343133328418463,occupation == Agriculture AND obesity == 1,75,6
+9,0,B0+_infection,0.25,0.0033380923901246314,occupation == Agriculture AND obesity == 1,75,6
+9,0,B0+_infection,0.5,0.0018575344501659534,age < 70,9326,6
+9,0,B0+_infection,0.75,0.0018254112795609392,age < 70,9326,6
+9,0,B0+_infection,1.0,0.0017938436292530729,age < 70,9326,6
+9,0,B0_offspring,0.0,0.11799237489471126,obesity == 1 AND age >= 65,111,6
+9,0,B0_offspring,0.25,0.03830163066644595,obesity == 1 AND age >= 65,111,6
+9,0,B0_offspring,0.5,0.012628104189565928,smoking == 1 AND age < 70,5543,6
+9,0,B0_offspring,0.75,0.010897000054032161,smoking == 1 AND age < 70,5543,6
+9,0,B0_offspring,1.0,0.009403201652049291,smoking == 1 AND age < 70,5543,6
+9,0,B0+_offspring,0.0,0.024642268098067403,obesity == 1 AND age >= 65,111,6
+9,0,B0+_offspring,0.25,0.008870618941086442,occupation == Healthcare AND age >= 50,676,6
+9,0,B0+_offspring,0.5,0.006196777386150309,age < 70,9323,6
+9,0,B0+_offspring,0.75,0.006089580736833905,age < 70,9323,6
+9,0,B0+_offspring,1.0,0.005984238458089269,age < 70,9323,6
+9,0,model_a,0.0,0.038765502839870715,occupation == Office-based AND obesity == 1,116,6
+9,0,model_a,0.25,0.012722132635229257,occupation == Office-based AND obesity == 1,116,6
+9,0,model_a,0.5,0.00692814684677859,age < 70,9326,6
+9,0,model_a,0.75,0.0068083353175142055,age < 70,9326,6
+9,0,model_a,1.0,0.006690595742390249,age < 70,9326,6
+9,0,model_b,0.0,0.033866543154738214,obesity == 1 AND age >= 65,111,6
+9,0,model_b,0.25,0.010992630093985142,obesity == 1 AND age >= 65,111,6
+9,0,model_b,0.5,0.007216020697803616,age < 70,9326,6
+9,0,model_b,0.75,0.007091230837812513,age < 70,9326,6
+9,0,model_b,1.0,0.006968599024452476,age < 70,9326,6
+9,1,B0_infection,0.0,0.02451163924064581,obesity == 1 AND age >= 65,111,3
+9,1,B0_infection,0.25,0.00809913826129498,sex == Female AND occupation == Other,613,3
+9,1,B0_infection,0.5,0.004029989657243189,sex == Female AND occupation == Other,613,3
+9,1,B0_infection,0.75,0.0022274698144776556,sex == Male AND smoking == 1,3595,3
+9,1,B0_infection,1.0,0.00172479129285642,sex == Male AND smoking == 1,3595,3
+9,1,B0+_infection,0.0,0.010962983043560186,occupation == Agriculture AND obesity == 1,75,3
+9,1,B0+_infection,0.25,0.003226220587488767,occupation == Agriculture AND obesity == 1,75,3
+9,1,B0+_infection,0.5,0.0014616613481059657,age < 65,8644,3
+9,1,B0+_infection,0.75,0.0014093713936354389,age < 65,8644,3
+9,1,B0+_infection,1.0,0.001358952077218024,age < 65,8644,3
+9,1,B0_offspring,0.0,0.0853019390733134,obesity == 1 AND age >= 65,111,3
+9,1,B0_offspring,0.25,0.02768787644632697,obesity == 1 AND age >= 65,111,3
+9,1,B0_offspring,0.5,0.014647980045010783,smoking == 1 AND age < 55,4314,3
+9,1,B0_offspring,0.75,0.011888832885106067,smoking == 1,5965,3
+9,1,B0_offspring,1.0,0.010448208592441598,smoking == 1,5965,3
+9,1,B0+_offspring,0.0,0.040514854808056104,occupation == Sales and services AND age >= 70,92,3
+9,1,B0+_offspring,0.25,0.012547616704445512,occupation == Sales and services AND age >= 70,92,3
+9,1,B0+_offspring,0.5,0.00514756222498476,smoking == 1,5965,3
+9,1,B0+_offspring,0.75,0.0048826612807775895,age < 65,8644,3
+9,1,B0+_offspring,1.0,0.004707987347997125,age < 65,8644,3
+9,1,model_a,0.0,0.022412771498688176,occupation == Agriculture AND obesity == 1,75,3
+9,1,model_a,0.25,0.0076260543666755755,smoking == 0 AND obesity == 1,300,3
+9,1,model_a,0.5,0.005681808526684381,age < 65,8644,3
+9,1,model_a,0.75,0.005478545637126849,age < 65,8644,3
+9,1,model_a,1.0,0.005282554341125706,age < 65,8644,3
+9,1,model_b,0.0,0.04273361939683981,occupation == Sales and services AND age >= 70,92,3
+9,1,model_b,0.25,0.013234777197784335,occupation == Sales and services AND age >= 70,92,3
+9,1,model_b,0.5,0.004955626014501679,occupation == Sales and services AND age >= 45,610,3
+9,1,model_b,0.75,0.004220367196621674,obesity == 0 AND age >= 25,6201,3
+9,1,model_b,1.0,0.0037451194292209005,obesity == 0 AND age >= 25,6201,3
+9,2,B0_infection,0.0,0.023815761172417294,occupation == Other AND obesity == 1,116,7
+9,2,B0_infection,0.25,0.007815899453077915,occupation == Other AND obesity == 1,116,7
+9,2,B0_infection,0.5,0.0038691658589520097,sex == Female AND occupation == Other,613,7
+9,2,B0_infection,0.75,0.0026771369857696748,sex == Male AND smoking == 1,3595,7
+9,2,B0_infection,1.0,0.0020729809817522605,sex == Male AND smoking == 1,3595,7
+9,2,B0+_infection,0.0,0.006685894959137675,occupation == Other AND age >= 55,424,7
+9,2,B0+_infection,0.25,0.003033898263170541,occupation == Other AND age >= 55,424,7
+9,2,B0+_infection,0.5,0.0018531830110438627,obesity == 0 AND age < 70,8639,7
+9,2,B0+_infection,0.75,0.0017866281757366116,obesity == 0 AND age < 70,8639,7
+9,2,B0+_infection,1.0,0.0017224635771606372,obesity == 0 AND age < 70,8639,7
+9,2,B0_offspring,0.0,0.09711827985678012,obesity == 1 AND age >= 65,111,7
+9,2,B0_offspring,0.25,0.03348300728804847,obesity == 1 AND age >= 60,161,7
+9,2,B0_offspring,0.5,0.014538129332812247,occupation == Other AND age < 20,432,7
+9,2,B0_offspring,0.75,0.012173642246753274,smoking == 1,5961,7
+9,2,B0_offspring,1.0,0.010697782241037321,smoking == 1,5961,7
+9,2,B0+_offspring,0.0,0.024064426578875184,occupation == Sales and services AND obesity == 1,119,7
+9,2,B0+_offspring,0.25,0.010206590438558975,smoking == 1 AND obesity == 1,446,7
+9,2,B0+_offspring,0.5,0.006567352199909393,sex == Male AND age < 65,5146,7
+9,2,B0+_offspring,0.75,0.005562899208703386,sex == Male AND age < 65,5146,7
+9,2,B0+_offspring,1.0,0.004712073704014184,sex == Male AND age < 65,5146,7
+9,2,model_a,0.0,0.022175263809758428,occupation == Office-based AND obesity == 1,116,7
+9,2,model_a,0.25,0.007277518069978087,occupation == Office-based AND obesity == 1,116,7
+9,2,model_a,0.5,0.0057501728859916095,age < 70,9326,7
+9,2,model_a,0.75,0.005650732585108612,age < 70,9326,7
+9,2,model_a,1.0,0.005553011949640161,age < 70,9326,7
+9,2,model_b,0.0,0.023946209490186353,occupation == Healthcare AND obesity == 1,141,7
+9,2,model_b,0.25,0.009854207180696515,occupation == Sales and services AND alcohol == 1,445,7
+9,2,model_b,0.5,0.006365456845429606,age < 65,8644,7
+9,2,model_b,0.75,0.006137736895755267,age < 65,8644,7
+9,2,model_b,1.0,0.005918163474560957,age < 65,8644,7
+9,3,B0_infection,0.0,0.023107778023123304,obesity == 1 AND age >= 65,111,3
+9,3,B0_infection,0.25,0.009108725246084807,occupation == Other AND age < 20,432,3
+9,3,B0_infection,0.5,0.004152680695662493,occupation == Other AND age < 20,432,3
+9,3,B0_infection,0.75,0.002559229687509155,age < 45,5919,3
+9,3,B0_infection,1.0,0.0022447674174287443,age < 45,5919,3
+9,3,B0+_infection,0.0,0.005686110309563061,occupation == Student AND age >= 60,493,3
+9,3,B0+_infection,0.25,0.0026793349580893347,occupation == Student AND age >= 60,493,3
+9,3,B0+_infection,0.5,0.0019981233073321277,obesity == 0,9254,3
+9,3,B0+_infection,0.75,0.0019597679886072064,obesity == 0,9254,3
+9,3,B0+_infection,1.0,0.0019221489259827428,obesity == 0,9254,3
+9,3,B0_offspring,0.0,0.08880934894518855,occupation == Other AND obesity == 1,116,3
+9,3,B0_offspring,0.25,0.029147798634580176,occupation == Other AND obesity == 1,116,3
+9,3,B0_offspring,0.5,0.012862920460590399,alcohol == 0 AND obesity == 1,533,3
+9,3,B0_offspring,0.75,0.011420920029642012,age < 70,9323,3
+9,3,B0_offspring,1.0,0.011223352119259355,age < 70,9323,3
+9,3,B0+_offspring,0.0,0.028667064011239318,obesity == 1 AND age < 20,186,3
+9,3,B0+_offspring,0.25,0.016444270212271826,age < 70,9323,3
+9,3,B0+_offspring,0.5,0.016159804504152497,age < 70,9323,3
+9,3,B0+_offspring,0.75,0.015880259703926997,age < 70,9323,3
+9,3,B0+_offspring,1.0,0.015605550685923559,age < 70,9323,3
+9,3,model_a,0.0,0.012535225997528696,occupation == Sales and services AND age >= 70,92,3
+9,3,model_a,0.25,0.0070679344659823505,obesity == 0,9254,3
+9,3,model_a,0.5,0.006932260717432983,obesity == 0,9254,3
+9,3,model_a,0.75,0.006799191317598792,obesity == 0,9254,3
+9,3,model_a,1.0,0.0066686762742572386,obesity == 0,9254,3
+9,3,model_b,0.0,0.03493022214076344,occupation == Agriculture AND age >= 70,73,3
+9,3,model_b,0.25,0.010210148592450511,occupation == Agriculture AND age >= 70,73,3
+9,3,model_b,0.5,0.008168039850247437,age < 70,9326,3
+9,3,model_b,0.75,0.008026786299017413,age < 70,9326,3
+9,3,model_b,1.0,0.007887975508364085,age < 70,9326,3
+9,4,B0_infection,0.0,0.02880328747956029,obesity == 1 AND age >= 65,111,5
+9,4,B0_infection,0.25,0.009349164551777455,obesity == 1 AND age >= 65,111,5
+9,4,B0_infection,0.5,0.003918959679971874,sex == Female AND occupation == Other,613,5
+9,4,B0_infection,0.75,0.0028545879316437418,age < 70,9326,5
+9,4,B0_infection,1.0,0.0028052222710892288,age < 70,9326,5
+9,4,B0+_infection,0.0,0.014810543450355186,occupation == Agriculture AND obesity == 1,75,5
+9,4,B0+_infection,0.25,0.004491092497397234,age < 70,9326,5
+9,4,B0+_infection,0.5,0.004413426034477043,age < 70,9326,5
+9,4,B0+_infection,0.75,0.0043371026922932945,age < 70,9326,5
+9,4,B0+_infection,1.0,0.004262099243660857,age < 70,9326,5
+9,4,B0_offspring,0.0,0.09195011164054145,obesity == 1 AND age >= 65,111,5
+9,4,B0_offspring,0.25,0.029846531152154257,obesity == 1 AND age >= 65,111,5
+9,4,B0_offspring,0.5,0.012655944417255153,occupation == Other AND age < 20,431,5
+9,4,B0_offspring,0.75,0.010266685634702115,age < 45,5918,5
+9,4,B0_offspring,1.0,0.00900502374363898,age < 45,5918,5
+9,4,B0+_offspring,0.0,0.01875084663893808,occupation == Healthcare AND age >= 65,249,5
+9,4,B0+_offspring,0.25,0.008963133285638223,smoking == 0 AND alcohol == 1,1207,5
+9,4,B0+_offspring,0.5,0.005335916743078223,obesity == 0 AND age < 50,6139,5
+9,4,B0+_offspring,0.75,0.004764919915383276,age < 50,6611,5
+9,4,B0+_offspring,1.0,0.004664731195833471,obesity == 0,9253,5
+9,4,model_a,0.0,0.033406382348372975,occupation == Agriculture AND obesity == 1,75,5
+9,4,model_a,0.25,0.013844182961052191,age < 70,9326,5
+9,4,model_a,0.5,0.013604769338814833,age < 70,9326,5
+9,4,model_a,0.75,0.013369496002983258,age < 70,9326,5
+9,4,model_a,1.0,0.013138291353740538,age < 70,9326,5
+9,4,model_b,0.0,0.024331108651997602,occupation == Other AND age >= 70,110,5
+9,4,model_b,0.25,0.010189815454626517,occupation == Agriculture AND age < 30,372,5
+9,4,model_b,0.5,0.006672585852952622,obesity == 0,9254,5
+9,4,model_b,0.75,0.0065445010865269135,obesity == 0,9254,5
+9,4,model_b,1.0,0.0064188749932081336,obesity == 0,9254,5
+9,5,B0_infection,0.0,0.022990823375384828,occupation == Agriculture AND age >= 70,73,5
+9,5,B0_infection,0.25,0.00987354345394667,sex == Female AND occupation == Other,613,5
+9,5,B0_infection,0.5,0.004912902671374346,sex == Female AND occupation == Other,613,5
+9,5,B0_infection,0.75,0.002456938887563262,smoking == 1 AND age < 55,4314,5
+9,5,B0_infection,1.0,0.0019911977342448135,smoking == 1 AND age < 55,4314,5
+9,5,B0+_infection,0.0,0.008410801379113956,occupation == Agriculture AND obesity == 1,75,5
+9,5,B0+_infection,0.25,0.0034162471910396046,sex == Female AND occupation == Other,613,5
+9,5,B0+_infection,0.5,0.0018294640949094,obesity == 0,9254,5
+9,5,B0+_infection,0.75,0.0017943463030301093,obesity == 0,9254,5
+9,5,B0+_infection,1.0,0.0017599026207493116,obesity == 0,9254,5
+9,5,B0_offspring,0.0,0.10073808770527959,obesity == 1 AND age >= 65,111,5
+9,5,B0_offspring,0.25,0.032700698098285366,obesity == 1 AND age >= 65,111,5
+9,5,B0_offspring,0.5,0.014519084702708839,occupation == Other AND age < 20,431,5
+9,5,B0_offspring,0.75,0.010198512138221755,smoking == 1 AND age < 55,4312,5
+9,5,B0_offspring,1.0,0.008958700547409383,smoking == 1,5962,5
+9,5,B0+_offspring,0.0,0.024000850174381416,occupation == Sales and services AND obesity == 1,119,5
+9,5,B0+_offspring,0.25,0.011154544735138695,occupation == Other AND age < 35,733,5
+9,5,B0+_offspring,0.5,0.0058044412550302795,occupation == Other AND age < 35,733,5
+9,5,B0+_offspring,0.75,0.003877797562756983,age < 60,7974,5
+9,5,B0+_offspring,1.0,0.003664685992249161,age < 60,7974,5
+9,5,model_a,0.0,0.020083344848132442,smoking == 0 AND age >= 70,253,5
+9,5,model_a,0.25,0.008009698630709529,smoking == 0 AND age >= 70,253,5
+9,5,model_a,0.5,0.004125919611040633,obesity == 0,9254,5
+9,5,model_a,0.75,0.004046719813343381,obesity == 0,9254,5
+9,5,model_a,1.0,0.003969040308949592,obesity == 0,9254,5
+9,5,model_b,0.0,0.025059001931626062,occupation == Agriculture AND obesity == 1,75,5
+9,5,model_b,0.25,0.009439638801862963,occupation == Healthcare AND age >= 55,521,5
+9,5,model_b,0.5,0.004839872104783288,age < 60,7976,5
+9,5,model_b,0.75,0.00457383161158069,age < 60,7976,5
+9,5,model_b,1.0,0.004322414964316817,age < 60,7976,5
+9,6,B0_infection,0.0,0.02460348895065978,obesity == 1 AND age >= 65,111,7
+9,6,B0_infection,0.25,0.008219817486381082,alcohol == 0 AND obesity == 1,533,7
+9,6,B0_infection,0.5,0.003949516902487733,alcohol == 0 AND obesity == 1,533,7
+9,6,B0_infection,0.75,0.0022806249240110545,alcohol == 1 AND age < 35,1404,7
+9,6,B0_infection,1.0,0.001581488448066597,age < 45,5919,7
+9,6,B0+_infection,0.0,0.006101509577156114,occupation == Student AND age >= 55,641,7
+9,6,B0+_infection,0.25,0.0033785919007002143,smoking == 0 AND age >= 55,1027,7
+9,6,B0+_infection,0.5,0.001912618479291804,smoking == 0 AND age >= 55,1027,7
+9,6,B0+_infection,0.75,0.0013226967273617513,age >= 55,2678,7
+9,6,B0+_infection,1.0,0.0011765234186387262,age < 70,9326,7
+9,6,B0_offspring,0.0,0.09448715346805348,obesity == 1 AND age >= 65,111,7
+9,6,B0_offspring,0.25,0.030672342735683273,obesity == 1 AND age >= 65,111,7
+9,6,B0_offspring,0.5,0.010930495519476701,occupation == Other AND age < 20,431,7
+9,6,B0_offspring,0.75,0.00784993309809569,smoking == 1 AND age < 55,4311,7
+9,6,B0_offspring,1.0,0.0063614175002763345,smoking == 1 AND age < 55,4311,7
+9,6,B0+_offspring,0.0,0.022422513719383703,occupation == Healthcare AND age >= 70,137,7
+9,6,B0+_offspring,0.25,0.008306200209085747,sex == Female AND age >= 35,2171,7
+9,6,B0+_offspring,0.5,0.008044936767434663,age < 70,9322,7
+9,6,B0+_offspring,0.75,0.007905754933013136,age < 70,9322,7
+9,6,B0+_offspring,1.0,0.007768981020939908,age < 70,9322,7
+9,6,model_a,0.0,0.01687324626989298,alcohol == 1 AND age >= 60,623,7
+9,6,model_a,0.25,0.009542476276407294,smoking == 0 AND age >= 55,1027,7
+9,6,model_a,0.5,0.005401989053687628,smoking == 0 AND age >= 55,1027,7
+9,6,model_a,0.75,0.003991201672592387,age < 70,9326,7
+9,6,model_a,1.0,0.003922180044360271,age < 70,9326,7
+9,6,model_b,0.0,0.017116343894843743,occupation == Agriculture AND age >= 60,209,7
+9,6,model_b,0.25,0.009275396670655812,age < 70,9326,7
+9,6,model_b,0.5,0.009114993104706317,age < 70,9326,7
+9,6,model_b,0.75,0.008957363469067607,age < 70,9326,7
+9,6,model_b,1.0,0.008802459792927294,age < 70,9326,7
+9,7,B0_infection,0.0,0.026577477471490307,obesity == 1 AND age >= 65,111,2
+9,7,B0_infection,0.25,0.00862669618627555,obesity == 1 AND age >= 65,111,2
+9,7,B0_infection,0.5,0.004144240528207139,sex == Female AND occupation == Other,613,2
+9,7,B0_infection,0.75,0.0025556489470625276,smoking == 1 AND age < 55,4314,2
+9,7,B0_infection,1.0,0.00207119616148166,smoking == 1 AND age < 55,4314,2
+9,7,B0+_infection,0.0,0.008236480170110251,obesity == 1 AND age >= 70,59,2
+9,7,B0+_infection,0.25,0.0031142233768604085,occupation == Healthcare AND age >= 55,521,2
+9,7,B0+_infection,0.5,0.0014878501435794064,occupation == Healthcare AND age >= 55,521,2
+9,7,B0+_infection,0.75,0.0008841833110634913,alcohol == 0 AND age < 25,2282,2
+9,7,B0+_infection,1.0,0.0007307386927415314,age < 65,8644,2
+9,7,B0_offspring,0.0,0.12151120059043496,obesity == 1 AND age >= 65,111,2
+9,7,B0_offspring,0.25,0.040493532267324835,obesity == 1 AND age >= 60,161,2
+9,7,B0_offspring,0.5,0.014424573767229564,obesity == 1 AND age >= 60,161,2
+9,7,B0_offspring,0.75,0.008290823438008259,sex == Male AND smoking == 1,3594,2
+9,7,B0_offspring,1.0,0.006419527188755153,sex == Male AND smoking == 1,3594,2
+9,7,B0+_offspring,0.0,0.03954186271447272,obesity == 1 AND age >= 60,161,2
+9,7,B0+_offspring,0.25,0.014085570798150013,obesity == 1 AND age >= 60,161,2
+9,7,B0+_offspring,0.5,0.005243551152706352,sex == Female AND smoking == 0,1655,2
+9,7,B0+_offspring,0.75,0.0037982176037964486,age >= 25,6713,2
+9,7,B0+_offspring,1.0,0.00343811074781127,age >= 25,6713,2
+9,7,model_a,0.0,0.022138346264271046,occupation == Office-based AND obesity == 1,116,2
+9,7,model_a,0.25,0.008073420881408349,occupation == Office-based AND age < 20,403,2
+9,7,model_a,0.5,0.004750107575783192,alcohol == 0 AND age < 25,2282,2
+9,7,model_a,0.75,0.00328308672623727,alcohol == 0 AND age < 25,2282,2
+9,7,model_a,1.0,0.0022979466896121117,alcohol == 0 AND age < 65,6075,2
+9,7,model_b,0.0,0.029748637199601885,obesity == 1 AND age >= 70,59,2
+9,7,model_b,0.25,0.010128733416045558,occupation == Sales and services AND age >= 60,318,2
+9,7,model_b,0.5,0.005494032504546076,age >= 25,6713,2
+9,7,model_b,0.75,0.004973022066668821,age >= 25,6713,2
+9,7,model_b,1.0,0.004501420123581582,age >= 25,6713,2

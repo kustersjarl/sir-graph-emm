@@ -53,7 +53,7 @@ def test_scaled_rejects_bad_mask() -> None:
         NodeParams.homogeneous(4).scaled(np.array([True, False]))
 
 
-def test_transmission_probability_product_and_clipping() -> None:
+def test_transmission_probability_is_exponential_in_product() -> None:
     params = NodeParams(
         susceptibility=np.array([1.0, 2.0, 10.0]),
         infectiousness=np.array([0.5, 1.0, 1.0]),
@@ -62,8 +62,8 @@ def test_transmission_probability_product_and_clipping() -> None:
     src = np.array([0, 1, 1])
     dst = np.array([1, 0, 2])
     prob = transmission_probability(0.4, params, src, dst)
-    # 0.4*0.5*2 = 0.4 ; 0.4*1*1 = 0.4 ; 0.4*1*10 = 4 -> clipped to 1
-    assert np.allclose(prob, [0.4, 0.4, 1.0])
+    # hazards 0.4*0.5*2 = 0.4 ; 0.4*1*1 = 0.4 ; 0.4*1*10 = 4
+    assert np.allclose(prob, 1 - np.exp(-np.array([0.4, 0.4, 4.0])))
 
 
 def test_transmission_probability_edge_multiplier() -> None:
@@ -94,5 +94,5 @@ def test_transmission_probability_edge_multiplier() -> None:
 
     assert np.allclose(
         prob,
-        [0.2, 0.4],
+        1 - np.exp(-np.array([0.2, 0.4])),
     )
