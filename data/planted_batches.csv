@@ -1,0 +1,161 @@
+planted,size,true_multiplier,exact_rank,top10,estimated_RR,first_match_rank,best_top20_description,best_top20_jaccard,condition,model,batch
+smoking == 1 AND age >= 60,1161,1.75,1,True,1.676743224836839,1,smoking == 1 AND age >= 60,1.0,planted,B,1
+sex == Female AND occupation == Healthcare,804,1.5,7,True,1.4908046550477005,7,sex == Female AND occupation == Healthcare,1.0,planted,B,1
+obesity == 1,709,1.5,11,False,1.4853239009157764,11,obesity == 1,1.0,planted,B,1
+alcohol == 1 AND age < 30,1246,1.3,43,False,1.2223695147989344,43,sex == Female AND occupation == Healthcare,0.055612770339855816,planted,B,1
+smoking == 1 AND age >= 60,1161,1.75,20,False,1.010006314011623,8,smoking == 1 AND age >= 60,1.0,control,B,1
+sex == Female AND occupation == Healthcare,804,1.5,351,False,0.9924288862589021,351,age < 70,0.08033152693656359,control,B,1
+obesity == 1,709,1.5,110,False,1.0049346185566577,87,age < 70,0.070578231292517,control,B,1
+alcohol == 1 AND age < 30,1246,1.3,255,False,0.9987230490495617,196,age < 70,0.13307700523336538,control,B,1
+smoking == 1 AND age >= 60,1161,1.5,1,True,1.481409252626776,1,smoking == 1 AND age >= 60,1.0,planted,A,1
+occupation == Student AND age < 20,668,1.5,9,True,1.3896695266145365,9,occupation == Student AND age < 20,1.0,planted,A,1
+occupation == Agriculture,1001,1.4,5,True,1.3396634304365478,5,occupation == Agriculture,1.0,planted,A,1
+sex == Male AND occupation == Office-based,925,1.25,49,False,1.1749946405077312,49,sex == Male AND age >= 60,0.0967911625460284,planted,A,1
+smoking == 1 AND age >= 60,1161,1.5,4,True,1.0083460824288881,4,smoking == 1 AND age >= 60,1.0,control,A,1
+occupation == Student AND age < 20,668,1.5,255,False,0.9977945502355918,43,occupation == Student AND age < 50,0.40411373260738054,control,A,1
+occupation == Agriculture,1001,1.4,380,False,0.9926402453772953,242,obesity == 0,0.09875093413045799,control,A,1
+sex == Male AND occupation == Office-based,925,1.25,119,False,1.0022860173208887,119,alcohol == 0 AND obesity == 0,0.09280331018176445,control,A,1
+smoking == 1 AND age >= 60,1161,1.75,1,True,1.6822021059756362,1,smoking == 1 AND age >= 60,1.0,planted,B,2
+sex == Female AND occupation == Healthcare,804,1.5,8,True,1.4868353059017787,8,sex == Female AND occupation == Healthcare,1.0,planted,B,2
+obesity == 1,709,1.5,11,False,1.484635127563353,11,obesity == 1,1.0,planted,B,2
+alcohol == 1 AND age < 30,1246,1.3,40,False,1.2295469717841625,40,sex == Female AND occupation == Healthcare,0.055612770339855816,planted,B,2
+smoking == 1 AND age >= 60,1161,1.75,2,True,1.010434393497534,2,smoking == 1 AND age >= 60,1.0,control,B,2
+sex == Female AND occupation == Healthcare,804,1.5,119,False,1.0026525743340795,119,sex == Female AND alcohol == 1,0.14065180102915953,control,B,2
+obesity == 1,709,1.5,270,False,0.9974222090459074,146,age >= 20,0.06848951420228298,control,B,2
+alcohol == 1 AND age < 30,1246,1.3,23,False,1.006517382922812,8,alcohol == 1 AND age < 35,0.8616874135546335,control,B,2
+smoking == 1 AND age >= 60,1161,1.5,1,True,1.470269231062183,1,smoking == 1 AND age >= 60,1.0,planted,A,2
+occupation == Student AND age < 20,668,1.5,9,True,1.3786952061451228,9,occupation == Student AND age < 20,1.0,planted,A,2
+occupation == Agriculture,1001,1.4,5,True,1.3359063843999346,5,occupation == Agriculture,1.0,planted,A,2
+sex == Male AND occupation == Office-based,925,1.25,52,False,1.174207863245601,52,sex == Male AND age >= 60,0.0967911625460284,planted,A,2
+smoking == 1 AND age >= 60,1161,1.5,182,False,1.000157138503362,157,sex == Female AND age >= 40,0.18683062276874257,control,A,2
+occupation == Student AND age < 20,668,1.5,147,False,1.0014823909617565,105,smoking == 0 AND age < 20,0.18620689655172415,control,A,2
+occupation == Agriculture,1001,1.4,260,False,0.9980029003608253,176,age < 55,0.0951133237259269,control,A,2
+sex == Male AND occupation == Office-based,925,1.25,40,False,1.006248031763162,30,occupation == Office-based AND age >= 35,0.4105523495465787,control,A,2
+smoking == 1 AND age >= 60,1161,1.75,1,True,1.6840530226080228,1,smoking == 1 AND age >= 60,1.0,planted,B,3
+sex == Female AND occupation == Healthcare,804,1.5,7,True,1.4936028981408127,7,sex == Female AND occupation == Healthcare,1.0,planted,B,3
+obesity == 1,709,1.5,11,False,1.47553343961456,11,obesity == 1,1.0,planted,B,3
+alcohol == 1 AND age < 30,1246,1.3,43,False,1.2238646558570585,43,sex == Female AND occupation == Healthcare,0.055612770339855816,planted,B,3
+smoking == 1 AND age >= 60,1161,1.75,161,False,1.0013772618317514,50,alcohol == 0 AND age >= 60,0.4634427173287277,control,B,3
+sex == Female AND occupation == Healthcare,804,1.5,325,False,0.9952223635542572,325,sex == Female AND age >= 20,0.19241796750557502,control,B,3
+obesity == 1,709,1.5,156,False,1.0018441273126253,104,age >= 20,0.06848951420228298,control,B,3
+alcohol == 1 AND age < 30,1246,1.3,315,False,0.9967612672193624,191,age >= 20,0.048473748473748475,control,B,3
+smoking == 1 AND age >= 60,1161,1.5,1,True,1.4762972216557855,1,smoking == 1 AND age >= 60,1.0,planted,A,3
+occupation == Student AND age < 20,668,1.5,9,True,1.3859590597732796,9,occupation == Student AND age < 20,1.0,planted,A,3
+occupation == Agriculture,1001,1.4,5,True,1.3433821365892327,5,occupation == Agriculture,1.0,planted,A,3
+sex == Male AND occupation == Office-based,925,1.25,53,False,1.1716358332211567,53,sex == Male AND age >= 60,0.0967911625460284,planted,A,3
+smoking == 1 AND age >= 60,1161,1.5,366,False,0.9914395160159584,347,alcohol == 1,0.092660072878709,control,A,3
+occupation == Student AND age < 20,668,1.5,109,False,1.0035904358263996,87,age < 40,0.1234978739138473,control,A,3
+occupation == Agriculture,1001,1.4,320,False,0.9944606460958257,198,age < 70,0.0997453310696095,control,A,3
+sex == Male AND occupation == Office-based,925,1.25,172,False,1.0002535398701462,172,sex == Male AND age < 55,0.1428873388290002,control,A,3
+smoking == 1 AND age >= 60,1161,1.75,1,True,1.675587498097622,1,smoking == 1 AND age >= 60,1.0,planted,B,4
+sex == Female AND occupation == Healthcare,804,1.5,6,True,1.4917062520487125,6,sex == Female AND occupation == Healthcare,1.0,planted,B,4
+obesity == 1,709,1.5,11,False,1.4814836710350425,11,obesity == 1,1.0,planted,B,4
+alcohol == 1 AND age < 30,1246,1.3,37,False,1.2330200111445222,37,sex == Female AND occupation == Healthcare,0.055612770339855816,planted,B,4
+smoking == 1 AND age >= 60,1161,1.75,148,False,1.0021050314865676,23,alcohol == 0 AND age >= 60,0.4634427173287277,control,B,4
+sex == Female AND occupation == Healthcare,804,1.5,151,False,1.0024494619951907,151,obesity == 0 AND age < 70,0.08086897179253867,control,B,4
+obesity == 1,709,1.5,347,False,0.9910436281681295,187,age >= 20,0.06848951420228298,control,B,4
+alcohol == 1 AND age < 30,1246,1.3,383,False,0.9895402629423387,299,obesity == 0 AND age < 70,0.1317855923523387,control,B,4
+smoking == 1 AND age >= 60,1161,1.5,1,True,1.472590704099702,1,smoking == 1 AND age >= 60,1.0,planted,A,4
+occupation == Student AND age < 20,668,1.5,9,True,1.382777490256689,9,occupation == Student AND age < 20,1.0,planted,A,4
+occupation == Agriculture,1001,1.4,5,True,1.3394670268947029,5,occupation == Agriculture,1.0,planted,A,4
+sex == Male AND occupation == Office-based,925,1.25,50,False,1.1721028167781689,50,sex == Male AND age >= 60,0.0967911625460284,planted,A,4
+smoking == 1 AND age >= 60,1161,1.5,320,False,0.9929935214441289,320,age < 70,0.07960607304062371,control,A,4
+occupation == Student AND age < 20,668,1.5,37,False,1.0099507243865995,33,age < 35,0.1423699914748508,control,A,4
+occupation == Agriculture,1001,1.4,331,False,0.9916054133924492,246,age < 70,0.0997453310696095,control,A,4
+sex == Male AND occupation == Office-based,925,1.25,59,False,1.007005497703484,46,sex == Male AND age < 50,0.1407172038129823,control,A,4
+smoking == 1 AND age >= 60,1161,1.75,1,True,1.6829655587516987,1,smoking == 1 AND age >= 60,1.0,planted,B,5
+sex == Female AND occupation == Healthcare,804,1.5,7,True,1.496869909141491,7,sex == Female AND occupation == Healthcare,1.0,planted,B,5
+obesity == 1,709,1.5,11,False,1.4894526809943467,11,obesity == 1,1.0,planted,B,5
+alcohol == 1 AND age < 30,1246,1.3,51,False,1.220862091930683,51,sex == Female AND occupation == Healthcare,0.055612770339855816,planted,B,5
+smoking == 1 AND age >= 60,1161,1.75,5,True,1.0112368610481024,5,smoking == 1 AND age >= 60,1.0,control,B,5
+sex == Female AND occupation == Healthcare,804,1.5,294,False,0.9971501797545889,294,sex == Female AND age >= 60,0.1031636863823934,control,B,5
+obesity == 1,709,1.5,386,False,0.9866693627603853,337,age >= 50,0.0619351408825093,control,B,5
+alcohol == 1 AND age < 30,1246,1.3,219,False,1.000162499195869,116,obesity == 0 AND age < 65,0.1413919413919414,control,B,5
+smoking == 1 AND age >= 60,1161,1.5,1,True,1.4743690481267169,1,smoking == 1 AND age >= 60,1.0,planted,A,5
+occupation == Student AND age < 20,668,1.5,10,True,1.3713391864730957,10,occupation == Student AND age < 20,1.0,planted,A,5
+occupation == Agriculture,1001,1.4,5,True,1.3405435415271634,5,occupation == Agriculture,1.0,planted,A,5
+sex == Male AND occupation == Office-based,925,1.25,55,False,1.1693041614271706,55,sex == Male AND age >= 60,0.0967911625460284,planted,A,5
+smoking == 1 AND age >= 60,1161,1.5,389,False,0.9879357603345152,365,alcohol == 0 AND age >= 70,0.19167904903417535,control,A,5
+occupation == Student AND age < 20,668,1.5,25,False,1.0088264894079115,25,age < 20,0.251222264009026,control,A,5
+occupation == Agriculture,1001,1.4,21,False,1.0076372496158221,12,occupation == Agriculture AND age < 70,0.939060939060939,control,A,5
+sex == Male AND occupation == Office-based,925,1.25,199,False,1.0003391786628013,91,age < 65,0.09053916581892167,control,A,5
+smoking == 1 AND age >= 60,1161,1.75,1,True,1.6670395315680928,1,smoking == 1 AND age >= 60,1.0,planted,B,6
+sex == Female AND occupation == Healthcare,804,1.5,6,True,1.5001086257795988,6,sex == Female AND occupation == Healthcare,1.0,planted,B,6
+obesity == 1,709,1.5,10,True,1.4875502779779446,10,obesity == 1,1.0,planted,B,6
+alcohol == 1 AND age < 30,1246,1.3,48,False,1.2209900022903253,48,sex == Female AND occupation == Healthcare,0.055612770339855816,planted,B,6
+smoking == 1 AND age >= 60,1161,1.75,64,False,1.007234668800923,11,age >= 60,0.5923469387755103,control,B,6
+sex == Female AND occupation == Healthcare,804,1.5,311,False,0.9951834679322937,311,age >= 25,0.08008065677660954,control,B,6
+obesity == 1,709,1.5,66,False,1.0090031502911607,31,age >= 25,0.06701253782965845,control,B,6
+alcohol == 1 AND age < 30,1246,1.3,377,False,0.9902984865437673,353,sex == Male AND occupation == Other,0.06243949661181026,control,B,6
+smoking == 1 AND age >= 60,1161,1.5,1,True,1.466415623747083,1,smoking == 1 AND age >= 60,1.0,planted,A,6
+occupation == Student AND age < 20,668,1.5,9,True,1.3869517566430176,9,occupation == Student AND age < 20,1.0,planted,A,6
+occupation == Agriculture,1001,1.4,5,True,1.335067867651326,5,occupation == Agriculture,1.0,planted,A,6
+sex == Male AND occupation == Office-based,925,1.25,47,False,1.1795232744119635,47,sex == Male AND age >= 60,0.0967911625460284,planted,A,6
+smoking == 1 AND age >= 60,1161,1.5,335,False,0.9962608018181236,79,age >= 55,0.43943981831945494,control,A,6
+occupation == Student AND age < 20,668,1.5,238,False,0.9990503895368859,238,age < 65,0.07657915854637166,control,A,6
+occupation == Agriculture,1001,1.4,145,False,1.0013320241280714,39,age < 70,0.0997453310696095,control,A,6
+sex == Male AND occupation == Office-based,925,1.25,353,False,0.9950029529781892,237,sex == Male AND age >= 55,0.11081441922563418,control,A,6
+smoking == 1 AND age >= 60,1161,1.75,1,True,1.6793153806282557,1,smoking == 1 AND age >= 60,1.0,planted,B,7
+sex == Female AND occupation == Healthcare,804,1.5,6,True,1.4898724127943364,6,sex == Female AND occupation == Healthcare,1.0,planted,B,7
+obesity == 1,709,1.5,11,False,1.487632062020458,11,obesity == 1,1.0,planted,B,7
+alcohol == 1 AND age < 30,1246,1.3,40,False,1.2313046324775794,40,sex == Female AND occupation == Healthcare,0.055612770339855816,planted,B,7
+smoking == 1 AND age >= 60,1161,1.75,27,False,1.006707474799861,9,age >= 60,0.5923469387755103,control,B,7
+sex == Female AND occupation == Healthcare,804,1.5,386,False,0.9903116126261335,386,obesity == 0,0.08060372511239564,control,B,7
+obesity == 1,709,1.5,269,False,0.9973960663366389,160,age >= 50,0.0619351408825093,control,B,7
+alcohol == 1 AND age < 30,1246,1.3,377,False,0.9937295442849743,335,obesity == 0,0.12346732060987312,control,B,7
+smoking == 1 AND age >= 60,1161,1.5,1,True,1.470234610989566,1,smoking == 1 AND age >= 60,1.0,planted,A,7
+occupation == Student AND age < 20,668,1.5,9,True,1.3810629646721295,9,occupation == Student AND age < 20,1.0,planted,A,7
+occupation == Agriculture,1001,1.4,5,True,1.3345650026515228,5,occupation == Agriculture,1.0,planted,A,7
+sex == Male AND occupation == Office-based,925,1.25,50,False,1.174516689279593,50,sex == Male AND age >= 60,0.0967911625460284,planted,A,7
+smoking == 1 AND age >= 60,1161,1.5,320,False,0.9956702303101603,222,obesity == 0 AND age >= 30,0.19021547156481808,control,A,7
+occupation == Student AND age < 20,668,1.5,107,False,1.0029825398626242,46,obesity == 0 AND age < 45,0.1074321944346601,control,A,7
+occupation == Agriculture,1001,1.4,165,False,1.0003860228477883,93,age < 70,0.0997453310696095,control,A,7
+sex == Male AND occupation == Office-based,925,1.25,367,False,0.9925353397623473,285,obesity == 0,0.09238665526090675,control,A,7
+smoking == 1 AND age >= 60,1161,1.75,1,True,1.6874790634221437,1,smoking == 1 AND age >= 60,1.0,planted,B,8
+sex == Female AND occupation == Healthcare,804,1.5,6,True,1.4979052203941217,6,sex == Female AND occupation == Healthcare,1.0,planted,B,8
+obesity == 1,709,1.5,11,False,1.488893549752867,11,obesity == 1,1.0,planted,B,8
+alcohol == 1 AND age < 30,1246,1.3,41,False,1.2300236807047658,41,sex == Female AND occupation == Healthcare,0.055612770339855816,planted,B,8
+smoking == 1 AND age >= 60,1161,1.75,11,False,1.0070525065506248,6,smoking == 1 AND age >= 60,1.0,control,B,8
+sex == Female AND occupation == Healthcare,804,1.5,329,False,0.9962252873771233,329,sex == Female AND age >= 65,0.07986960065199673,control,B,8
+obesity == 1,709,1.5,73,False,1.0048895302057128,26,occupation == Student AND age < 55,0.06405394016013485,control,B,8
+alcohol == 1 AND age < 30,1246,1.3,258,False,0.9987645627131018,202,occupation == Student AND age < 25,0.14136413641364137,control,B,8
+smoking == 1 AND age >= 60,1161,1.5,1,True,1.4771398827075337,1,smoking == 1 AND age >= 60,1.0,planted,A,8
+occupation == Student AND age < 20,668,1.5,10,True,1.3816306903641375,10,occupation == Student AND age < 20,1.0,planted,A,8
+occupation == Agriculture,1001,1.4,5,True,1.3473724914580845,5,occupation == Agriculture,1.0,planted,A,8
+sex == Male AND occupation == Office-based,925,1.25,51,False,1.1761004571050586,51,sex == Male AND age >= 60,0.0967911625460284,planted,A,8
+smoking == 1 AND age >= 60,1161,1.5,43,False,1.0071842500221957,43,obesity == 0,0.11488,control,A,8
+occupation == Student AND age < 20,668,1.5,161,False,1.0002068812532459,133,smoking == 0 AND age < 35,0.1178524661719773,control,A,8
+occupation == Agriculture,1001,1.4,326,False,0.9948881849492694,211,obesity == 0,0.09875093413045799,control,A,8
+sex == Male AND occupation == Office-based,925,1.25,79,False,1.0041588405274207,79,sex == Male AND age < 50,0.1407172038129823,control,A,8
+smoking == 1 AND age >= 60,1161,1.75,1,True,1.6806243565053092,1,smoking == 1 AND age >= 60,1.0,planted,B,9
+sex == Female AND occupation == Healthcare,804,1.5,6,True,1.5013960474034178,6,sex == Female AND occupation == Healthcare,1.0,planted,B,9
+obesity == 1,709,1.5,11,False,1.4848943698721346,11,obesity == 1,1.0,planted,B,9
+alcohol == 1 AND age < 30,1246,1.3,46,False,1.2210893228221962,46,sex == Female AND occupation == Healthcare,0.055612770339855816,planted,B,9
+smoking == 1 AND age >= 60,1161,1.75,30,False,1.0060862329771725,16,age >= 60,0.5923469387755103,control,B,9
+sex == Female AND occupation == Healthcare,804,1.5,88,False,1.0045644451531894,88,sex == Female AND age >= 20,0.19241796750557502,control,B,9
+obesity == 1,709,1.5,195,False,1.0010975343387447,56,age >= 20,0.06848951420228298,control,B,9
+alcohol == 1 AND age < 30,1246,1.3,351,False,0.9943157818775448,338,smoking == 1 AND obesity == 0,0.11558611656843484,control,B,9
+smoking == 1 AND age >= 60,1161,1.5,1,True,1.477519688170755,1,smoking == 1 AND age >= 60,1.0,planted,A,9
+occupation == Student AND age < 20,668,1.5,10,True,1.374094252917512,10,occupation == Student AND age < 20,1.0,planted,A,9
+occupation == Agriculture,1001,1.4,5,True,1.3404573428296345,5,occupation == Agriculture,1.0,planted,A,9
+sex == Male AND occupation == Office-based,925,1.25,53,False,1.169676048506277,53,sex == Male AND age >= 60,0.0967911625460284,planted,A,9
+smoking == 1 AND age >= 60,1161,1.5,34,False,1.006177878021084,23,alcohol == 1 AND age >= 65,0.18711656441717792,control,A,9
+occupation == Student AND age < 20,668,1.5,266,False,0.9974549026657484,212,age < 45,0.11046800066148503,control,A,9
+occupation == Agriculture,1001,1.4,330,False,0.9954027704683299,201,obesity == 0,0.09875093413045799,control,A,9
+sex == Male AND occupation == Office-based,925,1.25,144,False,1.0013501115628853,116,obesity == 0,0.09238665526090675,control,A,9
+smoking == 1 AND age >= 60,1161,1.75,1,True,1.679273248368901,1,smoking == 1 AND age >= 60,1.0,planted,B,10
+sex == Female AND occupation == Healthcare,804,1.5,7,True,1.4943072330944818,7,sex == Female AND occupation == Healthcare,1.0,planted,B,10
+obesity == 1,709,1.5,11,False,1.4837290008006794,11,obesity == 1,1.0,planted,B,10
+alcohol == 1 AND age < 30,1246,1.3,42,False,1.22766306915443,42,sex == Female AND occupation == Healthcare,0.055612770339855816,planted,B,10
+smoking == 1 AND age >= 60,1161,1.75,290,False,0.9972604547317651,96,age >= 45,0.2937009865924614,control,B,10
+sex == Female AND occupation == Healthcare,804,1.5,277,False,0.9974177957749619,277,age < 70,0.08033152693656359,control,B,10
+obesity == 1,709,1.5,49,False,1.0071713086795993,11,obesity == 1 AND age < 55,0.7489421720733427,control,B,10
+alcohol == 1 AND age < 30,1246,1.3,161,False,1.0016391069941795,68,alcohol == 1,0.4102732960158051,control,B,10
+smoking == 1 AND age >= 60,1161,1.5,1,True,1.4688944361927836,1,smoking == 1 AND age >= 60,1.0,planted,A,10
+occupation == Student AND age < 20,668,1.5,9,True,1.3769191548806503,9,occupation == Student AND age < 20,1.0,planted,A,10
+occupation == Agriculture,1001,1.4,5,True,1.3390651612276574,5,occupation == Agriculture,1.0,planted,A,10
+sex == Male AND occupation == Office-based,925,1.25,47,False,1.1776304377737088,47,sex == Male AND age >= 60,0.0967911625460284,planted,A,10
+smoking == 1 AND age >= 60,1161,1.5,370,False,0.9947107095611131,108,obesity == 0 AND age >= 35,0.2147557328015952,control,A,10
+occupation == Student AND age < 20,668,1.5,305,False,0.9969180562180594,300,alcohol == 0 AND age < 20,0.22734026745913818,control,A,10
+occupation == Agriculture,1001,1.4,286,False,0.997863592288308,125,age < 70,0.0997453310696095,control,A,10
+sex == Male AND occupation == Office-based,925,1.25,183,False,1.0001987855194758,136,sex == Male AND age < 20,0.10273972602739725,control,A,10
