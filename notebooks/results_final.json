@@ -1,59 +1,188 @@
 {
-  "discretisation": {
+  "population": {
+    "n_nodes": 10000,
+    "n_households": 4790,
+    "mean_household_size": 2.0876826722338206,
+    "households_by_size": {
+      "1": 1942,
+      "2": 1545,
+      "3": 545,
+      "4": 539,
+      "5": 137,
+      "6": 82
+    },
+    "households_by_type": {
+      "single": 1942,
+      "family_with_children": 1474,
+      "adult_household": 978,
+      "senior_household": 366,
+      "multigenerational": 30
+    }
+  },
+  "network": {
+    "household_transmission_multiplier": 2.0,
+    "realisations": [
+      {
+        "network_seed": 22,
+        "n_nodes": 10000,
+        "n_edges": 77230,
+        "mean_degree": 15.446,
+        "min_degree": 0,
+        "max_degree": 34,
+        "household_edges": 9014,
+        "context_edges": 24154,
+        "community_edges": 44062,
+        "school_groups": 119,
+        "university_groups": 29,
+        "workplace_groups": 436
+      },
+      {
+        "network_seed": 23,
+        "n_nodes": 10000,
+        "n_edges": 77230,
+        "mean_degree": 15.446,
+        "min_degree": 0,
+        "max_degree": 35,
+        "household_edges": 9014,
+        "context_edges": 24161,
+        "community_edges": 44055,
+        "school_groups": 119,
+        "university_groups": 29,
+        "workplace_groups": 436
+      },
+      {
+        "network_seed": 24,
+        "n_nodes": 10000,
+        "n_edges": 77230,
+        "mean_degree": 15.446,
+        "min_degree": 1,
+        "max_degree": 33,
+        "household_edges": 9014,
+        "context_edges": 23916,
+        "community_edges": 44300,
+        "school_groups": 119,
+        "university_groups": 29,
+        "workplace_groups": 436
+      },
+      {
+        "network_seed": 25,
+        "n_nodes": 10000,
+        "n_edges": 77230,
+        "mean_degree": 15.446,
+        "min_degree": 0,
+        "max_degree": 32,
+        "household_edges": 9014,
+        "context_edges": 24151,
+        "community_edges": 44065,
+        "school_groups": 119,
+        "university_groups": 29,
+        "workplace_groups": 436
+      },
+      {
+        "network_seed": 26,
+        "n_nodes": 10000,
+        "n_edges": 77230,
+        "mean_degree": 15.446,
+        "min_degree": 1,
+        "max_degree": 32,
+        "household_edges": 9014,
+        "context_edges": 24049,
+        "community_edges": 44167,
+        "school_groups": 119,
+        "university_groups": 29,
+        "workplace_groups": 436
+      }
+    ]
+  },
+  "calibration": {
+    "target_attack_rate": 0.4,
+    "calibrated_p": 0.094765625,
+    "validation_mean": 0.398688,
+    "validation_sd": 0.022551141788379497,
+    "per_network": [
+      {
+        "network_seed": 22,
+        "mean_attack_rate": 0.3992266666666666,
+        "sd_attack_rate": 0.02501245115224971,
+        "median_attack_rate": 0.3923,
+        "min_attack_rate": 0.3575,
+        "max_attack_rate": 0.4604,
+        "minor_outbreak_fraction": 0.0
+      },
+      {
+        "network_seed": 23,
+        "mean_attack_rate": 0.3983999999999999,
+        "sd_attack_rate": 0.019158468011605836,
+        "median_attack_rate": 0.39925,
+        "min_attack_rate": 0.3562,
+        "max_attack_rate": 0.4317,
+        "minor_outbreak_fraction": 0.0
+      },
+      {
+        "network_seed": 24,
+        "mean_attack_rate": 0.3985633333333334,
+        "sd_attack_rate": 0.018354638300071096,
+        "median_attack_rate": 0.40049999999999997,
+        "min_attack_rate": 0.3646,
+        "max_attack_rate": 0.4349,
+        "minor_outbreak_fraction": 0.0
+      },
+      {
+        "network_seed": 25,
+        "mean_attack_rate": 0.39615333333333336,
+        "sd_attack_rate": 0.021988017635526623,
+        "median_attack_rate": 0.3954,
+        "min_attack_rate": 0.355,
+        "max_attack_rate": 0.4393,
+        "minor_outbreak_fraction": 0.0
+      },
+      {
+        "network_seed": 26,
+        "mean_attack_rate": 0.3936833333333334,
+        "sd_attack_rate": 0.02045912802492399,
+        "median_attack_rate": 0.39385,
+        "min_attack_rate": 0.353,
+        "max_attack_rate": 0.4384,
+        "minor_outbreak_fraction": 0.0
+      }
+    ]
+  },
+  "simulation": {
+    "recovery_probability": 0.4,
+    "minor_outbreak_threshold": 0.01,
+    "planted_description": "smoking == 1 AND age >= 60",
+    "planted_size": 1161,
+    "model_a_homogeneous_susceptibility": 0.33760612
+  },
+  "search": {
     "type": "local equal-frequency",
     "n_bins": 10,
-    "jaccard_recovered": 0.8,
     "min_size": 200,
+    "jaccard_recovered": 0.8,
     "n_descriptions_generated": 449,
     "n_descriptions_evaluable": 421,
-    "root_age_cut_points": {
-      ">=": [
-        8.0,
-        15.0,
-        22.0,
-        30.0,
-        37.0,
-        44.0,
-        52.0,
-        59.0,
-        67.0
-      ],
-      "<=": [
-        8.0,
-        15.0,
-        22.0,
-        29.0,
-        37.0,
-        44.0,
-        52.0,
-        59.0,
-        67.0
-      ]
-    },
-    "smoker_age_cut_points": {
-      ">=": [
-        8.0,
-        15.0,
-        22.0,
-        30.0,
-        37.0,
-        44.0,
-        52.0,
-        59.0,
-        67.0
-      ],
-      "<=": [
-        8.0,
-        15.0,
-        22.0,
-        30.0,
-        37.0,
-        44.0,
-        52.0,
-        59.0,
-        67.0
-      ]
-    },
+    "root_age_cut_points": [
+      8.0,
+      15.0,
+      22.0,
+      30.0,
+      37.0,
+      44.0,
+      52.0,
+      59.0,
+      67.0
+    ],
+    "smoker_age_cut_points": [
+      8.0,
+      15.0,
+      22.0,
+      30.0,
+      37.0,
+      44.0,
+      52.0,
+      59.0,
+      67.0
+    ],
     "closest_description": "smoking == 1 AND age >= 59",
     "closest_jaccard": 0.9273162939297125,
     "closest_size": 1252
@@ -63,17 +192,17 @@
       "model": "A",
       "network_seed": 22,
       "condition": "planted",
-      "gstar_rr": 1.5147204019645923,
+      "gstar_rr": 1.5147204019645926,
       "n_descriptions": 421,
       "top1_description": "smoking == 1 AND age >= 59",
       "top1_size": 1252,
       "top1_jaccard": 0.9273162939297125,
-      "top1_rr": 1.4563948696657685,
+      "top1_rr": 1.4563948696657687,
       "top5_best_jaccard": 0.9273162939297125,
       "recovered_rank": 1,
       "recovered_description": "smoking == 1 AND age >= 59",
       "recovered_jaccard": 0.9273162939297125,
-      "recovered_rr": 1.4563948696657685
+      "recovered_rr": 1.4563948696657687
     },
     {
       "model": "B",
@@ -100,12 +229,12 @@
       "top1_description": "age <= 59",
       "top1_size": 8040,
       "top1_jaccard": 0.0,
-      "top1_rr": 1.0094746297943549,
+      "top1_rr": 1.0094746297943546,
       "top5_best_jaccard": 0.0,
       "recovered_rank": 339,
       "recovered_description": "smoking == 1 AND age >= 59",
       "recovered_jaccard": 0.9273162939297125,
-      "recovered_rr": 0.9934539632622384
+      "recovered_rr": 0.9934539632622387
     },
     {
       "model": "B",
@@ -127,7 +256,7 @@
       "model": "A",
       "network_seed": 23,
       "condition": "planted",
-      "gstar_rr": 1.5206086451521934,
+      "gstar_rr": 1.5206086451521932,
       "n_descriptions": 421,
       "top1_description": "smoking == 1 AND age >= 59",
       "top1_size": 1252,
@@ -159,7 +288,7 @@
       "model": "A",
       "network_seed": 23,
       "condition": "control",
-      "gstar_rr": 0.9988103783428821,
+      "gstar_rr": 0.9988103783428817,
       "n_descriptions": 421,
       "top1_description": "obesity == 0",
       "top1_size": 9291,
@@ -169,7 +298,7 @@
       "recovered_rank": 280,
       "recovered_description": "smoking == 1 AND age >= 59",
       "recovered_jaccard": 0.9273162939297125,
-      "recovered_rr": 0.998017589118806
+      "recovered_rr": 0.9980175891188059
     },
     {
       "model": "B",
@@ -191,17 +320,17 @@
       "model": "A",
       "network_seed": 24,
       "condition": "planted",
-      "gstar_rr": 1.5159295590979989,
+      "gstar_rr": 1.515929559097998,
       "n_descriptions": 421,
       "top1_description": "smoking == 1 AND age >= 59",
       "top1_size": 1252,
       "top1_jaccard": 0.9273162939297125,
-      "top1_rr": 1.4622356118207303,
+      "top1_rr": 1.46223561182073,
       "top5_best_jaccard": 0.9273162939297125,
       "recovered_rank": 1,
       "recovered_description": "smoking == 1 AND age >= 59",
       "recovered_jaccard": 0.9273162939297125,
-      "recovered_rr": 1.4622356118207303
+      "recovered_rr": 1.46223561182073
     },
     {
       "model": "B",
@@ -223,7 +352,7 @@
       "model": "A",
       "network_seed": 24,
       "condition": "control",
-      "gstar_rr": 0.9906875561702126,
+      "gstar_rr": 0.9906875561702125,
       "n_descriptions": 421,
       "top1_description": "age <= 52",
       "top1_size": 7097,
@@ -255,17 +384,17 @@
       "model": "A",
       "network_seed": 25,
       "condition": "planted",
-      "gstar_rr": 1.5143115095882924,
+      "gstar_rr": 1.5143115095882929,
       "n_descriptions": 421,
       "top1_description": "smoking == 1 AND age >= 59",
       "top1_size": 1252,
       "top1_jaccard": 0.9273162939297125,
-      "top1_rr": 1.4571469893502804,
+      "top1_rr": 1.4571469893502802,
       "top5_best_jaccard": 0.9273162939297125,
       "recovered_rank": 1,
       "recovered_description": "smoking == 1 AND age >= 59",
       "recovered_jaccard": 0.9273162939297125,
-      "recovered_rr": 1.4571469893502804
+      "recovered_rr": 1.4571469893502802
     },
     {
       "model": "B",
@@ -287,12 +416,12 @@
       "model": "A",
       "network_seed": 25,
       "condition": "control",
-      "gstar_rr": 0.9980462162871934,
+      "gstar_rr": 0.9980462162871936,
       "n_descriptions": 421,
       "top1_description": "occupation == Student AND age >= 67",
       "top1_size": 250,
       "top1_jaccard": 0.1251993620414673,
-      "top1_rr": 1.0365401018764901,
+      "top1_rr": 1.0365401018764904,
       "top5_best_jaccard": 0.2048885693745507,
       "recovered_rank": 283,
       "recovered_description": "smoking == 1 AND age >= 59",
@@ -319,7 +448,7 @@
       "model": "A",
       "network_seed": 26,
       "condition": "planted",
-      "gstar_rr": 1.509145683211956,
+      "gstar_rr": 1.5091456832119556,
       "n_descriptions": 421,
       "top1_description": "smoking == 1 AND age >= 59",
       "top1_size": 1252,
@@ -351,17 +480,17 @@
       "model": "A",
       "network_seed": 26,
       "condition": "control",
-      "gstar_rr": 1.0084626235011802,
+      "gstar_rr": 1.0084626235011807,
       "n_descriptions": 421,
       "top1_description": "age <= 67",
       "top1_size": 9117,
       "top1_jaccard": 0.06551938627410325,
-      "top1_rr": 1.0115802347491687,
+      "top1_rr": 1.0115802347491691,
       "top5_best_jaccard": 0.16414534143927612,
       "recovered_rank": 52,
       "recovered_description": "smoking == 1 AND age >= 59",
       "recovered_jaccard": 0.9273162939297125,
-      "recovered_rr": 1.0054124887119589
+      "recovered_rr": 1.005412488711959
     },
     {
       "model": "B",
@@ -380,145 +509,157 @@
       "recovered_rr": 1.0058042389711082
     }
   ],
-  "stress_tests": [
-    {
-      "scenario": "Dead-end",
-      "model": "A",
-      "knowledge": "given",
-      "true": 1.5,
-      "gstar_rr": 1.512266381245051,
-      "n_descriptions": 421,
-      "top1_description": "smoking == 1 AND age >= 59",
-      "top1_size": 1252,
-      "top1_jaccard": 0.9273162939297125,
-      "top1_rr": 1.452062811974703,
-      "top5_best_jaccard": 0.9273162939297125,
-      "recovered_rank": 1,
-      "recovered_description": "smoking == 1 AND age >= 59",
-      "recovered_jaccard": 0.9273162939297125,
-      "recovered_rr": 1.452062811974703
-    },
-    {
-      "scenario": "Dead-end",
-      "model": "B",
-      "knowledge": "given",
-      "true": 0.5,
-      "gstar_rr": 0.4991235266749672,
-      "n_descriptions": 421,
-      "top1_description": "smoking == 1 AND age >= 59",
-      "top1_size": 1252,
-      "top1_jaccard": 0.9273162939297125,
-      "top1_rr": 0.5474246872671573,
-      "top5_best_jaccard": 0.9273162939297125,
-      "recovered_rank": 1,
-      "recovered_description": "smoking == 1 AND age >= 59",
-      "recovered_jaccard": 0.9273162939297125,
-      "recovered_rr": 0.5474246872671573
-    },
-    {
-      "scenario": "Dead-end",
-      "model": "A",
-      "knowledge": "assumed",
-      "true": 1.5,
-      "gstar_rr": 1.3732849981863664,
-      "n_descriptions": 421,
-      "top1_description": "smoking == 1 AND age >= 59",
-      "top1_size": 1252,
-      "top1_jaccard": 0.9273162939297125,
-      "top1_rr": 1.327263638017129,
-      "top5_best_jaccard": 0.9273162939297125,
-      "recovered_rank": 1,
-      "recovered_description": "smoking == 1 AND age >= 59",
-      "recovered_jaccard": 0.9273162939297125,
-      "recovered_rr": 1.327263638017129
-    },
-    {
-      "scenario": "Dead-end",
-      "model": "B",
-      "knowledge": "assumed",
-      "true": 0.5,
-      "gstar_rr": 0.5458018732647347,
-      "n_descriptions": 421,
-      "top1_description": "smoking == 1 AND age >= 59",
-      "top1_size": 1252,
-      "top1_jaccard": 0.9273162939297125,
-      "top1_rr": 0.5957860915190482,
-      "top5_best_jaccard": 0.9273162939297125,
-      "recovered_rank": 1,
-      "recovered_description": "smoking == 1 AND age >= 59",
-      "recovered_jaccard": 0.9273162939297125,
-      "recovered_rr": 0.5957860915190482
-    },
-    {
-      "scenario": "Adversarial spreader",
-      "model": "A",
-      "knowledge": "given",
-      "true": 0.6,
-      "gstar_rr": 0.5938866094779679,
-      "n_descriptions": 421,
-      "top1_description": "smoking == 1 AND age >= 59",
-      "top1_size": 1252,
-      "top1_jaccard": 0.9273162939297125,
-      "top1_rr": 0.6312180556246442,
-      "top5_best_jaccard": 0.9273162939297125,
-      "recovered_rank": 1,
-      "recovered_description": "smoking == 1 AND age >= 59",
-      "recovered_jaccard": 0.9273162939297125,
-      "recovered_rr": 0.6312180556246442
-    },
-    {
-      "scenario": "Adversarial spreader",
-      "model": "B",
-      "knowledge": "given",
-      "true": 1.75,
-      "gstar_rr": 1.7594388604487645,
-      "n_descriptions": 421,
-      "top1_description": "smoking == 1 AND age >= 59",
-      "top1_size": 1252,
-      "top1_jaccard": 0.9273162939297125,
-      "top1_rr": 1.6014076752975264,
-      "top5_best_jaccard": 0.9273162939297125,
-      "recovered_rank": 1,
-      "recovered_description": "smoking == 1 AND age >= 59",
-      "recovered_jaccard": 0.9273162939297125,
-      "recovered_rr": 1.6014076752975264
-    },
-    {
-      "scenario": "Adversarial spreader",
-      "model": "A",
-      "knowledge": "assumed",
-      "true": 0.6,
-      "gstar_rr": 0.6359000063124972,
-      "n_descriptions": 421,
-      "top1_description": "smoking == 1 AND age >= 59",
-      "top1_size": 1252,
-      "top1_jaccard": 0.9273162939297125,
-      "top1_rr": 0.6732544456402285,
-      "top5_best_jaccard": 0.9273162939297125,
-      "recovered_rank": 1,
-      "recovered_description": "smoking == 1 AND age >= 59",
-      "recovered_jaccard": 0.9273162939297125,
-      "recovered_rr": 0.6732544456402285
-    },
-    {
-      "scenario": "Adversarial spreader",
-      "model": "B",
-      "knowledge": "assumed",
-      "true": 1.75,
-      "gstar_rr": 1.6060304277655577,
-      "n_descriptions": 421,
-      "top1_description": "smoking == 1 AND age >= 59",
-      "top1_size": 1252,
-      "top1_jaccard": 0.9273162939297125,
-      "top1_rr": 1.4767824030139431,
-      "top5_best_jaccard": 0.9273162939297125,
-      "recovered_rank": 1,
-      "recovered_description": "smoking == 1 AND age >= 59",
-      "recovered_jaccard": 0.9273162939297125,
-      "recovered_rr": 1.4767824030139431
+  "stress_tests": {
+    "model_results": [
+      {
+        "scenario": "Dead-end",
+        "model": "A",
+        "knowledge": "given",
+        "true": 1.5,
+        "gstar_rr": 1.5122663812450512,
+        "n_descriptions": 421,
+        "top1_description": "smoking == 1 AND age >= 59",
+        "top1_size": 1252,
+        "top1_jaccard": 0.9273162939297125,
+        "top1_rr": 1.4520628119747032,
+        "top5_best_jaccard": 0.9273162939297125,
+        "recovered_rank": 1,
+        "recovered_description": "smoking == 1 AND age >= 59",
+        "recovered_jaccard": 0.9273162939297125,
+        "recovered_rr": 1.4520628119747032
+      },
+      {
+        "scenario": "Dead-end",
+        "model": "B",
+        "knowledge": "given",
+        "true": 0.5,
+        "gstar_rr": 0.4991235266749672,
+        "n_descriptions": 421,
+        "top1_description": "smoking == 1 AND age >= 59",
+        "top1_size": 1252,
+        "top1_jaccard": 0.9273162939297125,
+        "top1_rr": 0.5474246872671573,
+        "top5_best_jaccard": 0.9273162939297125,
+        "recovered_rank": 1,
+        "recovered_description": "smoking == 1 AND age >= 59",
+        "recovered_jaccard": 0.9273162939297125,
+        "recovered_rr": 0.5474246872671573
+      },
+      {
+        "scenario": "Dead-end",
+        "model": "A",
+        "knowledge": "assumed",
+        "true": 1.5,
+        "gstar_rr": 1.3732849981863664,
+        "n_descriptions": 421,
+        "top1_description": "smoking == 1 AND age >= 59",
+        "top1_size": 1252,
+        "top1_jaccard": 0.9273162939297125,
+        "top1_rr": 1.3272636380171285,
+        "top5_best_jaccard": 0.9273162939297125,
+        "recovered_rank": 1,
+        "recovered_description": "smoking == 1 AND age >= 59",
+        "recovered_jaccard": 0.9273162939297125,
+        "recovered_rr": 1.3272636380171285
+      },
+      {
+        "scenario": "Dead-end",
+        "model": "B",
+        "knowledge": "assumed",
+        "true": 0.5,
+        "gstar_rr": 0.5458018732647347,
+        "n_descriptions": 421,
+        "top1_description": "smoking == 1 AND age >= 59",
+        "top1_size": 1252,
+        "top1_jaccard": 0.9273162939297125,
+        "top1_rr": 0.5957860915190482,
+        "top5_best_jaccard": 0.9273162939297125,
+        "recovered_rank": 1,
+        "recovered_description": "smoking == 1 AND age >= 59",
+        "recovered_jaccard": 0.9273162939297125,
+        "recovered_rr": 0.5957860915190482
+      },
+      {
+        "scenario": "Adversarial spreader",
+        "model": "A",
+        "knowledge": "given",
+        "true": 0.6,
+        "gstar_rr": 0.593886609477968,
+        "n_descriptions": 421,
+        "top1_description": "smoking == 1 AND age >= 59",
+        "top1_size": 1252,
+        "top1_jaccard": 0.9273162939297125,
+        "top1_rr": 0.6312180556246441,
+        "top5_best_jaccard": 0.9273162939297125,
+        "recovered_rank": 1,
+        "recovered_description": "smoking == 1 AND age >= 59",
+        "recovered_jaccard": 0.9273162939297125,
+        "recovered_rr": 0.6312180556246441
+      },
+      {
+        "scenario": "Adversarial spreader",
+        "model": "B",
+        "knowledge": "given",
+        "true": 1.75,
+        "gstar_rr": 1.7594388604487645,
+        "n_descriptions": 421,
+        "top1_description": "smoking == 1 AND age >= 59",
+        "top1_size": 1252,
+        "top1_jaccard": 0.9273162939297125,
+        "top1_rr": 1.6014076752975264,
+        "top5_best_jaccard": 0.9273162939297125,
+        "recovered_rank": 1,
+        "recovered_description": "smoking == 1 AND age >= 59",
+        "recovered_jaccard": 0.9273162939297125,
+        "recovered_rr": 1.6014076752975264
+      },
+      {
+        "scenario": "Adversarial spreader",
+        "model": "A",
+        "knowledge": "assumed",
+        "true": 0.6,
+        "gstar_rr": 0.6359000063124973,
+        "n_descriptions": 421,
+        "top1_description": "smoking == 1 AND age >= 59",
+        "top1_size": 1252,
+        "top1_jaccard": 0.9273162939297125,
+        "top1_rr": 0.6732544456402283,
+        "top5_best_jaccard": 0.9273162939297125,
+        "recovered_rank": 1,
+        "recovered_description": "smoking == 1 AND age >= 59",
+        "recovered_jaccard": 0.9273162939297125,
+        "recovered_rr": 0.6732544456402283
+      },
+      {
+        "scenario": "Adversarial spreader",
+        "model": "B",
+        "knowledge": "assumed",
+        "true": 1.75,
+        "gstar_rr": 1.6060304277655577,
+        "n_descriptions": 421,
+        "top1_description": "smoking == 1 AND age >= 59",
+        "top1_size": 1252,
+        "top1_jaccard": 0.9273162939297125,
+        "top1_rr": 1.4767824030139431,
+        "top5_best_jaccard": 0.9273162939297125,
+        "recovered_rank": 1,
+        "recovered_description": "smoking == 1 AND age >= 59",
+        "recovered_jaccard": 0.9273162939297125,
+        "recovered_rr": 1.4767824030139431
+      }
+    ],
+    "raw_infection_frequency": {
+      "dead_end": {
+        "group": 0.3211886304909561,
+        "rest": 0.4625104649847268
+      },
+      "adversarial": {
+        "group": 0.17291989664082688,
+        "rest": 0.48000791944790133
+      }
     }
-  ],
-  "naive_comparison": [
+  },
+  "naive_baselines": [
     {
       "scenario": "Dead-end",
       "model": "A",
@@ -544,7 +685,7 @@
       "target": "infection_frequency",
       "true": 1.5,
       "method": "B0+",
-      "gstar_quality": 0.006498670307016867,
+      "gstar_quality": 0.006498670307016759,
       "gstar_sign_ok": true,
       "n_descriptions": 421,
       "top1_description": "age <= 15",
@@ -569,12 +710,12 @@
       "top1_description": "smoking == 1 AND age >= 59",
       "top1_size": 1252,
       "top1_jaccard": 0.9273162939297125,
-      "top1_rr": 1.452062811974703,
+      "top1_rr": 1.4520628119747032,
       "top5_best_jaccard": 0.9273162939297125,
       "recovered_rank": 1,
       "recovered_description": "smoking == 1 AND age >= 59",
       "recovered_jaccard": 0.9273162939297125,
-      "recovered_rr": 1.452062811974703
+      "recovered_rr": 1.4520628119747032
     },
     {
       "scenario": "Dead-end",
@@ -588,12 +729,12 @@
       "top1_description": "smoking == 1 AND age >= 59",
       "top1_size": 1252,
       "top1_jaccard": 0.9273162939297125,
-      "top1_rr": 1.327263638017129,
+      "top1_rr": 1.3272636380171285,
       "top5_best_jaccard": 0.9273162939297125,
       "recovered_rank": 1,
       "recovered_description": "smoking == 1 AND age >= 59",
       "recovered_jaccard": 0.9273162939297125,
-      "recovered_rr": 1.327263638017129
+      "recovered_rr": 1.3272636380171285
     },
     {
       "scenario": "Dead-end",
@@ -620,7 +761,7 @@
       "target": "mean_offspring",
       "true": 0.5,
       "method": "B0+",
-      "gstar_quality": -0.0672057573627352,
+      "gstar_quality": -0.06720575736273555,
       "gstar_sign_ok": true,
       "n_descriptions": 421,
       "top1_description": "smoking == 1 AND age >= 59",
@@ -696,7 +837,7 @@
       "target": "infection_frequency",
       "true": 0.6,
       "method": "B0+",
-      "gstar_quality": -0.03759683693851603,
+      "gstar_quality": -0.037596836938516134,
       "gstar_sign_ok": true,
       "n_descriptions": 421,
       "top1_description": "smoking == 1 AND age >= 59",
@@ -721,12 +862,12 @@
       "top1_description": "smoking == 1 AND age >= 59",
       "top1_size": 1252,
       "top1_jaccard": 0.9273162939297125,
-      "top1_rr": 0.6312180556246442,
+      "top1_rr": 0.6312180556246441,
       "top5_best_jaccard": 0.9273162939297125,
       "recovered_rank": 1,
       "recovered_description": "smoking == 1 AND age >= 59",
       "recovered_jaccard": 0.9273162939297125,
-      "recovered_rr": 0.6312180556246442
+      "recovered_rr": 0.6312180556246441
     },
     {
       "scenario": "Adversarial spreader",
@@ -740,12 +881,12 @@
       "top1_description": "smoking == 1 AND age >= 59",
       "top1_size": 1252,
       "top1_jaccard": 0.9273162939297125,
-      "top1_rr": 0.6732544456402285,
+      "top1_rr": 0.6732544456402283,
       "top5_best_jaccard": 0.9273162939297125,
       "recovered_rank": 1,
       "recovered_description": "smoking == 1 AND age >= 59",
       "recovered_jaccard": 0.9273162939297125,
-      "recovered_rr": 0.6732544456402285
+      "recovered_rr": 0.6732544456402283
     },
     {
       "scenario": "Adversarial spreader",
@@ -772,7 +913,7 @@
       "target": "mean_offspring",
       "true": 1.75,
       "method": "B0+",
-      "gstar_quality": 0.08825511835950102,
+      "gstar_quality": 0.08825511835949884,
       "gstar_sign_ok": true,
       "n_descriptions": 421,
       "top1_description": "smoking == 1 AND age >= 59",
@@ -824,76 +965,100 @@
       "recovered_rr": 1.4767824030139431
     }
   ],
-  "decoy": {
-    "b0_top5": [
+  "ablations": {
+    "model_a": [
       {
-        "description": "age >= 59",
-        "size": 2105,
-        "group_mean": 0.26208229474447964,
-        "reference_mean": 0.4478867848749909,
-        "quality": -0.08524761844377104
+        "condition": "Planted",
+        "exposure": "Raw",
+        "rate_ratio": 1.4319708859302283,
+        "quality": 0.1223413144439451,
+        "target_rr": 1.5,
+        "absolute_RR_error": 0.06802911406977175,
+        "relative_error_percent": 4.535274271318116
       },
       {
-        "description": "obesity == 0 AND age >= 59",
-        "size": 1965,
-        "group_mean": 0.2627295122720338,
-        "reference_mean": 0.4478867848749909,
-        "quality": -0.08207710926294233
+        "condition": "Planted",
+        "exposure": "Weighted",
+        "rate_ratio": 1.5147204019645926,
+        "quality": 0.14148348276572162,
+        "target_rr": 1.5,
+        "absolute_RR_error": 0.014720401964592567,
+        "relative_error_percent": 0.9813601309728378
       },
       {
-        "description": "age >= 52",
-        "size": 3037,
-        "group_mean": 0.2997447505869312,
-        "reference_mean": 0.4478867848749909,
-        "quality": -0.08163956839361974
+        "condition": "Control",
+        "exposure": "Raw",
+        "rate_ratio": 0.9358504298852603,
+        "quality": -0.02259056533246803,
+        "target_rr": 1.0,
+        "absolute_RR_error": 0.06414957011473965,
+        "relative_error_percent": 6.414957011473965
       },
       {
-        "description": "age >= 67",
-        "size": 1004,
-        "group_mean": 0.1917390933199496,
-        "reference_mean": 0.4478867848749909,
-        "quality": -0.08116285261653418
-      },
-      {
-        "description": "obesity == 0 AND age >= 52",
-        "size": 2826,
-        "group_mean": 0.3000329433765895,
-        "reference_mean": 0.4478867848749909,
-        "quality": -0.07859930239380503
+        "condition": "Control",
+        "exposure": "Weighted",
+        "rate_ratio": 0.9948277767316399,
+        "quality": -0.0017669283363061263,
+        "target_rr": 1.0,
+        "absolute_RR_error": 0.005172223268360088,
+        "relative_error_percent": 0.5172223268360088
       }
     ],
-    "model_a_top5": [
+    "model_b": [
       {
-        "description": "age >= 44 AND occupation == Sales and services",
-        "size": 647,
-        "rate_ratio": 0.9788633811779387,
-        "quality": 0.00543398401033765
+        "condition": "Planted",
+        "method": "Raw opportunity",
+        "rate_ratio": 1.9064133270791863,
+        "quality": 0.21984995398842808,
+        "target_rr": 1.75,
+        "absolute_RR_error": 0.15641332707918632,
+        "relative_error_percent": 8.937904404524932
       },
       {
-        "description": "occupation == Sales and services AND age >= 45",
-        "size": 626,
-        "rate_ratio": 0.9790884152884868,
-        "quality": 0.005287557149530863
+        "condition": "Planted",
+        "method": "Susceptibility weighted",
+        "rate_ratio": 1.6913091230028554,
+        "quality": 0.17905695398292157,
+        "target_rr": 1.75,
+        "absolute_RR_error": 0.05869087699714459,
+        "relative_error_percent": 3.353764399836834
       },
       {
-        "description": "occupation == Sales and services AND age >= 38",
-        "size": 777,
-        "rate_ratio": 0.9823927867906814,
-        "quality": 0.004951683067184088
+        "condition": "Planted",
+        "method": "Susceptibility + edge weighted",
+        "rate_ratio": 1.75858078761098,
+        "quality": 0.19234704934496014,
+        "target_rr": 1.75,
+        "absolute_RR_error": 0.008580787610980023,
+        "relative_error_percent": 0.4903307206274299
       },
       {
-        "description": "age >= 37 AND occupation == Sales and services",
-        "size": 794,
-        "rate_ratio": 0.9833945530939631,
-        "quality": 0.004718368398597548
+        "condition": "Control",
+        "method": "Raw opportunity",
+        "rate_ratio": 1.0923771727494989,
+        "quality": 0.030106010457743262,
+        "target_rr": 1.0,
+        "absolute_RR_error": 0.09237717274949886,
+        "relative_error_percent": 9.237717274949887
       },
       {
-        "description": "occupation == Sales and services AND age >= 30",
-        "size": 934,
-        "rate_ratio": 0.9852057181102558,
-        "quality": 0.004555120243237049
+        "condition": "Control",
+        "method": "Susceptibility weighted",
+        "rate_ratio": 0.9668847497534795,
+        "quality": -0.011474566163219652,
+        "target_rr": 1.0,
+        "absolute_RR_error": 0.03311525024652051,
+        "relative_error_percent": 3.311525024652051
+      },
+      {
+        "condition": "Control",
+        "method": "Susceptibility + edge weighted",
+        "rate_ratio": 1.0036636853305978,
+        "quality": 0.0012460627922677924,
+        "target_rr": 1.0,
+        "absolute_RR_error": 0.003663685330597799,
+        "relative_error_percent": 0.3663685330597799
       }
-    ],
-    "model_a_max_abs_log_rr": 0.021363195548136097
+    ]
   }
 }
