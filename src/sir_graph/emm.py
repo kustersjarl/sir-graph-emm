@@ -121,6 +121,228 @@ def generate_candidates(
 
 
 # ============================================================
+# Description generation with global or local discretisation
+# ============================================================
+
+
+@dataclass(frozen=True)
+class Description:
+    """
+    One evaluable subgroup description of depth 1 or 2.
+    """
+
+    description: str
+    depth: int
+    mask: NDArray[np.bool_]
+
+
+def equal_frequency_cut_points(
+    values: NDArray,
+    n_bins: int,
+) -> list[float]:
+    """
+    Cut points of ``n_bins`` equal-frequency bins.
+
+    Cut points are rounded up to whole values (ages are integers),
+    deduplicated, and kept only if they actually split ``values``.
+    """
+
+    values = np.asarray(values, dtype=np.float64)
+
+    if values.size == 0 or n_bins < 2:
+        return []
+
+    quantiles = np.quantile(
+        values,
+        np.arange(1, n_bins) / n_bins,
+    )
+
+    cut_points = np.unique(np.ceil(quantiles))
+
+    return [
+        float(c)
+        for c in cut_points
+        if np.any(values < c) and np.any(values >= c)
+    ]
+
+
+def _age_conditions(
+    ages: NDArray,
+    age_column: str,
+    cut_points: list[float],
+) -> list[Candidate]:
+    """
+    Two half-bounded conditions per cut point: age >= c and age < c.
+    """
+
+    conditions: list[Candidate] = []
+
+    for c in cut_points:
+        label = f"{c:g}"
+
+        conditions.append(
+            Candidate(
+                description=f"{age_column} >= {label}",
+                attribute=age_column,
+                mask=ages >= c,
+            )
+        )
+
+        conditions.append(
+            Candidate(
+                description=f"{age_column} < {label}",
+                attribute=age_column,
+                mask=ages < c,
+            )
+        )
+
+    return conditions
+
+
+def generate_descriptions(
+    df: pd.DataFrame,
+    *,
+    categorical_columns: list[str],
+    age_column: str = "age",
+    max_depth: int = 2,
+    discretisation: str = "local",
+    n_bins: int = 10,
+    age_thresholds=range(20, 81, 5),
+) -> list[Description]:
+    """
+    Enumerate all subgroup descriptions up to depth 2.
+
+    discretisation="global":
+        Age cut points are the fixed ``age_thresholds``, computed once
+        for the whole population. Equivalent to the original search.
+
+    discretisation="local":
+        Age cut points are ``n_bins`` equal-frequency bins computed on
+        the subgroup that is being refined. At depth 1 this subgroup is
+        the whole population. When age refines a categorical condition
+        (e.g. smoking == 1), its cut points are recomputed on the ages
+        inside that condition.
+
+    In both modes, two conditions on the same attribute are never
+    combined, and descriptions selecting exactly the same people are
+    kept only once (first occurrence wins).
+    """
+
+    if max_depth not in (1, 2):
+        raise ValueError("current implementation supports max_depth 1 or 2")
+
+    if discretisation not in ("global", "local"):
+        raise ValueError("discretisation must be 'global' or 'local'")
+
+    if age_column not in df.columns:
+        raise KeyError(f"{age_column!r} not found in dataframe")
+
+    ages = df[age_column].to_numpy(dtype=np.float64)
+
+    categorical = generate_candidates(
+        df,
+        categorical_columns=categorical_columns,
+        age_column=age_column,
+        age_thresholds=[],
+    )
+
+    if discretisation == "global":
+        root_age = _age_conditions(
+            ages,
+            age_column,
+            [float(c) for c in age_thresholds],
+        )
+    else:
+        root_age = _age_conditions(
+            ages,
+            age_column,
+            equal_frequency_cut_points(ages, n_bins),
+        )
+
+    level_1 = categorical + root_age
+
+    descriptions: list[Description] = []
+    seen: set[bytes] = set()
+
+    def add(description: str, depth: int, mask: NDArray[np.bool_]) -> None:
+        key = _mask_key(mask)
+        if key in seen:
+            return
+        seen.add(key)
+        descriptions.append(
+            Description(description=description, depth=depth, mask=mask)
+        )
+
+    for condition in level_1:
+        add(condition.description, 1, condition.mask)
+
+    if max_depth == 1:
+        return descriptions
+
+    def pair(a: Candidate, b: Candidate) -> None:
+        add(f"{a.description} AND {b.description}", 2, a.mask & b.mask)
+
+    if discretisation == "global":
+        for a, b in combinations(level_1, 2):
+            if a.attribute != b.attribute:
+                pair(a, b)
+        return descriptions
+
+    # Local: categorical x categorical
+    for a, b in combinations(categorical, 2):
+        if a.attribute != b.attribute:
+            pair(a, b)
+
+    # Local: a categorical subgroup refined by age, with cut points
+    # computed on the ages inside that subgroup.
+    for a in categorical:
+        local_cut_points = equal_frequency_cut_points(ages[a.mask], n_bins)
+        for b in _age_conditions(ages, age_column, local_cut_points):
+            pair(a, b)
+
+    # Local: a root-level age condition refined by a categorical one
+    # (no discretisation needed for the refinement).
+    for a in root_age:
+        for b in categorical:
+            pair(a, b)
+
+    return descriptions
+
+
+def search_descriptions(
+    descriptions: list[Description],
+    scorer,
+) -> pd.DataFrame:
+    """
+    Score every description with ``scorer(mask) -> dict | None`` and
+    return the results sorted by quality (highest first).
+    """
+
+    results = []
+
+    for d in descriptions:
+        score = scorer(d.mask)
+        if score is None:
+            continue
+        results.append(
+            {
+                "depth": d.depth,
+                "description": d.description,
+                **score,
+            }
+        )
+
+    if not results:
+        return pd.DataFrame()
+
+    return (
+        pd.DataFrame(results)
+        .sort_values("quality", ascending=False, kind="stable")
+        .reset_index(drop=True)
+    )
+
+
+# ============================================================
 # BASELINE EMM
 # Residual-based method used in the previous experiments
 # ============================================================
@@ -1002,6 +1224,9 @@ def search_model_a_subgroups(
     max_depth: int = 2,
     direction: str = "high",
     exposure_type: str = "weighted",
+    discretisation: str = "global",
+    n_bins: int = 10,
+    descriptions: list[Description] | None = None,
 ) -> pd.DataFrame:
     """
     Run EMM using Model A.
@@ -1017,8 +1242,35 @@ def search_model_a_subgroups(
         Weight infectious neighbours by
         source infectiousness and edge multiplier.
 
+    discretisation="global" (default) keeps the original search.
+    discretisation="local" recomputes equal-frequency age cut points
+    within each refined subgroup (see generate_descriptions).
+    Precomputed ``descriptions`` may be passed to skip generation.
+
     Supports depths 1 and 2.
     """
+
+    if descriptions is not None or discretisation == "local":
+        if descriptions is None:
+            descriptions = generate_descriptions(
+                df,
+                categorical_columns=categorical_columns,
+                age_column=age_column,
+                max_depth=max_depth,
+                discretisation=discretisation,
+                n_bins=n_bins,
+                age_thresholds=age_thresholds,
+            )
+        return search_descriptions(
+            descriptions,
+            lambda mask: score_model_a_subgroup(
+                mask,
+                observations,
+                min_size=min_size,
+                direction=direction,
+                exposure_type=exposure_type,
+            ),
+        )
 
     if len(
         df
@@ -1610,9 +1862,17 @@ def search_model_b_subgroups(
     max_depth: int = 2,
     direction: str = "high",
     opportunity_type: str = "raw",
+    discretisation: str = "global",
+    n_bins: int = 10,
+    descriptions: list[Description] | None = None,
 ) -> pd.DataFrame:
     """
     Run EMM using Model B.
+
+    discretisation="global" (default) keeps the original search.
+    discretisation="local" recomputes equal-frequency age cut points
+    within each refined subgroup (see generate_descriptions).
+    Precomputed ``descriptions`` may be passed to skip generation.
 
     Subgroup descriptions are defined over
     the person-level dataframe.
@@ -1655,6 +1915,28 @@ def search_model_b_subgroups(
         raise ValueError(
             "opportunity_type must be "
             "'raw' or 'weighted'"
+        )
+
+    if descriptions is not None or discretisation == "local":
+        if descriptions is None:
+            descriptions = generate_descriptions(
+                df,
+                categorical_columns=categorical_columns,
+                age_column=age_column,
+                max_depth=max_depth,
+                discretisation=discretisation,
+                n_bins=n_bins,
+                age_thresholds=age_thresholds,
+            )
+        return search_descriptions(
+            descriptions,
+            lambda mask: score_model_b_subgroup(
+                mask,
+                observations,
+                min_size=min_size,
+                direction=direction,
+                opportunity_type=opportunity_type,
+            ),
         )
 
     candidates = generate_candidates(
