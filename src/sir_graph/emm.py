@@ -139,31 +139,74 @@ class Description:
 def equal_frequency_cut_points(
     values: NDArray,
     n_bins: int,
+    operator: str = ">=",
 ) -> list[float]:
     """
-    Cut points of ``n_bins`` equal-frequency bins.
+    Equal-frequency cut points, following Algorithm 2 of
+    Meeng & Knobbe (2021), "For real: a thorough look at numeric
+    attributes in subgroup discovery".
 
-    Cut points are rounded up to whole values (ages are integers),
-    deduplicated, and kept only if they actually split ``values``.
+    For b = 1, ..., B-1:
+        x = floor(n * b / B)
+        if operator != ">=" and n * b is divisible by B: x = x - 1
+        cut point = a[x]            (a sorted ascending, 0-based)
+
+    Bounds are inclusive: lower bounds for ">=", upper bounds for "<=".
+    Duplicate cut points are removed.
     """
 
-    values = np.asarray(values, dtype=np.float64)
+    if operator not in (">=", "<="):
+        raise ValueError("operator must be '>=' or '<='")
 
-    if values.size == 0 or n_bins < 2:
+    a = np.sort(np.asarray(values, dtype=np.float64))
+    n = a.size
+
+    if n == 0 or n_bins < 2:
         return []
 
-    quantiles = np.quantile(
-        values,
-        np.arange(1, n_bins) / n_bins,
-    )
+    cut_points: set[float] = set()
 
-    cut_points = np.unique(np.ceil(quantiles))
+    for b in range(1, n_bins):
+        x = (n * b) // n_bins
+        if operator != ">=" and (n * b) % n_bins == 0:
+            x -= 1
+        if 0 <= x < n:
+            cut_points.add(float(a[x]))
 
-    return [
-        float(c)
-        for c in cut_points
-        if np.any(values < c) and np.any(values >= c)
-    ]
+    return sorted(cut_points)
+
+
+def _local_age_conditions(
+    ages: NDArray,
+    domain: NDArray,
+    age_column: str,
+    n_bins: int,
+) -> list[Candidate]:
+    """
+    Half-bounded age conditions with cut points from Algorithm 2,
+    computed on ``domain`` (the ages inside the subgroup being refined):
+    age >= c for the '>=' cut points and age <= c for the '<=' ones.
+
+    Conditions that do not split ``domain`` are dropped, as SDMM only
+    accepts refinements that select a proper subset.
+    """
+
+    conditions: list[Candidate] = []
+
+    for operator, select in ((">=", np.greater_equal), ("<=", np.less_equal)):
+        for c in equal_frequency_cut_points(domain, n_bins, operator):
+            in_domain = select(domain, c)
+            if in_domain.all() or not in_domain.any():
+                continue
+            conditions.append(
+                Candidate(
+                    description=f"{age_column} {operator} {c:g}",
+                    attribute=age_column,
+                    mask=select(ages, c),
+                )
+            )
+
+    return conditions
 
 
 def _age_conditions(
@@ -217,11 +260,13 @@ def generate_descriptions(
         for the whole population. Equivalent to the original search.
 
     discretisation="local":
-        Age cut points are ``n_bins`` equal-frequency bins computed on
-        the subgroup that is being refined. At depth 1 this subgroup is
-        the whole population. When age refines a categorical condition
-        (e.g. smoking == 1), its cut points are recomputed on the ages
-        inside that condition.
+        Strategy 3-lbca of Meeng & Knobbe (2021): local, binaries,
+        coarse, all. Age cut points are ``n_bins`` equal-frequency cut
+        points (their Algorithm 2) computed on the subgroup that is
+        being refined, giving conditions age >= c and age <= c. At
+        depth 1 this subgroup is the whole population. When age refines
+        a categorical condition (e.g. smoking == 1), its cut points are
+        recomputed on the ages inside that condition.
 
     In both modes, two conditions on the same attribute are never
     combined, and descriptions selecting exactly the same people are
@@ -253,11 +298,7 @@ def generate_descriptions(
             [float(c) for c in age_thresholds],
         )
     else:
-        root_age = _age_conditions(
-            ages,
-            age_column,
-            equal_frequency_cut_points(ages, n_bins),
-        )
+        root_age = _local_age_conditions(ages, ages, age_column, n_bins)
 
     level_1 = categorical + root_age
 
@@ -296,8 +337,7 @@ def generate_descriptions(
     # Local: a categorical subgroup refined by age, with cut points
     # computed on the ages inside that subgroup.
     for a in categorical:
-        local_cut_points = equal_frequency_cut_points(ages[a.mask], n_bins)
-        for b in _age_conditions(ages, age_column, local_cut_points):
+        for b in _local_age_conditions(ages, ages[a.mask], age_column, n_bins):
             pair(a, b)
 
     # Local: a root-level age condition refined by a categorical one
